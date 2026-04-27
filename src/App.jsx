@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useTransition, useMemo, useCallback } from "react";
 import { supabase } from "./lib/supabase";
 import { motion, AnimatePresence } from "framer-motion";
 import { Languages, Volume2, VolumeX, Check } from "lucide-react";
@@ -128,11 +128,20 @@ function LanguageSelector() {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
+  const [isPending, startTransition] = useTransition();
+
   useEffect(() => {
     const handleClick = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
+
+  const handleLangChange = (code) => {
+    setOpen(false);
+    startTransition(() => {
+      setLang(code);
+    });
+  };
 
   return (
     <div ref={ref} style={{position:"relative", display:"flex", alignItems:"center", gap:12}}>
@@ -149,7 +158,7 @@ function LanguageSelector() {
           <motion.div initial={{opacity:0,y:10,scale:0.95}} animate={{opacity:1,y:0,scale:1}} exit={{opacity:0,y:10,scale:0.95}} transition={{duration:0.15}} style={{position:"absolute",top:"120%",right:0,width:180,background:"rgba(12,22,40,0.95)",backdropFilter:"blur(20px)",border:"1px solid rgba(16,185,129,0.2)",borderRadius:14,padding:8,boxShadow:"0 10px 40px rgba(0,0,0,0.5)",zIndex:200}}>
             <div style={{fontSize:10,color:"#7fbfa8",textTransform:"uppercase",letterSpacing:"0.05em",padding:"4px 8px 8px",borderBottom:"1px solid rgba(255,255,255,0.05)",marginBottom:4}}>Select Language</div>
             {LANGUAGES.map(l => (
-              <button key={l.code} onClick={() => { setLang(l.code); setOpen(false); }} style={{display:"flex",alignItems:"center",justifyContent:"space-between",width:"100%",padding:"8px 10px",background:lang===l.code?"rgba(16,185,129,0.1)":"none",border:"none",borderRadius:8,color:lang===l.code?"#10b981":"#e8f5f0",fontSize:13,cursor:"pointer",textAlign:"left",transition:"background .2s"}}>
+              <button key={l.code} onClick={() => handleLangChange(l.code)} style={{display:"flex",alignItems:"center",justifyContent:"space-between",width:"100%",padding:"8px 10px",background:lang===l.code?"rgba(16,185,129,0.1)":"none",border:"none",borderRadius:8,color:lang===l.code?"#10b981":"#e8f5f0",fontSize:13,cursor:"pointer",textAlign:"left",transition:"background .2s",opacity:isPending?0.7:1}}>
                 <span style={{display:"flex",flexDirection:"column"}}>
                   <span style={{fontWeight:600}}>{l.native}</span>
                   <span style={{fontSize:10,color:"#7fbfa8"}}>{l.name}</span>
@@ -177,6 +186,7 @@ export default function App() {
   const [blogs, setBlogs] = useState(fallbackBlogs);
   const fileRef=useRef(null);
   const [activeUploadView, setActiveUploadView]=useState(null);
+  const [isPending, startTransition] = useTransition();
   const { t, speakText, lang } = useLanguage();
 
   useEffect(() => {
@@ -200,30 +210,69 @@ export default function App() {
     });
   };
 
-  const startScan=()=>{
+  const startScan = useCallback(() => {
     if(!demoImgs.top || !demoImgs.side || !demoImgs.bottom) return;
-    setDemoState("scanning"); setScanPct(0);
-    let p=0; const iv=setInterval(()=>{p+=Math.random()*3+1;setScanPct(Math.min(p,100));if(p>=100){
-      clearInterval(iv);
-      const code = "AV-" + new Date().getFullYear() + "-" + Math.random().toString(36).substring(2,6).toUpperCase();
-      setDemoCode(code);
-      setTimeout(()=>setDemoState("result"),500);
-    }},70);
-  };
+    if(demoState === "scanning") return; // Prevent rapid clicking
+    
+    setDemoState("scanning"); 
+    setScanPct(0);
+    
+    let p=0; 
+    const iv=setInterval(()=>{
+      p+=Math.random()*3+1;
+      setScanPct(Math.min(p,100));
+      if(p>=100){
+        clearInterval(iv);
+        const code = "AV-" + new Date().getFullYear() + "-" + Math.random().toString(36).substring(2,6).toUpperCase();
+        setDemoCode(code);
+        setTimeout(() => {
+          startTransition(() => {
+            setDemoState("result");
+          });
+        }, 500);
+      }
+    },70);
+  }, [demoImgs, demoState, startTransition]);
 
   const downloadPDF = () => {
-    import('html2pdf.js').then(html2pdf => {
-      const element = document.getElementById('pdf-export-area');
-      const opt = {
-        margin:       0.5,
-        filename:     `AgriVerify_Compliance_${demoCode}.pdf`,
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-      };
-      html2pdf.default().set(opt).from(element).save();
-    });
+    // Yield to the browser before starting heavy PDF generation
+    setTimeout(() => {
+      import('html2pdf.js').then(html2pdf => {
+        const element = document.getElementById('pdf-export-area');
+        const opt = {
+          margin:       0.5,
+          filename:     `AgriVerify_Compliance_${demoCode}.pdf`,
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 2, useCORS: true },
+          jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+        html2pdf.default().set(opt).from(element).save();
+      });
+    }, 0);
   };
+
+  const metricsGrid = useMemo(() => {
+    if (!t.demo.result.metrics) return null;
+    return (
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:16}}>
+        {t.demo.result.metrics.map((m,i)=>{
+          const score = [99, 12, 98, 97, 95, 92, 89, 99, 14, 0.01][i] || 90;
+          const suffix = i === 1 ? "%" : i === 8 ? " Days" : i === 9 ? " ppb" : "%";
+          const valStr = score + suffix;
+          const c = "#10b981";
+          const pct = i === 1 ? 80 : i === 8 ? 100 : i === 9 ? 10 : score;
+          return (
+            <div key={m}>
+              <div style={{display:"flex",justifyContent:"space-between",fontSize:11,color:"#5a8a79",marginBottom:4}}><span>{m}</span><span style={{color:"#fff",fontWeight:600}}>{valStr}</span></div>
+              <div style={{height:3,borderRadius:2,background:"rgba(255,255,255,.05)"}}>
+                <div style={{height:"100%",borderRadius:2,width:`${pct}%`,background:c,boxShadow:`0 0 8px ${c}`}} />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }, [t.demo.result.metrics]);
 
   // ── BLOG READER ──
   if(activeBlog) {
@@ -528,27 +577,11 @@ export default function App() {
                         {t.demo.result.metricsTitle}
                         <span style={{color:"#10b981",fontSize:10,fontWeight:800,padding:"3px 8px",background:"rgba(16,185,129,.1)",borderRadius:6}}>PASSED</span>
                       </h4>
-                      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:16}}>
-                        {t.demo.result.metrics.map((m,i)=>{
-                          const score = [99, 12, 98, 97, 95, 92, 89, 99, 14, 0.01][i] || 90;
-                          const suffix = i === 1 ? "%" : i === 8 ? " Days" : i === 9 ? " ppb" : "%";
-                          const valStr = score + suffix;
-                          const c = "#10b981";
-                          const pct = i === 1 ? 80 : i === 8 ? 100 : i === 9 ? 10 : score;
-                          return (
-                            <div key={m}>
-                              <div style={{display:"flex",justifyContent:"space-between",fontSize:11,color:"#5a8a79",marginBottom:4}}><span>{m}</span><span style={{color:"#fff",fontWeight:600}}>{valStr}</span></div>
-                              <div style={{height:3,borderRadius:2,background:"rgba(255,255,255,.05)"}}>
-                                <div style={{height:"100%",borderRadius:2,width:`${pct}%`,background:c,boxShadow:`0 0 8px ${c}`}} />
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
+                      {metricsGrid}
                     </div>
 
                     <div style={{display:"flex",gap:10,flexWrap:"wrap"}} className="no-print">
-                      <button onClick={()=>setShowPassport(true)} style={{padding:"10px 20px",borderRadius:11,background:"linear-gradient(135deg,#10b981,#059669)",color:"#fff",border:"none",cursor:"pointer",fontSize:13,fontWeight:700}}>{t.demo.result.qrBtn}</button>
+                      <button onClick={()=>{ startTransition(()=>setShowPassport(true)); }} style={{padding:"10px 20px",borderRadius:11,background:"linear-gradient(135deg,#10b981,#059669)",color:"#fff",border:"none",cursor:"pointer",fontSize:13,fontWeight:700}}>{t.demo.result.qrBtn}</button>
                       <button onClick={downloadPDF} style={{padding:"10px 20px",borderRadius:11,background:"rgba(255,255,255,.06)",color:"#d1fae5",border:"1px solid rgba(255,255,255,.1)",cursor:"pointer",fontSize:13}}>{t.demo.result.pdfBtn}</button>
                       <button onClick={()=>{setDemoState("idle");setDemoImgs({top:null,side:null,bottom:null});if(fileRef.current)fileRef.current.value="";}} style={{padding:"10px 20px",borderRadius:11,background:"rgba(255,255,255,.03)",color:"#7fbfa8",border:"1px solid rgba(255,255,255,.06)",cursor:"pointer",fontSize:13}}>🔄 Scan Another</button>
                     </div>
@@ -585,8 +618,10 @@ export default function App() {
                     <input type="text" placeholder={t.authenticity.searchPlaceholder} value={authSearch} onChange={e=>setAuthSearch(e.target.value)} style={{flex:1,padding:"14px 20px",borderRadius:12,background:"rgba(0,0,0,.45)",border:"1px solid rgba(16,185,129,.2)",color:"#fff",fontSize:13,outline:"none"}} />
                     <button onClick={()=>{
                       if(authSearch.length > 5) {
-                        if(authSearch === demoCode || !demoCode) setDemoCode(authSearch.toUpperCase());
-                        setShowPassport(true);
+                        startTransition(() => {
+                          if(authSearch === demoCode || !demoCode) setDemoCode(authSearch.toUpperCase());
+                          setShowPassport(true);
+                        });
                       } else alert("Invalid Certificate Code");
                     }} style={{padding:"0 24px",borderRadius:12,background:"linear-gradient(135deg,#10b981,#059669)",color:"#fff",border:"none",fontWeight:800,fontSize:13,cursor:"pointer",boxShadow:"0 0 25px rgba(16,185,129,.3)",transition:"all .2s"}} onMouseOver={e=>e.currentTarget.style.transform="translateY(-2px)"} onMouseOut={e=>e.currentTarget.style.transform="none"}>{t.authenticity.btnVerify}</button>
                   </div>
