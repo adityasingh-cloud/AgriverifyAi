@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
+import { supabase } from "./lib/supabase";
 
-const BLOGS = [
+const fallbackBlogs = [
   { id:1,icon:"💰",category:"Market Exploitation",color:"#f472b6",date:"Apr 12 2025",readTime:"8 min",title:"The Price They Never See: How Middlemen Steal from Indian Farmers",excerpt:"Every harvest season, millions of farmers walk away with a fraction of what their crops are worth. The system is broken by design.",content:`## The Invisible Chain of Exploitation\n\nEvery year, India produces over 300 million tonnes of food grains. Yet the people who grow this food remain among the country's poorest citizens. The reason is a systemic failure baked into the agricultural supply chain.\n\n## How the Mandi System Works\n\nThe APMC system was designed in the 1960s to protect farmers. In practice it became the mechanism of exploitation. Commission agents (arhatiyas) control weighing, grading, storage, and credit — creating debt-bondage cycles lasting generations.\n\n**The Grade Manipulation**: Without standardized grading, arhatiyas visually inspect produce and assign quality grades. The conflict of interest is enormous — agents profit when grades are lower.\n\n## Real Numbers, Real Pain\n\nA 2022 ICAR study found onion farmers in Maharashtra received ₹2–₹5/kg at the farm gate, while Delhi consumers paid ₹40–₹60 for the same onions. The 10x gap was absorbed entirely by intermediaries. NABARD found 52.5% of agricultural households are indebted, with average debt of ₹74,121 per family.\n\n## What AgriVerify AI Changes\n\nObjective AI-driven quality grades, real-time price data synced from e-NAM, and blockchain-certified quality passports are dismantling 60 years of institutionalized exploitation — one verified transaction at a time.`},
   { id:2,icon:"🌡️",category:"Climate Crisis",color:"#fb923c",date:"Mar 28 2025",readTime:"10 min",title:"Death by a Thousand Droughts: Climate Change and the Indian Farmer",excerpt:"Monsoon patterns have shifted. Groundwater is depleting. Temperatures are rising. Farmers face a crisis they did nothing to create.",content:`## A Crisis Without a Voice\n\nThe IPCC warned: South Asia's agricultural systems face catastrophic disruption by 2050. For Indian farmers, this is not an abstract future — it is happening now, in their fields, this season.\n\n## The Monsoon Is Breaking\n\nThe 2023 Southwest Monsoon arrived 10 days late across peninsular India. States received extreme rainfall causing flash floods while Marathwada experienced prolonged dry spells within the same monsoon season.\n\n## Groundwater: The Silent Apocalypse\n\nIndia extracts 230 billion cubic meters of groundwater annually — more than the US and China combined. Punjab groundwater levels have dropped 33 cm per year since 2000. Wheat yields fall 4.5–6% per 1°C temperature increase during grain-filling.\n\n## The Farmer Suicide Connection\n\nA PNAS study found a 7.3% increase in farmer suicide rates per degree Celsius increase. Climate change was responsible for an estimated 59,300 farmer suicides between 1980 and 2013.\n\n## AgriVerify AI's Role\n\nOur blockchain quality passport creates a verifiable record of sustainable farming practices linkable to carbon markets, premium pricing, and international ESG supply chain requirements.`},
   { id:3,icon:"📱",category:"Digital Inclusion",color:"#a78bfa",date:"Mar 15 2025",readTime:"7 min",title:"The Literacy Trap: Why Digital India Left 140 Million Farmers Behind",excerpt:"Every government app assumes the user can read. Most Indian farmers cannot. This is a design failure, not a farmer failure.",content:`## The App That Doesn't Work\n\nThe NSSO estimates only 38% of rural Indians above 15 are functionally literate. In states like Rajasthan, Bihar, and UP, rural female literacy hovers at 30–40%. Every single agricultural app requires the ability to read.\n\n## The Language Layering Problem\n\nIndia has 22 scheduled languages and 1,600+ dialects. 500 million Indians speak neither English nor Hindi as their first language. Technology designed to help farmers cannot even be accessed by them.\n\n## The Voice Revolution\n\nBhashini — India's National Language Translation Mission — was created to bridge this gap. With support for 22+ languages, it makes any digital service voice-accessible across India's linguistic diversity.\n\n**AgriVerify AI's zero-literacy interface**: Farmers speak in their mother tongue or dialect. The system processes, translates, and responds in the same language. Quality reports are read aloud. No reading ability required at any point.\n\n## The Gender Dimension\n\nWomen perform 60–80% of agricultural labor but own less than 13% of agricultural land. Voice-first, vernacular interfaces lower barriers specifically for female farmers who have never typed on a smartphone.`},
@@ -125,7 +126,16 @@ export default function App() {
   const [demoState,setDemoState]=useState("idle");
   const [demoImg,setDemoImg]=useState(null);
   const [scanPct,setScanPct]=useState(0);
+  const [blogs, setBlogs] = useState(fallbackBlogs);
   const fileRef=useRef(null);
+
+  useEffect(() => {
+    async function fetchBlogs() {
+      const { data, error } = await supabase.from('blogs').select('*').order('id', { ascending: true });
+      if (data && data.length > 0) setBlogs(data);
+    }
+    fetchBlogs();
+  }, []);
 
   useEffect(()=>{const t=setTimeout(()=>setSplash(false),2700);return()=>clearTimeout(t);},[]);
 
@@ -139,7 +149,7 @@ export default function App() {
 
   // ── BLOG READER ──
   if(activeBlog) {
-    const b=BLOGS.find(x=>x.id===activeBlog);
+    const b=blogs.find(x=>x.id===activeBlog);
     const paras=b.content.split("\n\n").filter(Boolean);
     return (
       <div style={{minHeight:"100vh",background:"linear-gradient(145deg,#071a14 0%,#0c1628 55%,#160c28 100%)",color:"#e8f5f0",fontFamily:"'DM Sans',sans-serif"}}>
@@ -587,7 +597,7 @@ export default function App() {
               <p style={{color:"#7fbfa8",maxWidth:480,margin:"0 auto"}}>In-depth research on the systemic challenges facing India's 140 million farming families.</p>
             </div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:20}}>
-              {BLOGS.map(b=>(
+              {blogs.map(b=>(
                 <GCard key={b.id} onClick={()=>setActiveBlog(b.id)} style={{padding:22,cursor:"pointer",borderColor:b.color+"18",transition:"all .35s"}} className="card-hover blog-card">
                   <div style={{fontSize:32,marginBottom:12}}>{b.icon}</div>
                   <Badge style={{background:b.color+"18",border:`1px solid ${b.color}38`,color:b.color,marginBottom:14,fontSize:10}}>{b.category}</Badge>
