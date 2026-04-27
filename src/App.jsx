@@ -519,20 +519,20 @@ export default function App() {
           </div>
         </section>
 
-        {/* BLOCKCHAIN */}
+        {/* AUTHENTICITY */}
         <section style={{padding:"90px 1.5rem",position:"relative"}}>
           <div style={{maxWidth:1280,margin:"0 auto"}}>
-            <GCard style={{padding:"48px 40px",borderColor:"rgba(244,114,182,.22)",background:"linear-gradient(135deg,rgba(244,114,182,.04),rgba(167,139,250,.04))",position:"relative",overflow:"hidden"}}>
-              <div style={{position:"absolute",top:-80,right:-80,width:350,height:350,borderRadius:"50%",background:"radial-gradient(circle,rgba(244,114,182,.18),transparent 70%)",filter:"blur(40px)",pointerEvents:"none"}} />
+            <GCard style={{padding:"48px 40px",borderColor:"rgba(16,185,129,.22)",background:"linear-gradient(135deg,rgba(16,185,129,.04),rgba(34,211,238,.04))",position:"relative",overflow:"hidden"}}>
+              <div style={{position:"absolute",top:-80,right:-80,width:350,height:350,borderRadius:"50%",background:"radial-gradient(circle,rgba(16,185,129,.18),transparent 70%)",filter:"blur(40px)",pointerEvents:"none"}} />
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:48,alignItems:"center"}} className="bc-grid">
                 <div>
-                  <Badge style={{background:"rgba(244,114,182,.12)",border:"1px solid rgba(244,114,182,.3)",color:"#f472b6",marginBottom:24}}>⛓️ Blockchain Infrastructure</Badge>
+                  <Badge style={{background:"rgba(16,185,129,.12)",border:"1px solid rgba(16,185,129,.3)",color:"#10b981",marginBottom:24}}>{t.authenticity.badge}</Badge>
                   <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(1.8rem,3vw,2.8rem)",fontWeight:900,color:"#fff",lineHeight:1.2,marginBottom:20}}>
-                    Every Crop.<br /><span style={{color:"#f472b6"}}>Immutably Verified.</span>
+                    {t.authenticity.title1}<br /><span style={{color:"#10b981"}}>{t.authenticity.title2}</span>
                   </h2>
-                  <p style={{color:"#7fbfa8",lineHeight:1.75,marginBottom:28}}>AgriVerify AI issues ERC-721 NFT quality passports on Polygon for every verified crop. Tamper-proof certificates travel from farm gate to retail shelf.</p>
+                  <p style={{color:"#7fbfa8",lineHeight:1.75,marginBottom:28}}>{t.authenticity.subtitle}</p>
                   <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
-                    {[["12,847","Certificates Minted","#f472b6"],["₹0.08","Avg Gas Fee","#fbbf24"],["99.9%","Uptime SLA","#10b981"],["0","Tampering Incidents","#22d3ee"]].map(([v,l,c])=>(
+                    {[["12,847",t.authenticity.stats.minted,"#f472b6"],["₹0.08",t.authenticity.stats.cost,"#fbbf24"],["99.8%",t.authenticity.stats.accuracy,"#10b981"],["0",t.authenticity.stats.tampering,"#22d3ee"]].map(([v,l,c])=>(
                       <div key={l} style={{padding:"14px 16px",borderRadius:13,background:c+"0e",border:`1px solid ${c}25`,textAlign:"center"}}>
                         <div style={{fontSize:"1.4rem",fontWeight:900,color:c,fontFamily:"'Playfair Display',serif"}}>{v}</div>
                         <div style={{fontSize:11,color:"#4d9e88",marginTop:4}}>{l}</div>
@@ -540,28 +540,51 @@ export default function App() {
                     ))}
                   </div>
                 </div>
-                <div style={{fontFamily:"monospace",fontSize:12,lineHeight:1.85,padding:24,borderRadius:18,background:"rgba(0,0,0,.45)",border:"1px solid rgba(244,114,182,.2)",overflowX:"auto"}}>
-                  <div style={{color:"#f472b6",marginBottom:6}}>{`// AgriVerify Smart Contract · Polygon`}</div>
-                  <div><span style={{color:"#a78bfa"}}>contract </span><span style={{color:"#4ade80"}}>CropPassport </span><span style={{color:"#a78bfa"}}>is </span><span style={{color:"#22d3ee"}}>ERC721</span>{" {"}</div>
-                  <div style={{paddingLeft:16}}>
-                    <div style={{color:"#a78bfa"}}>{"struct "}<span style={{color:"#fbbf24"}}>QualityRecord</span>{" {"}</div>
-                    <div style={{paddingLeft:16}}>
-                      <div><span style={{color:"#fb923c"}}>string </span><span style={{color:"#e8f5f0"}}>grade</span>; <span style={{color:"#2d5c5c"}}>{`// "GOLD" | "SILVER"`}</span></div>
-                      <div><span style={{color:"#fb923c"}}>uint8 </span><span style={{color:"#e8f5f0"}}>score</span>; <span style={{color:"#2d5c5c"}}>{`// 0-100`}</span></div>
-                      <div><span style={{color:"#fb923c"}}>uint256 </span><span style={{color:"#e8f5f0"}}>moisture</span>;</div>
-                      <div><span style={{color:"#fb923c"}}>bytes32 </span><span style={{color:"#e8f5f0"}}>imageHash</span>;</div>
-                    </div>
-                    <div style={{color:"#a78bfa"}}>{"}"}</div>
-                    <br />
-                    <div><span style={{color:"#22d3ee"}}>function </span><span style={{color:"#fbbf24"}}>mintCertificate</span>{"("}</div>
-                    <div style={{paddingLeft:16}}>
-                      <div><span style={{color:"#fb923c"}}>address </span>farmer,</div>
-                      <div>QualityRecord calldata record</div>
-                    </div>
-                    <div>{")"}<span style={{color:"#a78bfa"}}> external </span><span style={{color:"#10b981"}}>returns</span>{"("}<span style={{color:"#fb923c"}}>uint256</span>{")"}</div>
+                <div>
+                  <div style={{display:"flex",gap:8,marginBottom:24}}>
+                    <input type="text" placeholder={t.authenticity.searchPlaceholder} style={{flex:1,padding:"14px 20px",borderRadius:12,background:"rgba(0,0,0,.45)",border:"1px solid rgba(16,185,129,.2)",color:"#fff",fontSize:13,outline:"none"}} />
+                    <button style={{padding:"0 24px",borderRadius:12,background:"linear-gradient(135deg,#10b981,#059669)",color:"#fff",border:"none",fontWeight:800,fontSize:13,cursor:"pointer",boxShadow:"0 0 25px rgba(16,185,129,.3)",transition:"all .2s"}} onMouseOver={e=>e.currentTarget.style.transform="translateY(-2px)"} onMouseOut={e=>e.currentTarget.style.transform="none"}>{t.authenticity.btnVerify}</button>
                   </div>
-                  <div>{"}"}</div>
-                  <div style={{marginTop:14,paddingTop:12,borderTop:"1px solid rgba(255,255,255,.07)",color:"#10b981"}}>✓ Deployed · Gas: ~0.001 MATIC per cert</div>
+                  <div style={{padding:32,borderRadius:18,background:"rgba(255,255,255,.02)",border:"1px solid rgba(16,185,129,.2)",boxShadow:"0 20px 50px rgba(0,0,0,.3),inset 0 0 0 1px rgba(255,255,255,.05)",position:"relative",overflow:"hidden"}}>
+                    <div style={{position:"absolute",top:0,left:0,right:0,height:4,background:"linear-gradient(90deg,#10b981,#34d399,#22d3ee)"}} />
+                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:24}}>
+                      <div style={{display:"flex",alignItems:"center",gap:12}}>
+                        <div style={{width:44,height:44,borderRadius:12,background:"rgba(16,185,129,.1)",border:"1px solid rgba(16,185,129,.3)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:22}}>🛡️</div>
+                        <div>
+                          <h3 style={{fontSize:"1.1rem",fontWeight:800,color:"#fff",letterSpacing:".03em"}}>{t.authenticity.cert.title}</h3>
+                          <div style={{fontSize:11,color:"#10b981",display:"flex",alignItems:"center",gap:4,marginTop:4}}><div style={{width:6,height:6,borderRadius:"50%",background:"#10b981",animation:"blink 1.5s infinite"}} /> Codex Alimentarius · ISO 22000</div>
+                        </div>
+                      </div>
+                      <div style={{fontSize:28,opacity:.8}}>🌍</div>
+                    </div>
+                    <div style={{display:"grid",gridTemplateColumns:"1fr",gap:16}}>
+                      <div style={{paddingBottom:16,borderBottom:"1px solid rgba(255,255,255,.05)"}}>
+                        <div style={{fontSize:10,color:"#5a8a79",fontWeight:700,letterSpacing:".08em",marginBottom:4}}>{t.authenticity.cert.idLabel}</div>
+                        <div style={{fontSize:13,color:"#e8f5f0",fontFamily:"monospace"}}>0x7E3A9F2C8D1B4E6F...</div>
+                      </div>
+                      <div style={{paddingBottom:16,borderBottom:"1px solid rgba(255,255,255,.05)"}}>
+                        <div style={{fontSize:10,color:"#5a8a79",fontWeight:700,letterSpacing:".08em",marginBottom:4}}>{t.authenticity.cert.cropLabel}</div>
+                        <div style={{fontSize:14,color:"#fff",fontWeight:600}}>{t.authenticity.cert.cropVal}</div>
+                      </div>
+                      <div style={{display:"flex",justifyContent:"space-between",paddingBottom:16,borderBottom:"1px solid rgba(255,255,255,.05)"}}>
+                        <div>
+                          <div style={{fontSize:10,color:"#5a8a79",fontWeight:700,letterSpacing:".08em",marginBottom:4}}>{t.authenticity.cert.gradeLabel}</div>
+                          <div style={{fontSize:14,color:"#fbbf24",fontWeight:800}}>{t.authenticity.cert.gradeVal}</div>
+                        </div>
+                        <div style={{textAlign:"right"}}>
+                          <div style={{fontSize:10,color:"#5a8a79",fontWeight:700,letterSpacing:".08em",marginBottom:4}}>{t.authenticity.cert.timeLabel}</div>
+                          <div style={{fontSize:12,color:"#a78bfa",fontFamily:"monospace"}}>2025-04-12 08:42:11 UTC</div>
+                        </div>
+                      </div>
+                      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:4}}>
+                        <div>
+                          <div style={{fontSize:10,color:"#5a8a79",fontWeight:700,letterSpacing:".08em",marginBottom:4}}>{t.authenticity.cert.statusLabel}</div>
+                          <div style={{fontSize:12,color:"#10b981",fontWeight:800,display:"flex",alignItems:"center",gap:6}}>✓ {t.authenticity.cert.statusVal}</div>
+                        </div>
+                        <div style={{width:40,height:40,borderRadius:8,background:"#fff",padding:2}}><img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=agriverify-cert" alt="qr" style={{width:"100%",height:"100%",opacity:.9}} /></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </GCard>

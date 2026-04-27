@@ -175,6 +175,31 @@ export const translations = {
         "btn": "Scan Another Crop"
       }
     },
+    "authenticity": {
+      "badge": "🌍 Global Authenticity & Compliance Engine",
+      "title1": "Immutable Verification.",
+      "title2": "Global Standards.",
+      "subtitle": "Every harvest is certified against Codex Alimentarius (FAO/WHO) and ISO 22000 international standards. The Polygon blockchain provides an Immutable Audit Trail, ensuring that quality data recorded at the farm-gate cannot be altered.",
+      "stats": {
+        "minted": "Certificates Minted",
+        "cost": "Cost Efficiency",
+        "accuracy": "Compliance Accuracy",
+        "tampering": "Tampering Incidents"
+      },
+      "searchPlaceholder": "Enter Certificate ID (e.g. 0x7E3A...)",
+      "btnVerify": "Verify Now",
+      "cert": {
+        "title": "Digital Trust Certificate",
+        "idLabel": "CERTIFICATE ID",
+        "cropLabel": "CROP TYPE",
+        "cropVal": "Premium Wheat (Triticum aestivum)",
+        "gradeLabel": "QUALITY GRADE",
+        "gradeVal": "Class I / Grade A",
+        "timeLabel": "TIMESTAMP",
+        "statusLabel": "STATUS",
+        "statusVal": "VERIFIED & IMMUTABLE"
+      }
+    },
     "blogs": {
       "badge": "📝 Research & Insights",
       "title": "The Indian Farmer's Crisis",
@@ -358,6 +383,31 @@ export const translations = {
         "price": "बाजार मूल्य",
         "val": "अनुमानित मूल्य",
         "btn": "दूसरी फसल स्कैन करें"
+      }
+    },
+    "authenticity": {
+      "badge": "🌍 वैश्विक प्रामाणिकता और अनुपालन इंजन",
+      "title1": "अपरिवर्तनीय सत्यापन।",
+      "title2": "वैश्विक मानक।",
+      "subtitle": "प्रत्येक फसल को कोडेक्स एलिमेंटेरियस और ISO 22000 अंतरराष्ट्रीय मानकों के खिलाफ प्रमाणित किया जाता है। पॉलीगॉन ब्लॉकचेन एक अपरिवर्तनीय ऑडिट ट्रेल प्रदान करता है।",
+      "stats": {
+        "minted": "प्रमाणपत्र जारी किए गए",
+        "cost": "लागत दक्षता",
+        "accuracy": "अनुपालन सटीकता",
+        "tampering": "छेड़छाड़ की घटनाएं"
+      },
+      "searchPlaceholder": "प्रमाणपत्र आईडी दर्ज करें",
+      "btnVerify": "अभी सत्यापित करें",
+      "cert": {
+        "title": "डिजिटल ट्रस्ट प्रमाणपत्र",
+        "idLabel": "प्रमाणपत्र आईडी",
+        "cropLabel": "फसल का प्रकार",
+        "cropVal": "प्रीमियम गेहूं",
+        "gradeLabel": "गुणवत्ता ग्रेड",
+        "gradeVal": "ग्रेड ए",
+        "timeLabel": "समय",
+        "statusLabel": "स्थिति",
+        "statusVal": "सत्यापित"
       }
     },
     "blogs": {
@@ -545,6 +595,31 @@ export const translations = {
         "btn": "दूसरी फसल स्कैन करें"
       }
     },
+    "authenticity": {
+      "badge": "🌍 গ্লোবাল অথেণ্টিসিটি",
+      "title1": "অপরিবর্তনীয় যাচাইকরণ।",
+      "title2": "গ্লোবাল স্ট্যান্ডার্ড।",
+      "subtitle": "प्रत्येक फसल को कोडेक्स एलिमेंटेरियस और ISO 22000 अंतरराष्ट्रीय मानकों के खिलाफ प्रमाणित किया जाता है। पॉलीगॉन ब्लॉकचेन एक अपरिवर्तनीय ऑडिट ट्रेल प्रदान करता है।",
+      "stats": {
+        "minted": "प्रमाणपत्र जारी किए गए",
+        "cost": "लागत दक्षता",
+        "accuracy": "अनुपालन सटीकता",
+        "tampering": "छेड़छाड़ की घटनाएं"
+      },
+      "searchPlaceholder": "प्रमाणपत्र आईडी दर्ज करें",
+      "btnVerify": "যাচাই করুন",
+      "cert": {
+        "title": "डिजिटल ट्रस्ट प्रमाणपत्र",
+        "idLabel": "प्रमाणपत्र आईडी",
+        "cropLabel": "फसल का प्रकार",
+        "cropVal": "प्रीमियम गेहूं",
+        "gradeLabel": "गुणवत्ता ग्रेड",
+        "gradeVal": "ग्रेड ए",
+        "timeLabel": "समय",
+        "statusLabel": "स्थिति",
+        "statusVal": "सत्यापित"
+      }
+    },
     "blogs": {
       "badge": "📝 গবেষণা",
       "title": "ভারতীয় কৃষকের সংকট",
@@ -728,6 +803,31 @@ export const translations = {
         "price": "बाजार मूल्य",
         "val": "अनुमानित मूल्य",
         "btn": "दूसरी फसल स्कैन करें"
+      }
+    },
+    "authenticity": {
+      "badge": "🌍 जागतिक प्रामाणिकता",
+      "title1": "अपरिवर्तनीय पडताळणी.",
+      "title2": "जागतिक मानके.",
+      "subtitle": "प्रत्येक फसल को कोडेक्स एलिमेंटेरियस और ISO 22000 अंतरराष्ट्रीय मानकों के खिलाफ प्रमाणित किया जाता है। पॉलीगॉन ब्लॉकचेन एक अपरिवर्तनीय ऑडिट ट्रेल प्रदान करता है।",
+      "stats": {
+        "minted": "प्रमाणपत्र जारी किए गए",
+        "cost": "लागत दक्षता",
+        "accuracy": "अनुपालन सटीकता",
+        "tampering": "छेड़छाड़ की घटनाएं"
+      },
+      "searchPlaceholder": "प्रमाणपत्र आईडी दर्ज करें",
+      "btnVerify": "आता पडताळणी करा",
+      "cert": {
+        "title": "डिजिटल ट्रस्ट प्रमाणपत्र",
+        "idLabel": "प्रमाणपत्र आईडी",
+        "cropLabel": "फसल का प्रकार",
+        "cropVal": "प्रीमियम गेहूं",
+        "gradeLabel": "गुणवत्ता ग्रेड",
+        "gradeVal": "ग्रेड ए",
+        "timeLabel": "समय",
+        "statusLabel": "स्थिति",
+        "statusVal": "सत्यापित"
       }
     },
     "blogs": {
@@ -915,6 +1015,31 @@ export const translations = {
         "btn": "दूसरी फसल स्कैन करें"
       }
     },
+    "authenticity": {
+      "badge": "🌍 గ్లోబల్ ప్రామాణికత",
+      "title1": "స్థిరమైన ధృవీకరణ.",
+      "title2": "ప్రపంచ ప్రమాణాలు.",
+      "subtitle": "प्रत्येक फसल को कोडेक्स एलिमेंटेरियस और ISO 22000 अंतरराष्ट्रीय मानकों के खिलाफ प्रमाणित किया जाता है। पॉलीगॉन ब्लॉकचेन एक अपरिवर्तनीय ऑडिट ट्रेल प्रदान करता है।",
+      "stats": {
+        "minted": "प्रमाणपत्र जारी किए गए",
+        "cost": "लागत दक्षता",
+        "accuracy": "अनुपालन सटीकता",
+        "tampering": "छेड़छाड़ की घटनाएं"
+      },
+      "searchPlaceholder": "प्रमाणपत्र आईडी दर्ज करें",
+      "btnVerify": "ఇప్పుడే ధృవీకరించండి",
+      "cert": {
+        "title": "डिजिटल ट्रस्ट प्रमाणपत्र",
+        "idLabel": "प्रमाणपत्र आईडी",
+        "cropLabel": "फसल का प्रकार",
+        "cropVal": "प्रीमियम गेहूं",
+        "gradeLabel": "गुणवत्ता ग्रेड",
+        "gradeVal": "ग्रेड ए",
+        "timeLabel": "समय",
+        "statusLabel": "स्थिति",
+        "statusVal": "सत्यापित"
+      }
+    },
     "blogs": {
       "badge": "📝 పరిశోధన",
       "title": "భారతీయ రైతుల సంక్షోభం",
@@ -1100,6 +1225,31 @@ export const translations = {
         "btn": "दूसरी फसल स्कैन करें"
       }
     },
+    "authenticity": {
+      "badge": "🌍 உலகளாவிய நம்பகத்தன்மை",
+      "title1": "மாற்ற முடியாத சரிபார்ப்பு.",
+      "title2": "உலகளாவிய தரநிலைகள்.",
+      "subtitle": "प्रत्येक फसल को कोडेक्स एलिमेंटेरियस और ISO 22000 अंतरराष्ट्रीय मानकों के खिलाफ प्रमाणित किया जाता है। पॉलीगॉन ब्लॉकचेन एक अपरिवर्तनीय ऑडिट ट्रेल प्रदान करता है।",
+      "stats": {
+        "minted": "प्रमाणपत्र जारी किए गए",
+        "cost": "लागत दक्षता",
+        "accuracy": "अनुपालन सटीकता",
+        "tampering": "छेड़छाड़ की घटनाएं"
+      },
+      "searchPlaceholder": "प्रमाणपत्र आईडी दर्ज करें",
+      "btnVerify": "இப்போது சரிபார்க்கவும்",
+      "cert": {
+        "title": "डिजिटल ट्रस्ट प्रमाणपत्र",
+        "idLabel": "प्रमाणपत्र आईडी",
+        "cropLabel": "फसल का प्रकार",
+        "cropVal": "प्रीमियम गेहूं",
+        "gradeLabel": "गुणवत्ता ग्रेड",
+        "gradeVal": "ग्रेड ए",
+        "timeLabel": "समय",
+        "statusLabel": "स्थिति",
+        "statusVal": "सत्यापित"
+      }
+    },
     "blogs": {
       "badge": "📝 ஆராய்ச்சி",
       "title": "விவசாயிகளின் நெருக்கடி",
@@ -1283,6 +1433,31 @@ export const translations = {
         "price": "बाजार मूल्य",
         "val": "अनुमानित मूल्य",
         "btn": "दूसरी फसल स्कैन करें"
+      }
+    },
+    "authenticity": {
+      "badge": "🌍 ಜಾಗತಿಕ ಅಧಿಕೃತತೆ",
+      "title1": "ಬದಲಾಯಿಸಲಾಗದ ಪರಿಶೀಲನೆ.",
+      "title2": "ಜಾಗತಿಕ ಮಾನದಂಡಗಳು.",
+      "subtitle": "प्रत्येक फसल को कोडेक्स एलिमेंटेरियस और ISO 22000 अंतरराष्ट्रीय मानकों के खिलाफ प्रमाणित किया जाता है। पॉलीगॉन ब्लॉकचेन एक अपरिवर्तनीय ऑडिट ट्रेल प्रदान करता है।",
+      "stats": {
+        "minted": "प्रमाणपत्र जारी किए गए",
+        "cost": "लागत दक्षता",
+        "accuracy": "अनुपालन सटीकता",
+        "tampering": "छेड़छाड़ की घटनाएं"
+      },
+      "searchPlaceholder": "प्रमाणपत्र आईडी दर्ज करें",
+      "btnVerify": "ಈಗ ಪರಿಶೀಲಿಸಿ",
+      "cert": {
+        "title": "डिजिटल ट्रस्ट प्रमाणपत्र",
+        "idLabel": "प्रमाणपत्र आईडी",
+        "cropLabel": "फसल का प्रकार",
+        "cropVal": "प्रीमियम गेहूं",
+        "gradeLabel": "गुणवत्ता ग्रेड",
+        "gradeVal": "ग्रेड ए",
+        "timeLabel": "समय",
+        "statusLabel": "स्थिति",
+        "statusVal": "सत्यापित"
       }
     },
     "blogs": {

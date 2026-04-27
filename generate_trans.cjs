@@ -69,6 +69,31 @@ const en = {
       btn: "Scan Another Crop"
     }
   },
+  authenticity: {
+    badge: "🌍 Global Authenticity & Compliance Engine",
+    title1: "Immutable Verification.",
+    title2: "Global Standards.",
+    subtitle: "Every harvest is certified against Codex Alimentarius (FAO/WHO) and ISO 22000 international standards. The Polygon blockchain provides an Immutable Audit Trail, ensuring that quality data recorded at the farm-gate cannot be altered.",
+    stats: {
+      minted: "Certificates Minted",
+      cost: "Cost Efficiency",
+      accuracy: "Compliance Accuracy",
+      tampering: "Tampering Incidents"
+    },
+    searchPlaceholder: "Enter Certificate ID (e.g. 0x7E3A...)",
+    btnVerify: "Verify Now",
+    cert: {
+      title: "Digital Trust Certificate",
+      idLabel: "CERTIFICATE ID",
+      cropLabel: "CROP TYPE",
+      cropVal: "Premium Wheat (Triticum aestivum)",
+      gradeLabel: "QUALITY GRADE",
+      gradeVal: "Class I / Grade A",
+      timeLabel: "TIMESTAMP",
+      statusLabel: "STATUS",
+      statusVal: "VERIFIED & IMMUTABLE"
+    }
+  },
   blogs: {
     badge: "📝 Research & Insights",
     title: "The Indian Farmer's Crisis",
@@ -134,6 +159,16 @@ const hi = {
     scan: { title: "एआई विजन विश्लेषण", desc: "अनाज आकारिकी, रंग वितरण और क्षति मार्करों का विश्लेषण..." },
     result: { title: "सत्यापित फसल पासपोर्ट", sub: "पॉलीगॉन पर मिंटेड", grade: "ग्रेड", price: "बाजार मूल्य", val: "अनुमानित मूल्य", btn: "दूसरी फसल स्कैन करें" }
   },
+  authenticity: {
+    badge: "🌍 वैश्विक प्रामाणिकता और अनुपालन इंजन",
+    title1: "अपरिवर्तनीय सत्यापन।",
+    title2: "वैश्विक मानक।",
+    subtitle: "प्रत्येक फसल को कोडेक्स एलिमेंटेरियस और ISO 22000 अंतरराष्ट्रीय मानकों के खिलाफ प्रमाणित किया जाता है। पॉलीगॉन ब्लॉकचेन एक अपरिवर्तनीय ऑडिट ट्रेल प्रदान करता है।",
+    stats: { minted: "प्रमाणपत्र जारी किए गए", cost: "लागत दक्षता", accuracy: "अनुपालन सटीकता", tampering: "छेड़छाड़ की घटनाएं" },
+    searchPlaceholder: "प्रमाणपत्र आईडी दर्ज करें",
+    btnVerify: "अभी सत्यापित करें",
+    cert: { title: "डिजिटल ट्रस्ट प्रमाणपत्र", idLabel: "प्रमाणपत्र आईडी", cropLabel: "फसल का प्रकार", cropVal: "प्रीमियम गेहूं", gradeLabel: "गुणवत्ता ग्रेड", gradeVal: "ग्रेड ए", timeLabel: "समय", statusLabel: "स्थिति", statusVal: "सत्यापित" }
+  },
   blogs: { badge: "📝 शोध और अंतर्दृष्टि", title: "भारतीय किसान का संकट", subtitle: "भारत के 14 करोड़ किसान परिवारों के सामने आने वाली प्रणालीगत चुनौतियों पर गहन शोध।" },
   team: { badge: "👥 टीम", title: "विश्वास करने वालों द्वारा निर्मित" },
   contact: { title: "कृषि को बदलने के लिए तैयार हैं?", sub: "एग्रीवेरिफाई एआई तक जल्दी पहुंच पाने के लिए प्रतीक्षा सूची में शामिल हों।", btn: "🚀 फ्री ट्रायल शुरू करें" },
@@ -151,6 +186,7 @@ const bn = { ...hi,
   problem: { ...hi.problem, badge: "🚨 বাস্তব সংকট", title: "সিস্টেমের ব্যবধান", subtitle: "প্রতি ফসল মৌসুমে, লক্ষ লক্ষ ভারতীয় কৃষক তাদের উপার্জন হারায়।" },
   features: { ...hi.features, badge: "⚗️ মূল প্রযুক্তি", title: "ন্যায্যতার জন্য ডিজাইন", subtitle: "চারটি প্রযুক্তি যা শোষণের প্রতিটি পথ বন্ধ করে দেয়।" },
   demo: { ...hi.demo, badge: "🔬 ডেমো", title: "অ্যাগ্রিভেরিফাই এআই চেষ্টা করুন", subtitle: "যেকোনো ফসলের ছবি আপলোড করুন।" },
+  authenticity: { ...hi.authenticity, badge: "🌍 গ্লোবাল অথেণ্টিসিটি", title1: "অপরিবর্তনীয় যাচাইকরণ।", title2: "গ্লোবাল স্ট্যান্ডার্ড।", btnVerify: "যাচাই করুন" },
   blogs: { ...hi.blogs, badge: "📝 গবেষণা", title: "ভারতীয় কৃষকের সংকট", subtitle: "ভারতের ১৪ কোটি কৃষক পরিবারের গভীর গবেষণা।" },
   contact: { title: "কৃষি রূপান্তর করতে প্রস্তুত?", sub: "প্রারম্ভিক অ্যাক্সেস পেতে যোগ দিন।", btn: "🚀 ফ্রি ট্রায়াল শুরু করুন" },
   footer: { copy: "© 2025 অ্যাগ্রিভেরিফাই এআই · পলিগনে নির্মিত", scroll: "স্ক্রোল" }
@@ -167,6 +203,7 @@ const mr = { ...hi,
   problem: { ...hi.problem, badge: "🚨 खरे संकट", title: "व्यवस्थेतील त्रुटी", subtitle: "प्रत्येक हंगामात लाखो भारतीय शेतकरी आपली कमाई गमावतात." },
   features: { ...hi.features, badge: "⚗️ मुख्य तंत्रज्ञान", title: "न्याय्यतेसाठी तयार", subtitle: "शोषणाची सर्व दारे बंद करणारे तंत्रज्ञान." },
   demo: { ...hi.demo, badge: "🔬 डेमो", title: "AgriVerify AI वापरून पहा", subtitle: "कोणताही पीक फोटो अपलोड करा." },
+  authenticity: { ...hi.authenticity, badge: "🌍 जागतिक प्रामाणिकता", title1: "अपरिवर्तनीय पडताळणी.", title2: "जागतिक मानके.", btnVerify: "आता पडताळणी करा" },
   blogs: { ...hi.blogs, badge: "📝 संशोधन", title: "भारतीय शेतकऱ्यांचे संकट", subtitle: "भारतातील १४ कोटी शेतकरी कुटुंबांवरील सखोल संशोधन." },
   contact: { title: "शेती बदलण्यास तयार आहात?", sub: "लवकर प्रवेश मिळवण्यासाठी सामील व्हा.", btn: "🚀 फ्री ट्रायल सुरू करा" },
   footer: { copy: "© 2025 AgriVerify AI · पॉलिगॉनवर निर्मित", scroll: "स्क्रोल" }
@@ -183,6 +220,7 @@ const te = { ...hi,
   problem: { ...hi.problem, badge: "🚨 అసలు సంక్షోభం", title: "వ్యవస్థలో లోపం", subtitle: "ప్రతి సీజన్‌లో లక్షలాది రైతులు నష్టపోతున్నారు." },
   features: { ...hi.features, badge: "⚗️ ప్రధాన సాంకేతికత", title: "న్యాయం కోసం డిజైన్", subtitle: "దోపిడీని ఆపే నాలుగు సాంకేతికతలు." },
   demo: { ...hi.demo, badge: "🔬 డెమో", title: "AgriVerify AI ప్రయత్నించండి", subtitle: "పంట ఫోటోను అప్‌లోడ్ చేయండి." },
+  authenticity: { ...hi.authenticity, badge: "🌍 గ్లోబల్ ప్రామాణికత", title1: "స్థిరమైన ధృవీకరణ.", title2: "ప్రపంచ ప్రమాణాలు.", btnVerify: "ఇప్పుడే ధృవీకరించండి" },
   blogs: { ...hi.blogs, badge: "📝 పరిశోధన", title: "భారతీయ రైతుల సంక్షోభం", subtitle: "14 కోట్ల రైతు కుటుంబాలపై లోతైన పరిశోధన." },
   contact: { title: "వ్యవసాయాన్ని మార్చడానికి సిద్ధంగా ఉన్నారా?", sub: "ముందుగా యాక్సెస్ పొందడానికి చేరండి.", btn: "🚀 ఉచిత ట్రయల్ ప్రారంభించండి" },
   footer: { copy: "© 2025 AgriVerify AI · పాలిగాన్‌పై నిర్మించబడింది", scroll: "స్క్రోల్" }
@@ -199,6 +237,7 @@ const ta = { ...hi,
   problem: { ...hi.problem, badge: "🚨 உண்மையான நெருக்கடி", title: "அமைப்பில் உள்ள இடைவெளி", subtitle: "ஒவ்வொரு பருவத்திலும் லட்சக்கணக்கான விவசாயிகள் இழக்கின்றனர்." },
   features: { ...hi.features, badge: "⚗️ முக்கிய தொழில்நுட்பம்", title: "நியாயத்திற்கான வடிவமைப்பு", subtitle: "சுரண்டலை நிறுத்தும் நான்கு தொழில்நுட்பங்கள்." },
   demo: { ...hi.demo, badge: "🔬 டெமோ", title: "AgriVerify AI ஐ முயற்சிக்கவும்", subtitle: "பயிர் புகைப்படத்தை பதிவேற்றவும்." },
+  authenticity: { ...hi.authenticity, badge: "🌍 உலகளாவிய நம்பகத்தன்மை", title1: "மாற்ற முடியாத சரிபார்ப்பு.", title2: "உலகளாவிய தரநிலைகள்.", btnVerify: "இப்போது சரிபார்க்கவும்" },
   blogs: { ...hi.blogs, badge: "📝 ஆராய்ச்சி", title: "விவசாயிகளின் நெருக்கடி", subtitle: "14 கோடி விவசாய குடும்பங்கள் பற்றிய ஆழமான ஆராய்ச்சி." },
   contact: { title: "விவசாயத்தை மாற்ற தயாரா?", sub: "முன்கூட்டியே அணுக சேரவும்.", btn: "🚀 இலவச சோதனையைத் தொடங்கு" },
   footer: { copy: "© 2025 AgriVerify AI · பாலிகானில் உருவாக்கப்பட்டது", scroll: "ஸ்க்ரோல்" }
@@ -215,6 +254,7 @@ const kn = { ...hi,
   problem: { ...hi.problem, badge: "🚨 ನೈಜ ಬಿಕ್ಕಟ್ಟು", title: "ವ್ಯವಸ್ಥೆಯಲ್ಲಿನ ಅಂತರ", subtitle: "ಪ್ರತಿ ಋತುವಿನಲ್ಲಿ ಲಕ್ಷಾಂತರ ರೈತರು ನಷ್ಟ ಅನುಭವಿಸುತ್ತಾರೆ." },
   features: { ...hi.features, badge: "⚗️ ಮುಖ್ಯ ತಂತ್ರಜ್ಞಾನ", title: "ನ್ಯಾಯಕ್ಕಾಗಿ ವಿನ್ಯಾಸ", subtitle: "ಶೋಷಣೆಯನ್ನು ನಿಲ್ಲಿಸುವ ನಾಲ್ಕು ತಂತ್ರಜ್ಞಾನಗಳು." },
   demo: { ...hi.demo, badge: "🔬 ಡೆಮೊ", title: "AgriVerify AI ಪ್ರಯತ್ನಿಸಿ", subtitle: "ಬೆಳೆಯ ಫೋಟೋವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ." },
+  authenticity: { ...hi.authenticity, badge: "🌍 ಜಾಗತಿಕ ಅಧಿಕೃತತೆ", title1: "ಬದಲಾಯಿಸಲಾಗದ ಪರಿಶೀಲನೆ.", title2: "ಜಾಗತಿಕ ಮಾನದಂಡಗಳು.", btnVerify: "ಈಗ ಪರಿಶೀಲಿಸಿ" },
   blogs: { ...hi.blogs, badge: "📝 ಸಂಶೋಧನೆ", title: "ರೈತರ ಬಿಕ್ಕಟ್ಟು", subtitle: "14 ಕೋಟಿ ರೈತ ಕುಟುಂಬಗಳ ಬಗ್ಗೆ ಆಳವಾದ ಸಂಶೋಧನೆ." },
   contact: { title: "ಕೃಷಿಯನ್ನು ಬದಲಾಯಿಸಲು ಸಿದ್ಧರಿದ್ದೀರಾ?", sub: "ಮೊದಲೇ ಪ್ರವೇಶ ಪಡೆಯಲು ಸೇರಿಕೊಳ್ಳಿ.", btn: "🚀 ಉಚಿತ ಪ್ರಯೋಗ ಪ್ರಾರಂಭಿಸಿ" },
   footer: { copy: "© 2025 AgriVerify AI · ಪಾಲಿಗಾನ್‌ನಲ್ಲಿ ನಿರ್ಮಿಸಲಾಗಿದೆ", scroll: "ಸ್ಕ್ರಾಲ್" }
