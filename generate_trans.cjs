@@ -45,20 +45,20 @@ const en = {
   demo: {
     badge: "🔬 Interactive Demo",
     title: "Try AgriVerify AI",
-    subtitle: "Upload any crop photo — watch our AI analyze, grade, and price it instantly",
+    subtitle: "Upload 3 distinct angles of your crop — watch our AI analyze against 10 world-standard metrics.",
     terminal: "agriverify-ai // crop-scanner v2.4.1 // polygon:mainnet",
     live: "LIVE",
     idle: {
-      title: "Instant Crop Intelligence",
-      desc: "Upload wheat, rice, cotton, tomato or any crop. Our ResNet-50 model analyzes quality against AGMARK standards and fetches real mandi prices.",
-      points: ["Visual quality inspection in 3 seconds","Moisture via spectral reflection analysis","Live prices from 1,000+ mandis","Blockchain certificate on Polygon"],
-      btn: "📤 Upload Crop Image",
-      drop: "Drop your crop image here",
+      title: "Multi-Angle Verification",
+      desc: "3-Way Analysis required to prevent Top-Layer Fraud (Loophole Mitigation).",
+      points: ["Top View","Side View","Bottom View"],
+      btn: "📤 Scan All Angles",
+      drop: "Drop your image here",
       types: "JPG · PNG · WEBP supported"
     },
     scan: {
       title: "AI Vision Analysis",
-      desc: "Analyzing grain morphology, color distribution, and damage markers..."
+      desc: "Analyzing 10 Codex & ISO Metrics: Varietal Purity, Moisture, Damage, Density..."
     },
     result: {
       title: "Verified Crop Passport",
@@ -66,7 +66,26 @@ const en = {
       grade: "Grade",
       price: "Market Price",
       val: "Est. Value",
-      btn: "Scan Another Crop"
+      btn: "Scan Another Crop",
+      metricsTitle: "Codex Alimentarius & ISO 22000 Technical Scorecard",
+      metrics: [
+        "Varietal Purity", "Moisture Content (%)", "Foreign Matter Detection", "Blemishes & Damage", 
+        "Biometric Scaling", "Color Uniformity", "Bulk Density", "Internal Integrity", 
+        "Shelf-Life Prediction", "Aflatoxin Risk"
+      ],
+      qrBtn: "View AgriPassport",
+      pdfBtn: "Download PDF"
+    },
+    passport: {
+      title: "AgriPassport",
+      batchLabel: "Batch ID",
+      originLabel: "Origin Tracking",
+      originVal: "Punjab, India (Farm #402)",
+      harvestLabel: "Harvest Date",
+      harvestVal: "Oct 12, 2025",
+      shelfLabel: "Shelf-Life Timer",
+      shelfVal: "14 Days Remaining",
+      authLabel: "Authenticity Code"
     }
   },
   authenticity: {
@@ -148,16 +167,22 @@ const hi = {
     ]
   },
   demo: {
-    badge: "🔬 संवादात्मक डेमो", title: "एग्रीवेरिफाई एआई आज़माएं", subtitle: "कोई भी फसल फोटो अपलोड करें - देखें कि हमारा एआई इसका विश्लेषण कैसे करता है",
+    badge: "🔬 संवादात्मक डेमो", title: "एग्रीवेरिफाई एआई आज़माएं", subtitle: "अपनी फसल के 3 अलग-अलग कोण अपलोड करें - 10 विश्व-मानक मेट्रिक्स का विश्लेषण देखें।",
     terminal: "agriverify-ai // crop-scanner v2.4.1 // polygon:mainnet", live: "लाइव",
     idle: {
-      title: "त्वरित फसल बुद्धिमत्ता",
-      desc: "गेहूं, चावल, कपास या कोई भी फसल अपलोड करें। हमारा मॉडल एगमार्क मानकों के खिलाफ गुणवत्ता का विश्लेषण करता है।",
-      points: ["3 सेकंड में दृश्य गुणवत्ता निरीक्षण", "नमी विश्लेषण", "1,000+ मंडियों से लाइव कीमतें", "पॉलीगॉन पर प्रमाणपत्र"],
-      btn: "📤 फसल की तस्वीर अपलोड करें", drop: "अपनी फसल की छवि यहां छोड़ें", types: "JPG · PNG · WEBP समर्थित"
+      title: "मल्टी-एंगल सत्यापन",
+      desc: "टॉप-लेयर फ्रॉड को रोकने के लिए 3-वे विश्लेषण आवश्यक है।",
+      points: ["टॉप व्यू", "साइड व्यू", "बॉटम व्यू"],
+      btn: "📤 सभी कोण स्कैन करें", drop: "अपनी छवि यहां छोड़ें", types: "JPG · PNG · WEBP समर्थित"
     },
-    scan: { title: "एआई विजन विश्लेषण", desc: "अनाज आकारिकी, रंग वितरण और क्षति मार्करों का विश्लेषण..." },
-    result: { title: "सत्यापित फसल पासपोर्ट", sub: "पॉलीगॉन पर मिंटेड", grade: "ग्रेड", price: "बाजार मूल्य", val: "अनुमानित मूल्य", btn: "दूसरी फसल स्कैन करें" }
+    scan: { title: "एआई विजन विश्लेषण", desc: "10 कोडेक्स और ISO मेट्रिक्स का विश्लेषण: शुद्धता, नमी, क्षति..." },
+    result: { 
+      title: "सत्यापित फसल पासपोर्ट", sub: "पॉलीगॉन पर मिंटेड", grade: "ग्रेड", price: "बाजार मूल्य", val: "अनुमानित मूल्य", btn: "दूसरी फसल स्कैन करें",
+      metricsTitle: "कोडेक्स और ISO 22000 तकनीकी स्कोरकार्ड",
+      metrics: [ "किस्म की शुद्धता", "नमी सामग्री (%)", "विदेशी पदार्थ", "क्षति और दाग", "बायोमेट्रिक स्केलिंग", "रंग एकरूपता", "थोक घनत्व", "आंतरिक अखंडता", "शेल्फ-लाइफ भविष्यवाणी", "एफ्लाटॉक्सिन जोखिम" ],
+      qrBtn: "एग्रीपासपोर्ट देखें", pdfBtn: "पीडीएफ डाउनलोड करें"
+    },
+    passport: { title: "एग्रीपासपोर्ट", batchLabel: "बैच आईडी", originLabel: "उत्पत्ति ट्रैकिंग", originVal: "पंजाब, भारत (फार्म #402)", harvestLabel: "फसल की तारीख", harvestVal: "अक्टूबर 12, 2025", shelfLabel: "शेल्फ-लाइफ टाइमर", shelfVal: "14 दिन शेष", authLabel: "प्रमाणीकरण कोड" }
   },
   authenticity: {
     badge: "🌍 वैश्विक प्रामाणिकता और अनुपालन इंजन",

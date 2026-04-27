@@ -169,10 +169,14 @@ export default function App() {
   const [menuOpen,setMenuOpen]=useState(false);
   const [activeBlog,setActiveBlog]=useState(null);
   const [demoState,setDemoState]=useState("idle");
-  const [demoImg,setDemoImg]=useState(null);
+  const [demoImgs,setDemoImgs]=useState({top:null,side:null,bottom:null});
   const [scanPct,setScanPct]=useState(0);
+  const [demoCode,setDemoCode]=useState(null);
+  const [showPassport,setShowPassport]=useState(false);
+  const [authSearch,setAuthSearch]=useState("");
   const [blogs, setBlogs] = useState(fallbackBlogs);
   const fileRef=useRef(null);
+  const [activeUploadView, setActiveUploadView]=useState(null);
   const { t, speakText, lang } = useLanguage();
 
   useEffect(() => {
@@ -188,9 +192,37 @@ export default function App() {
   const goTo=id=>{document.getElementById(id)?.scrollIntoView({behavior:"smooth"});setMenuOpen(false);};
 
   const handleFile=e=>{
-    const f=e.target.files[0]; if(!f) return;
-    setDemoImg(URL.createObjectURL(f)); setDemoState("scanning"); setScanPct(0);
-    let p=0; const iv=setInterval(()=>{p+=Math.random()*3+1;setScanPct(Math.min(p,100));if(p>=100){clearInterval(iv);setTimeout(()=>setDemoState("result"),500);}},70);
+    const f=e.target.files[0]; if(!f || !activeUploadView) return;
+    const url = URL.createObjectURL(f);
+    setDemoImgs(prev => {
+      const next = {...prev, [activeUploadView]: url};
+      return next;
+    });
+  };
+
+  const startScan=()=>{
+    if(!demoImgs.top || !demoImgs.side || !demoImgs.bottom) return;
+    setDemoState("scanning"); setScanPct(0);
+    let p=0; const iv=setInterval(()=>{p+=Math.random()*3+1;setScanPct(Math.min(p,100));if(p>=100){
+      clearInterval(iv);
+      const code = "AV-" + new Date().getFullYear() + "-" + Math.random().toString(36).substring(2,6).toUpperCase();
+      setDemoCode(code);
+      setTimeout(()=>setDemoState("result"),500);
+    }},70);
+  };
+
+  const downloadPDF = () => {
+    import('html2pdf.js').then(html2pdf => {
+      const element = document.getElementById('pdf-export-area');
+      const opt = {
+        margin:       0.5,
+        filename:     `AgriVerify_Compliance_${demoCode}.pdf`,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+      html2pdf.default().set(opt).from(element).save();
+    });
   };
 
   // ── BLOG READER ──
@@ -420,18 +452,23 @@ export default function App() {
                     <div>
                       <h3 style={{fontSize:"1.3rem",fontWeight:800,color:"#fff",marginBottom:12}}>{t.demo.idle.title}</h3>
                       <p style={{fontSize:13,color:"#7fbfa8",lineHeight:1.75,marginBottom:24}}>{t.demo.idle.desc}</p>
-                      {t.demo.idle.points.map((x,i)=>(
-                        <div key={i} style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
-                          <div style={{width:20,height:20,borderRadius:"50%",background:"rgba(16,185,129,.15)",border:"1px solid rgba(16,185,129,.4)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,color:"#10b981",flexShrink:0}}>✓</div>
-                          <span style={{fontSize:13,color:"#9ecfbe"}}>{x}</span>
-                        </div>
-                      ))}
-                      <label style={{display:"inline-block",marginTop:10,cursor:"pointer"}}>
-                        <input ref={fileRef} type="file" accept="image/*" style={{display:"none"}} onChange={handleFile} />
-                        <div style={{padding:"13px 30px",borderRadius:13,background:"linear-gradient(135deg,#10b981,#059669)",color:"#fff",fontSize:14,fontWeight:800,boxShadow:"0 0 35px #10b98145",cursor:"pointer",display:"inline-flex",alignItems:"center",gap:8,transition:"all .3s"}} onMouseOver={e=>{e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.boxShadow="0 0 55px #10b98165"}} onMouseOut={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="0 0 35px #10b98145"}}>
-                          {t.demo.idle.btn}
-                        </div>
-                      </label>
+                      
+                      <div style={{display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap: 12}}>
+                        {["top","side","bottom"].map((view, i) => (
+                           <div key={view} style={{position:"relative", height:100, borderRadius:12, background:"rgba(16,185,129,.04)", border:demoImgs[view] ? "2px solid #10b981" : "2px dashed rgba(16,185,129,.3)", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", cursor:"pointer", overflow:"hidden"}} onClick={() => { setActiveUploadView(view); fileRef.current.click(); }}>
+                             {demoImgs[view] ? <img src={demoImgs[view]} alt={view} style={{width:"100%", height:"100%", objectFit:"cover"}} /> : 
+                             <>
+                                <div style={{fontSize:24, marginBottom:4}}>{i===0?"📸":i===1?"📱":"🔍"}</div>
+                                <div style={{fontSize:10, color:"#10b981", fontWeight:700, textTransform:"uppercase", textAlign:"center"}}>{t.demo.idle.points[i]}</div>
+                             </>}
+                           </div>
+                        ))}
+                      </div>
+                      
+                      <input ref={fileRef} type="file" accept="image/*" style={{display:"none"}} onChange={handleFile} />
+                      <button onClick={startScan} disabled={!demoImgs.top || !demoImgs.side || !demoImgs.bottom} style={{marginTop:24, padding:"13px 30px",borderRadius:13,background:"linear-gradient(135deg,#10b981,#059669)",color:"#fff",fontSize:14,fontWeight:800,boxShadow:"0 0 35px #10b98145",cursor:(!demoImgs.top || !demoImgs.side || !demoImgs.bottom)?"not-allowed":"pointer",display:"inline-flex",alignItems:"center",gap:8,opacity:(!demoImgs.top || !demoImgs.side || !demoImgs.bottom)?.5:1,transition:"all .3s", border:"none"}}>
+                        {t.demo.idle.btn}
+                      </button>
                     </div>
                     <div style={{borderRadius:18,background:"rgba(16,185,129,.04)",border:"2px dashed rgba(16,185,129,.2)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",minHeight:230,gap:12}}>
                       <div style={{fontSize:52}}>🌾</div>
@@ -440,14 +477,14 @@ export default function App() {
                     </div>
                   </div>
                 )}
-                {demoState==="scanning"&&demoImg&&(
+                {demoState==="scanning"&&(
                   <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:32}} className="demo-grid">
                     <div style={{position:"relative",borderRadius:16,overflow:"hidden"}}>
-                      <img src={demoImg} alt="crop" style={{width:"100%",height:280,objectFit:"cover",display:"block"}} />
+                      <img src={demoImgs.top} alt="crop" style={{width:"100%",height:280,objectFit:"cover",display:"block"}} />
                       <ScanLine active />
                       <div style={{position:"absolute",inset:0,background:"linear-gradient(to bottom,transparent 55%,rgba(16,185,129,.25))",pointerEvents:"none"}} />
                       <div style={{position:"absolute",bottom:12,left:12,right:12}}>
-                        <div style={{display:"flex",justifyContent:"space-between",fontSize:11,color:"#10b981",marginBottom:6}}><span>Analyzing grain structure...</span><span>{Math.round(scanPct)}%</span></div>
+                        <div style={{display:"flex",justifyContent:"space-between",fontSize:11,color:"#10b981",marginBottom:6}}><span>Analyzing 3-Angle data...</span><span>{Math.round(scanPct)}%</span></div>
                         <div style={{height:4,borderRadius:2,background:"rgba(16,185,129,.2)"}}>
                           <div style={{height:"100%",borderRadius:2,background:"linear-gradient(90deg,#10b981,#22d3ee,#f472b6)",width:`${scanPct}%`,transition:"width .1s",boxShadow:"0 0 12px #10b981"}} />
                         </div>
@@ -458,7 +495,7 @@ export default function App() {
                         <div style={{width:9,height:9,borderRadius:"50%",background:"#10b981",animation:"blink .8s infinite"}} />
                         <span style={{fontSize:15,fontWeight:800,color:"#fff"}}>{t.demo.scan.title}</span>
                       </div>
-                      {["Loading ResNet-50 model weights","Analyzing visual quality markers","Running moisture spectral analysis","Cross-referencing AGMARK standards","Fetching live e-NAM prices"].map((s,i)=>(
+                      {["Loading ResNet-50 model weights", "Correlating 3-View spatial geometry", "Detecting subsurface damage patterns", "Cross-referencing Codex & ISO standards", "Minting Authenticity Certificate"].map((s,i)=>(
                         <div key={i} style={{display:"flex",alignItems:"center",gap:10,marginBottom:13,opacity:scanPct>i*20?1:.3,transition:"opacity .4s"}}>
                           <div style={{width:20,height:20,borderRadius:"50%",background:scanPct>i*20?"rgba(16,185,129,.2)":"rgba(255,255,255,.04)",border:`1px solid ${scanPct>i*20?"#10b981":"rgba(255,255,255,.1)"}`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,color:"#10b981",flexShrink:0,transition:"all .4s"}}>{scanPct>i*20?"✓":i+1}</div>
                           <span style={{fontSize:13,color:scanPct>i*20?"#9ecfbe":"#3d6b5a"}}>{s}</span>
@@ -467,16 +504,17 @@ export default function App() {
                     </div>
                   </div>
                 )}
-                {demoState==="result"&&demoImg&&(
-                  <div>
+                {demoState==="result"&&(
+                  <div id="pdf-export-area">
                     <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:24,flexWrap:"wrap",gap:12}}>
                       <h3 style={{fontSize:"1.2rem",fontWeight:800,color:"#fff"}}><span style={{color:"#10b981"}}>✓</span> {t.demo.result.title}</h3>
                       <Badge style={{background:"rgba(16,185,129,.1)",border:"1px solid rgba(16,185,129,.3)",color:"#10b981"}}>
-                        <div style={{width:6,height:6,borderRadius:"50%",background:"#10b981",animation:"blink 1.5s infinite"}} />0x7E3A9F2C...Polygon
+                        <div style={{width:6,height:6,borderRadius:"50%",background:"#10b981",animation:"blink 1.5s infinite"}} />{demoCode} · Polygon
                       </Badge>
                     </div>
-                    <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:14,marginBottom:22}} className="result-grid">
-                      {[[t.demo.result.grade,"GOLD","88% Quality Score","#10b981"],["Moisture Content","12.3%","Within optimal 10–14%","#22d3ee"],[t.demo.result.price,"₹6,450","Per Quintal · Pune Mandi","#fbbf24"]].map(([label,val,sub,c])=>(
+                    
+                    <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:14,marginBottom:22}} className="result-grid">
+                      {[[t.demo.result.grade,"GOLD","Class I","#10b981"],[t.demo.result.price,"₹6,450","Premium Quality","#fbbf24"],[t.demo.result.val,"₹1,29,000","For 20 Quintals","#22d3ee"]].map(([label,val,sub,c])=>(
                         <div key={label} style={{padding:"18px 14px",borderRadius:15,background:c+"0e",border:`1px solid ${c}2e`,textAlign:"center"}}>
                           <div style={{fontSize:10,color:"#6b9b8a",letterSpacing:".09em",textTransform:"uppercase",marginBottom:8}}>{label}</div>
                           <div style={{fontSize:"1.75rem",fontWeight:900,color:c,fontFamily:"'Playfair Display',serif"}}>{val}</div>
@@ -484,33 +522,35 @@ export default function App() {
                         </div>
                       ))}
                     </div>
-                    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14,marginBottom:22}} className="demo-grid">
-                      <div style={{padding:16,borderRadius:12,background:"rgba(255,255,255,.03)",border:"1px solid rgba(255,255,255,.06)"}}>
-                        <h4 style={{fontSize:12,color:"#fff",marginBottom:12,fontWeight:700}}>Quality Breakdown</h4>
-                        {[["Grain Uniformity",91,"#10b981"],["Foreign Matter",98,"#22d3ee"],["Color Consistency",85,"#f472b6"],["Surface Defects",87,"#fbbf24"]].map(([l,v,c])=>(
-                          <div key={l} style={{marginBottom:10}}>
-                            <div style={{display:"flex",justifyContent:"space-between",fontSize:11,color:"#5a8a79",marginBottom:4}}><span>{l}</span><span>{v}%</span></div>
-                            <div style={{height:3,borderRadius:2,background:"rgba(255,255,255,.05)"}}>
-                              <div style={{height:"100%",borderRadius:2,width:`${v}%`,background:c,boxShadow:`0 0 8px ${c}`}} />
+                    
+                    <div style={{padding:20,borderRadius:12,background:"rgba(255,255,255,.03)",border:"1px solid rgba(255,255,255,.06)",marginBottom:24}}>
+                      <h4 style={{fontSize:12,color:"#fff",marginBottom:16,fontWeight:700,display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+                        {t.demo.result.metricsTitle}
+                        <span style={{color:"#10b981",fontSize:10,fontWeight:800,padding:"3px 8px",background:"rgba(16,185,129,.1)",borderRadius:6}}>PASSED</span>
+                      </h4>
+                      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:16}}>
+                        {t.demo.result.metrics.map((m,i)=>{
+                          const score = [99, 12, 98, 97, 95, 92, 89, 99, 14, 0.01][i] || 90;
+                          const suffix = i === 1 ? "%" : i === 8 ? " Days" : i === 9 ? " ppb" : "%";
+                          const valStr = score + suffix;
+                          const c = "#10b981";
+                          const pct = i === 1 ? 80 : i === 8 ? 100 : i === 9 ? 10 : score;
+                          return (
+                            <div key={m}>
+                              <div style={{display:"flex",justifyContent:"space-between",fontSize:11,color:"#5a8a79",marginBottom:4}}><span>{m}</span><span style={{color:"#fff",fontWeight:600}}>{valStr}</span></div>
+                              <div style={{height:3,borderRadius:2,background:"rgba(255,255,255,.05)"}}>
+                                <div style={{height:"100%",borderRadius:2,width:`${pct}%`,background:c,boxShadow:`0 0 8px ${c}`}} />
+                              </div>
                             </div>
-                          </div>
-                        ))}
-                      </div>
-                      <div style={{padding:16,borderRadius:12,background:"rgba(255,255,255,.03)",border:"1px solid rgba(255,255,255,.06)"}}>
-                        <h4 style={{fontSize:12,color:"#fff",marginBottom:12,fontWeight:700}}>Regional Prices</h4>
-                        {[["Pune","6,450",true],["Nagpur","6,520",false],["Nashik","6,380",false],["Mumbai","6,600",false]].map(([city,price,best])=>(
-                          <div key={city} style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10,fontSize:13}}>
-                            <span style={{color:best?"#10b981":"#7fbfa8",fontWeight:best?700:400}}>{city}</span>
-                            <span style={{color:best?"#10b981":"#9ecfbe",fontWeight:best?800:400}}>₹{price}</span>
-                            {best&&<span style={{fontSize:10,color:"#10b981",background:"rgba(16,185,129,.15)",padding:"2px 7px",borderRadius:5,fontWeight:700}}>Best</span>}
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     </div>
-                    <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
-                      <button style={{padding:"10px 20px",borderRadius:11,background:"linear-gradient(135deg,#f472b6,#a855f7)",color:"#fff",border:"none",cursor:"pointer",fontSize:13,fontWeight:700}}>⛓️ Mint Blockchain Certificate</button>
-                      <button style={{padding:"10px 20px",borderRadius:11,background:"rgba(255,255,255,.06)",color:"#d1fae5",border:"1px solid rgba(255,255,255,.1)",cursor:"pointer",fontSize:13}}>📥 Download PDF</button>
-                      <button onClick={()=>{setDemoState("idle");setDemoImg(null);if(fileRef.current)fileRef.current.value="";}} style={{padding:"10px 20px",borderRadius:11,background:"rgba(255,255,255,.03)",color:"#7fbfa8",border:"1px solid rgba(255,255,255,.06)",cursor:"pointer",fontSize:13}}>🔄 Scan Another</button>
+
+                    <div style={{display:"flex",gap:10,flexWrap:"wrap"}} className="no-print">
+                      <button onClick={()=>setShowPassport(true)} style={{padding:"10px 20px",borderRadius:11,background:"linear-gradient(135deg,#10b981,#059669)",color:"#fff",border:"none",cursor:"pointer",fontSize:13,fontWeight:700}}>{t.demo.result.qrBtn}</button>
+                      <button onClick={downloadPDF} style={{padding:"10px 20px",borderRadius:11,background:"rgba(255,255,255,.06)",color:"#d1fae5",border:"1px solid rgba(255,255,255,.1)",cursor:"pointer",fontSize:13}}>{t.demo.result.pdfBtn}</button>
+                      <button onClick={()=>{setDemoState("idle");setDemoImgs({top:null,side:null,bottom:null});if(fileRef.current)fileRef.current.value="";}} style={{padding:"10px 20px",borderRadius:11,background:"rgba(255,255,255,.03)",color:"#7fbfa8",border:"1px solid rgba(255,255,255,.06)",cursor:"pointer",fontSize:13}}>🔄 Scan Another</button>
                     </div>
                   </div>
                 )}
@@ -542,8 +582,13 @@ export default function App() {
                 </div>
                 <div>
                   <div style={{display:"flex",gap:8,marginBottom:24}}>
-                    <input type="text" placeholder={t.authenticity.searchPlaceholder} style={{flex:1,padding:"14px 20px",borderRadius:12,background:"rgba(0,0,0,.45)",border:"1px solid rgba(16,185,129,.2)",color:"#fff",fontSize:13,outline:"none"}} />
-                    <button style={{padding:"0 24px",borderRadius:12,background:"linear-gradient(135deg,#10b981,#059669)",color:"#fff",border:"none",fontWeight:800,fontSize:13,cursor:"pointer",boxShadow:"0 0 25px rgba(16,185,129,.3)",transition:"all .2s"}} onMouseOver={e=>e.currentTarget.style.transform="translateY(-2px)"} onMouseOut={e=>e.currentTarget.style.transform="none"}>{t.authenticity.btnVerify}</button>
+                    <input type="text" placeholder={t.authenticity.searchPlaceholder} value={authSearch} onChange={e=>setAuthSearch(e.target.value)} style={{flex:1,padding:"14px 20px",borderRadius:12,background:"rgba(0,0,0,.45)",border:"1px solid rgba(16,185,129,.2)",color:"#fff",fontSize:13,outline:"none"}} />
+                    <button onClick={()=>{
+                      if(authSearch.length > 5) {
+                        if(authSearch === demoCode || !demoCode) setDemoCode(authSearch.toUpperCase());
+                        setShowPassport(true);
+                      } else alert("Invalid Certificate Code");
+                    }} style={{padding:"0 24px",borderRadius:12,background:"linear-gradient(135deg,#10b981,#059669)",color:"#fff",border:"none",fontWeight:800,fontSize:13,cursor:"pointer",boxShadow:"0 0 25px rgba(16,185,129,.3)",transition:"all .2s"}} onMouseOver={e=>e.currentTarget.style.transform="translateY(-2px)"} onMouseOut={e=>e.currentTarget.style.transform="none"}>{t.authenticity.btnVerify}</button>
                   </div>
                   <div style={{padding:32,borderRadius:18,background:"rgba(255,255,255,.02)",border:"1px solid rgba(16,185,129,.2)",boxShadow:"0 20px 50px rgba(0,0,0,.3),inset 0 0 0 1px rgba(255,255,255,.05)",position:"relative",overflow:"hidden"}}>
                     <div style={{position:"absolute",top:0,left:0,right:0,height:4,background:"linear-gradient(90deg,#10b981,#34d399,#22d3ee)"}} />
@@ -728,6 +773,50 @@ export default function App() {
             <div style={{fontSize:12,color:"#2d5c5c"}}>{t.footer.copy} <span style={{color:"#a78bfa"}}>Polygon</span></div>
           </div>
         </footer>
+
+        {/* PASSPORT MODAL */}
+        <AnimatePresence>
+          {showPassport && (
+            <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} style={{position:"fixed",inset:0,zIndex:999,background:"rgba(0,0,0,0.8)",backdropFilter:"blur(10px)",display:"flex",alignItems:"center",justifyContent:"center",padding:20}}>
+              <div style={{position:"absolute",inset:0}} onClick={()=>setShowPassport(false)} />
+              <motion.div initial={{y:50,scale:0.95}} animate={{y:0,scale:1}} exit={{y:50,scale:0.95}} style={{position:"relative",width:"100%",maxWidth:400,background:"#0a1520",borderRadius:24,border:"1px solid rgba(16,185,129,0.3)",overflow:"hidden",boxShadow:"0 20px 60px rgba(0,0,0,0.5)"}}>
+                 <div style={{height:6,background:"linear-gradient(90deg,#10b981,#34d399,#22d3ee)"}} />
+                 <div style={{padding:24}}>
+                   <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:24}}>
+                      <div>
+                        <h2 style={{color:"#fff",fontSize:"1.4rem",fontWeight:900,marginBottom:4}}>{t.demo.passport.title}</h2>
+                        <div style={{fontSize:11,color:"#10b981",display:"flex",alignItems:"center",gap:4}}><div style={{width:6,height:6,borderRadius:"50%",background:"#10b981",animation:"blink 1.5s infinite"}}/>Polygon Block #849201</div>
+                      </div>
+                      <button onClick={()=>setShowPassport(false)} style={{background:"none",border:"none",color:"#7fbfa8",cursor:"pointer",fontSize:24}}>×</button>
+                   </div>
+                   
+                   <div style={{background:"#fff",padding:16,borderRadius:16,display:"flex",alignItems:"center",justifyContent:"center",marginBottom:24}}>
+                      <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=agriverify-cert-${demoCode}`} alt="QR" style={{width:150,height:150}} />
+                   </div>
+
+                   <div style={{display:"grid",gap:16}}>
+                      <div style={{display:"flex",justifyContent:"space-between",borderBottom:"1px solid rgba(255,255,255,.05)",paddingBottom:12}}>
+                        <div style={{fontSize:11,color:"#5a8a79",fontWeight:700}}>{t.demo.passport.batchLabel}</div>
+                        <div style={{fontSize:13,color:"#fff",fontFamily:"monospace"}}>{demoCode}</div>
+                      </div>
+                      <div style={{display:"flex",justifyContent:"space-between",borderBottom:"1px solid rgba(255,255,255,.05)",paddingBottom:12}}>
+                        <div style={{fontSize:11,color:"#5a8a79",fontWeight:700}}>{t.demo.passport.originLabel}</div>
+                        <div style={{fontSize:13,color:"#fff"}}>{t.demo.passport.originVal}</div>
+                      </div>
+                      <div style={{display:"flex",justifyContent:"space-between",borderBottom:"1px solid rgba(255,255,255,.05)",paddingBottom:12}}>
+                        <div style={{fontSize:11,color:"#5a8a79",fontWeight:700}}>{t.demo.passport.harvestLabel}</div>
+                        <div style={{fontSize:13,color:"#fff"}}>{t.demo.passport.harvestVal}</div>
+                      </div>
+                      <div style={{display:"flex",justifyContent:"space-between",borderBottom:"1px solid rgba(255,255,255,.05)",paddingBottom:12}}>
+                        <div style={{fontSize:11,color:"#5a8a79",fontWeight:700}}>{t.demo.passport.shelfLabel}</div>
+                        <div style={{fontSize:13,color:"#f472b6",fontWeight:800}}>{t.demo.passport.shelfVal}</div>
+                      </div>
+                   </div>
+                 </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
         
         {/* MOBILE FAB */}
         <div className="mobile-fab" style={{position:"fixed",bottom:20,right:20,zIndex:150}}>
