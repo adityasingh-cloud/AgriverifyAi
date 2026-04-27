@@ -268,7 +268,7 @@ export default function App() {
         {menuOpen&&(
           <div style={{position:"fixed",top:68,left:0,right:0,zIndex:99,background:"rgba(7,26,20,.97)",backdropFilter:"blur(20px)",padding:"12px 24px 20px",borderBottom:"1px solid rgba(16,185,129,0.12)"}}>
             {["home","problem","features","demo","blogs","contact"].map(s=>(
-              <button key={s} onClick={()=>goTo(s)} style={{display:"block",width:"100%",textAlign:"left",background:"none",border:"none",color:"#7fbfa8",fontSize:15,padding:"11px 0",cursor:"pointer",textTransform:"capitalize",borderBottom:"1px solid rgba(255,255,255,0.04)"}}>{s}</button>
+              <button key={s} onClick={()=>goTo(s)} style={{display:"block",width:"100%",textAlign:"left",background:"none",border:"none",color:"#7fbfa8",fontSize:15,padding:"11px 0",cursor:"pointer",textTransform:"capitalize",borderBottom:"1px solid rgba(255,255,255,0.04)"}}>{t.nav[s]}</button>
             ))}
           </div>
         )}
@@ -330,8 +330,11 @@ export default function App() {
         {/* MARQUEE */}
         <div style={{overflow:"hidden",padding:"16px 0",borderTop:"1px solid rgba(16,185,129,0.1)",borderBottom:"1px solid rgba(16,185,129,0.1)",background:"rgba(16,185,129,0.035)"}}>
           <div style={{display:"flex",animation:"marquee 28s linear infinite",whiteSpace:"nowrap"}}>
-            {Array(4).fill(["🌾 ResNet-50 AI Grading","⛓️ Polygon Blockchain","🗣️ Bhashini Voice API","📊 e-NAM Price Sync","🔐 Photo-Digital Twins","🌍 22 Indian Languages","📱 Offline-First Architecture","💚 AGMARK Certified","🛡️ Anti-Fraud QR Seals","⚡ Edge Computing"]).flat().map((t,i)=>(
-              <span key={i} style={{padding:"0 30px",fontSize:11,fontWeight:700,letterSpacing:".09em",color:"#3d8a75",textTransform:"uppercase"}}>{t}</span>
+            {t.marquee.map((item,i)=>(
+              <span key={i} style={{padding:"0 30px",fontSize:11,fontWeight:700,letterSpacing:".09em",color:"#3d8a75",textTransform:"uppercase"}}>{item}</span>
+            ))}
+            {t.marquee.map((item,i)=>(
+              <span key={`dup-${i}`} style={{padding:"0 30px",fontSize:11,fontWeight:700,letterSpacing:".09em",color:"#3d8a75",textTransform:"uppercase"}}>{item}</span>
             ))}
           </div>
         </div>
@@ -341,25 +344,21 @@ export default function App() {
           <div style={{position:"absolute",top:"15%",right:0,width:320,height:320,background:"radial-gradient(circle,rgba(251,146,60,.12),transparent 70%)",filter:"blur(70px)",pointerEvents:"none"}} />
           <div style={{maxWidth:1280,margin:"0 auto"}}>
             <div style={{textAlign:"center",marginBottom:64}}>
-              <Badge style={{background:"rgba(248,113,113,.12)",border:"1px solid rgba(248,113,113,.3)",color:"#f87171",marginBottom:20}}>🚨 The Real Crisis</Badge>
-              <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(2rem,4vw,3.2rem)",fontWeight:900,color:"#fff",marginBottom:14}}>The Gap in the System</h2>
-              <p style={{color:"#7fbfa8",maxWidth:500,margin:"0 auto",lineHeight:1.75}}>Every harvest season, millions of Indian farmers lose what they've rightfully earned. Here's the anatomy of exploitation.</p>
+              <Badge style={{background:"rgba(248,113,113,.12)",border:"1px solid rgba(248,113,113,.3)",color:"#f87171",marginBottom:20}}>{t.problem.badge}</Badge>
+              <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(2rem,4vw,3.2rem)",fontWeight:900,color:"#fff",marginBottom:14}}>{t.problem.title}</h2>
+              <p style={{color:"#7fbfa8",maxWidth:500,margin:"0 auto",lineHeight:1.75}}>{t.problem.subtitle}</p>
             </div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",gap:24}}>
-              {[
-                {icon:"⚖️",title:"Subjective Exploitation",color:"#f87171",stat:"₹92,651 Cr",statLabel:"Lost to biased grading annually",desc:"Commission agents visually grade crops with zero standards — a 60-year-old unchecked conflict of interest that costs farmers everything.",points:["No standardized grading protocols","Agents control weighing & pricing","Zero farmer appeal mechanism"]},
-                {icon:"📡",title:"Information Asymmetry",color:"#fb923c",stat:"10×",statLabel:"Farm-to-consumer price gap",desc:"Farmers arrive at the mandi without knowing real prices. Buyers coordinate daily. A blindfolded farmer cannot negotiate against organized buyers.",points:["Zero real-time market intelligence","Buyers in daily coordination","Farmer negotiates in the dark"]},
-                {icon:"🗣️",title:"Language Barriers",color:"#a78bfa",stat:"62%",statLabel:"Rural Indians non-literate in English",desc:"Every digital agricultural service assumes the user can read English. 500 million Indians speak neither English nor Hindi as their first language.",points:["Apps require English literacy","No dialect-level voice support","Women farmers most excluded"]},
-              ].map((c,i)=>(
-                <GCard key={i} style={{padding:30,borderColor:c.color+"25",transition:"all .35s"}} className="card-hover">
+              {t.problem.items.map((c,i)=>(
+                <GCard key={i} style={{padding:30,borderColor:"rgba(255,255,255,.05)",transition:"all .35s"}} className="card-hover">
                   <div style={{fontSize:44,marginBottom:18}}>{c.icon}</div>
-                  <div style={{fontSize:"2.2rem",fontWeight:900,color:c.color,fontFamily:"'Playfair Display',serif",lineHeight:1}}>{c.stat}</div>
+                  <div style={{fontSize:"2.2rem",fontWeight:900,color:i===0?"#f87171":i===1?"#fb923c":"#a78bfa",fontFamily:"'Playfair Display',serif",lineHeight:1}}>{c.stat}</div>
                   <div style={{fontSize:11,color:"#4d9e88",marginBottom:14,marginTop:4,textTransform:"uppercase",letterSpacing:".07em"}}>{c.statLabel}</div>
                   <h3 style={{fontSize:"1.15rem",fontWeight:800,color:"#fff",marginBottom:12}}>{c.title}</h3>
                   <p style={{fontSize:13,color:"#7fbfa8",marginBottom:18,lineHeight:1.75}}>{c.desc}</p>
                   {c.points.map((p,j)=>(
                     <div key={j} style={{display:"flex",alignItems:"center",gap:9,marginBottom:8}}>
-                      <div style={{width:7,height:7,borderRadius:"50%",background:c.color,flexShrink:0,boxShadow:`0 0 8px ${c.color}`}} />
+                      <div style={{width:7,height:7,borderRadius:"50%",background:i===0?"#f87171":i===1?"#fb923c":"#a78bfa",flexShrink:0,boxShadow:`0 0 8px ${i===0?"#f87171":i===1?"#fb923c":"#a78bfa"}`}} />
                       <span style={{fontSize:12,color:"#5a8a79"}}>{p}</span>
                     </div>
                   ))}
@@ -374,25 +373,20 @@ export default function App() {
           <div style={{position:"absolute",top:"25%",left:0,width:360,height:360,background:"radial-gradient(circle,rgba(167,139,250,.12),transparent 70%)",filter:"blur(80px)",pointerEvents:"none"}} />
           <div style={{maxWidth:1280,margin:"0 auto"}}>
             <div style={{textAlign:"center",marginBottom:64}}>
-              <Badge style={{background:"rgba(16,185,129,.12)",border:"1px solid rgba(16,185,129,.3)",color:"#10b981",marginBottom:20}}>⚗️ The Secret Sauce</Badge>
-              <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(2rem,4vw,3.2rem)",fontWeight:900,color:"#fff",marginBottom:14}}>Engineered for Fairness</h2>
-              <p style={{color:"#7fbfa8",maxWidth:480,margin:"0 auto",lineHeight:1.75}}>Four interlocking technologies that close every loophole of exploitation.</p>
+              <Badge style={{background:"rgba(16,185,129,.12)",border:"1px solid rgba(16,185,129,.3)",color:"#10b981",marginBottom:20}}>{t.features.badge}</Badge>
+              <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(2rem,4vw,3.2rem)",fontWeight:900,color:"#fff",marginBottom:14}}>{t.features.title}</h2>
+              <p style={{color:"#7fbfa8",maxWidth:480,margin:"0 auto",lineHeight:1.75}}>{t.features.subtitle}</p>
             </div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:24}}>
-              {[
-                {icon:"🧠",title:"Edge-AI Grading",sub:"ResNet-50 Visual Intelligence",color:"#10b981",tags:["ResNet-50","TensorFlow Lite","Offline-First","±2% Accuracy"],desc:"Offline visual inspection fine-tuned on 500,000+ Indian crop images. Runs on ₹8,000 Android phones. Delivers objective grades in under 3 seconds."},
-                {icon:"🗣️",title:"Vernacular Voice",sub:"Bhashini API Integration",color:"#a78bfa",tags:["Bhashini API","22 Languages","Dialect Support","Zero Literacy"],desc:"Zero-literacy interaction across 22 Indian languages and regional dialects. Farmers speak and receive responses in their mother tongue."},
-                {icon:"⛓️",title:"Blockchain Passport",sub:"Polygon · ERC-721 NFT",color:"#f472b6",tags:["Polygon Network","ERC-721 NFT","IPFS Storage","QR Verification"],desc:"Every verified crop receives a tamper-proof quality certificate on Polygon — QR-sealed, instantly verifiable, legally defensible."},
-                {icon:"📊",title:"Real-time Discovery",sub:"Direct e-NAM Price Syncing",color:"#fb923c",tags:["e-NAM API","1000+ Mandis","15-min Updates","Regional Compare"],desc:"Live market price feeds from 1,000+ mandis synced every 15 minutes. Farmers see true market value before entering the mandi."},
-              ].map((f,i)=>(
-                <GCard key={i} style={{padding:28,borderColor:f.color+"28",transition:"all .35s"}} className="card-hover">
-                  <div style={{width:58,height:58,borderRadius:18,background:f.color+"18",border:`1px solid ${f.color}35`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:28,marginBottom:20,boxShadow:`0 0 30px ${f.color}25`}}>{f.icon}</div>
+              {t.features.items.map((f,i)=>(
+                <GCard key={i} style={{padding:28,borderColor:(i===0?"#10b981":i===1?"#a78bfa":i===2?"#f472b6":"#fb923c")+"28",transition:"all .35s"}} className="card-hover">
+                  <div style={{width:58,height:58,borderRadius:18,background:(i===0?"#10b981":i===1?"#a78bfa":i===2?"#f472b6":"#fb923c")+"18",border:`1px solid ${(i===0?"#10b981":i===1?"#a78bfa":i===2?"#f472b6":"#fb923c")}35`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:28,marginBottom:20,boxShadow:`0 0 30px ${(i===0?"#10b981":i===1?"#a78bfa":i===2?"#f472b6":"#fb923c")}25`}}>{f.icon}</div>
                   <h3 style={{fontSize:"1.15rem",fontWeight:800,color:"#fff",marginBottom:4}}>{f.title}</h3>
-                  <p style={{fontSize:11,color:f.color,marginBottom:14,fontWeight:700,letterSpacing:".06em"}}>{f.sub}</p>
+                  <p style={{fontSize:11,color:(i===0?"#10b981":i===1?"#a78bfa":i===2?"#f472b6":"#fb923c"),marginBottom:14,fontWeight:700,letterSpacing:".06em"}}>{f.sub}</p>
                   <p style={{fontSize:13,color:"#7fbfa8",lineHeight:1.75,marginBottom:18}}>{f.desc}</p>
                   <div style={{display:"flex",flexWrap:"wrap",gap:7}}>
-                    {f.tags.map((t,j)=>(
-                      <span key={j} style={{padding:"4px 11px",borderRadius:999,fontSize:11,fontWeight:700,background:f.color+"15",border:`1px solid ${f.color}30`,color:f.color}}>{t}</span>
+                    {f.tags.map((tg,j)=>(
+                      <span key={j} style={{padding:"4px 11px",borderRadius:999,fontSize:11,fontWeight:700,background:(i===0?"#10b981":i===1?"#a78bfa":i===2?"#f472b6":"#fb923c")+"15",border:`1px solid ${(i===0?"#10b981":i===1?"#a78bfa":i===2?"#f472b6":"#fb923c")}30`,color:(i===0?"#10b981":i===1?"#a78bfa":i===2?"#f472b6":"#fb923c")}}>{tg}</span>
                     ))}
                   </div>
                 </GCard>
@@ -406,27 +400,27 @@ export default function App() {
           <div style={{position:"absolute",inset:0,background:"linear-gradient(180deg,transparent,rgba(16,185,129,0.03),transparent)",pointerEvents:"none"}} />
           <div style={{maxWidth:920,margin:"0 auto"}}>
             <div style={{textAlign:"center",marginBottom:48}}>
-              <Badge style={{background:"rgba(34,211,238,.12)",border:"1px solid rgba(34,211,238,.3)",color:"#22d3ee",marginBottom:20}}>🔬 Interactive Demo</Badge>
-              <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(2rem,4vw,3.2rem)",fontWeight:900,color:"#fff",marginBottom:14}}>Try AgriVerify AI</h2>
-              <p style={{color:"#7fbfa8"}}>Upload any crop photo — watch our AI analyze, grade, and price it instantly</p>
+              <Badge style={{background:"rgba(34,211,238,.12)",border:"1px solid rgba(34,211,238,.3)",color:"#22d3ee",marginBottom:20}}>{t.demo.badge}</Badge>
+              <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(2rem,4vw,3.2rem)",fontWeight:900,color:"#fff",marginBottom:14}}>{t.demo.title}</h2>
+              <p style={{color:"#7fbfa8"}}>{t.demo.subtitle}</p>
             </div>
             <GCard style={{overflow:"hidden",borderColor:"rgba(16,185,129,.25)",boxShadow:"0 0 100px rgba(16,185,129,.07)"}}>
               <div style={{padding:"12px 20px",borderBottom:"1px solid rgba(255,255,255,.07)",background:"rgba(0,0,0,.25)",display:"flex",alignItems:"center",gap:8}}>
                 <div style={{width:12,height:12,borderRadius:"50%",background:"#f87171"}} />
                 <div style={{width:12,height:12,borderRadius:"50%",background:"#fbbf24"}} />
                 <div style={{width:12,height:12,borderRadius:"50%",background:"#4ade80"}} />
-                <span style={{marginLeft:10,fontSize:11,color:"#4d9e88",fontFamily:"monospace"}}>agriverify-ai // crop-scanner v2.4.1 // polygon:mainnet</span>
+                <span style={{marginLeft:10,fontSize:11,color:"#4d9e88",fontFamily:"monospace"}}>{t.demo.terminal}</span>
                 <div style={{marginLeft:"auto",display:"flex",alignItems:"center",gap:6,fontSize:11,color:"#10b981"}}>
-                  <div style={{width:6,height:6,borderRadius:"50%",background:"#10b981",animation:"blink 1.5s infinite"}} />LIVE
+                  <div style={{width:6,height:6,borderRadius:"50%",background:"#10b981",animation:"blink 1.5s infinite"}} />{t.demo.live}
                 </div>
               </div>
               <div style={{padding:"32px 28px"}}>
                 {demoState==="idle"&&(
                   <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:32}} className="demo-grid">
                     <div>
-                      <h3 style={{fontSize:"1.3rem",fontWeight:800,color:"#fff",marginBottom:12}}>Instant Crop Intelligence</h3>
-                      <p style={{fontSize:13,color:"#7fbfa8",lineHeight:1.75,marginBottom:24}}>Upload wheat, rice, cotton, tomato or any crop. Our ResNet-50 model analyzes quality against AGMARK standards and fetches real mandi prices.</p>
-                      {["Visual quality inspection in 3 seconds","Moisture via spectral reflection analysis","Live prices from 1,000+ mandis","Blockchain certificate on Polygon"].map((x,i)=>(
+                      <h3 style={{fontSize:"1.3rem",fontWeight:800,color:"#fff",marginBottom:12}}>{t.demo.idle.title}</h3>
+                      <p style={{fontSize:13,color:"#7fbfa8",lineHeight:1.75,marginBottom:24}}>{t.demo.idle.desc}</p>
+                      {t.demo.idle.points.map((x,i)=>(
                         <div key={i} style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
                           <div style={{width:20,height:20,borderRadius:"50%",background:"rgba(16,185,129,.15)",border:"1px solid rgba(16,185,129,.4)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,color:"#10b981",flexShrink:0}}>✓</div>
                           <span style={{fontSize:13,color:"#9ecfbe"}}>{x}</span>
@@ -435,14 +429,14 @@ export default function App() {
                       <label style={{display:"inline-block",marginTop:10,cursor:"pointer"}}>
                         <input ref={fileRef} type="file" accept="image/*" style={{display:"none"}} onChange={handleFile} />
                         <div style={{padding:"13px 30px",borderRadius:13,background:"linear-gradient(135deg,#10b981,#059669)",color:"#fff",fontSize:14,fontWeight:800,boxShadow:"0 0 35px #10b98145",cursor:"pointer",display:"inline-flex",alignItems:"center",gap:8,transition:"all .3s"}} onMouseOver={e=>{e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.boxShadow="0 0 55px #10b98165"}} onMouseOut={e=>{e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow="0 0 35px #10b98145"}}>
-                          📤 Upload Crop Image
+                          {t.demo.idle.btn}
                         </div>
                       </label>
                     </div>
                     <div style={{borderRadius:18,background:"rgba(16,185,129,.04)",border:"2px dashed rgba(16,185,129,.2)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",minHeight:230,gap:12}}>
                       <div style={{fontSize:52}}>🌾</div>
-                      <p style={{fontSize:13,color:"#4d9e88",fontWeight:600}}>Drop your crop image here</p>
-                      <p style={{fontSize:11,color:"#2d5c5c"}}>JPG · PNG · WEBP supported</p>
+                      <p style={{fontSize:13,color:"#4d9e88",fontWeight:600}}>{t.demo.idle.drop}</p>
+                      <p style={{fontSize:11,color:"#2d5c5c"}}>{t.demo.idle.types}</p>
                     </div>
                   </div>
                 )}
@@ -462,7 +456,7 @@ export default function App() {
                     <div>
                       <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:20}}>
                         <div style={{width:9,height:9,borderRadius:"50%",background:"#10b981",animation:"blink .8s infinite"}} />
-                        <span style={{fontSize:15,fontWeight:800,color:"#fff"}}>AI Scanning in Progress</span>
+                        <span style={{fontSize:15,fontWeight:800,color:"#fff"}}>{t.demo.scan.title}</span>
                       </div>
                       {["Loading ResNet-50 model weights","Analyzing visual quality markers","Running moisture spectral analysis","Cross-referencing AGMARK standards","Fetching live e-NAM prices"].map((s,i)=>(
                         <div key={i} style={{display:"flex",alignItems:"center",gap:10,marginBottom:13,opacity:scanPct>i*20?1:.3,transition:"opacity .4s"}}>
@@ -476,13 +470,13 @@ export default function App() {
                 {demoState==="result"&&demoImg&&(
                   <div>
                     <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:24,flexWrap:"wrap",gap:12}}>
-                      <h3 style={{fontSize:"1.2rem",fontWeight:800,color:"#fff"}}><span style={{color:"#10b981"}}>✓</span> Quality Report Generated</h3>
+                      <h3 style={{fontSize:"1.2rem",fontWeight:800,color:"#fff"}}><span style={{color:"#10b981"}}>✓</span> {t.demo.result.title}</h3>
                       <Badge style={{background:"rgba(16,185,129,.1)",border:"1px solid rgba(16,185,129,.3)",color:"#10b981"}}>
                         <div style={{width:6,height:6,borderRadius:"50%",background:"#10b981",animation:"blink 1.5s infinite"}} />0x7E3A9F2C...Polygon
                       </Badge>
                     </div>
                     <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:14,marginBottom:22}} className="result-grid">
-                      {[["AGMARK Grade","GOLD","88% Quality Score","#10b981"],["Moisture Content","12.3%","Within optimal 10–14%","#22d3ee"],["Market Price","₹6,450","Per Quintal · Pune Mandi","#fbbf24"]].map(([label,val,sub,c])=>(
+                      {[[t.demo.result.grade,"GOLD","88% Quality Score","#10b981"],["Moisture Content","12.3%","Within optimal 10–14%","#22d3ee"],[t.demo.result.price,"₹6,450","Per Quintal · Pune Mandi","#fbbf24"]].map(([label,val,sub,c])=>(
                         <div key={label} style={{padding:"18px 14px",borderRadius:15,background:c+"0e",border:`1px solid ${c}2e`,textAlign:"center"}}>
                           <div style={{fontSize:10,color:"#6b9b8a",letterSpacing:".09em",textTransform:"uppercase",marginBottom:8}}>{label}</div>
                           <div style={{fontSize:"1.75rem",fontWeight:900,color:c,fontFamily:"'Playfair Display',serif"}}>{val}</div>
@@ -611,8 +605,8 @@ export default function App() {
           <div style={{position:"absolute",top:"40%",right:"8%",width:260,height:260,background:"radial-gradient(circle,rgba(34,211,238,.1),transparent 70%)",filter:"blur(55px)",pointerEvents:"none"}} />
           <div style={{maxWidth:1000,margin:"0 auto"}}>
             <div style={{textAlign:"center",marginBottom:56}}>
-              <Badge style={{background:"rgba(34,211,238,.12)",border:"1px solid rgba(34,211,238,.3)",color:"#22d3ee",marginBottom:20}}>👥 The Team</Badge>
-              <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(2rem,4vw,3rem)",fontWeight:900,color:"#fff"}}>Built by Believers</h2>
+              <Badge style={{background:"rgba(34,211,238,.12)",border:"1px solid rgba(34,211,238,.3)",color:"#22d3ee",marginBottom:20}}>{t.team.badge}</Badge>
+              <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(2rem,4vw,3rem)",fontWeight:900,color:"#fff"}}>{t.team.title}</h2>
             </div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:24}}>
               {[
@@ -639,9 +633,9 @@ export default function App() {
           <div style={{position:"absolute",top:"15%",left:0,width:320,height:320,background:"radial-gradient(circle,rgba(251,146,60,.1),transparent 70%)",filter:"blur(75px)",pointerEvents:"none"}} />
           <div style={{maxWidth:1280,margin:"0 auto"}}>
             <div style={{textAlign:"center",marginBottom:56}}>
-              <Badge style={{background:"rgba(251,146,60,.12)",border:"1px solid rgba(251,146,60,.3)",color:"#fb923c",marginBottom:20}}>📝 Research & Insights</Badge>
-              <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(2rem,4vw,3.2rem)",fontWeight:900,color:"#fff",marginBottom:14}}>The Indian Farmer's Crisis</h2>
-              <p style={{color:"#7fbfa8",maxWidth:480,margin:"0 auto"}}>In-depth research on the systemic challenges facing India's 140 million farming families.</p>
+              <Badge style={{background:"rgba(251,146,60,.12)",border:"1px solid rgba(251,146,60,.3)",color:"#fb923c",marginBottom:20}}>{t.blogs.badge}</Badge>
+              <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(2rem,4vw,3.2rem)",fontWeight:900,color:"#fff",marginBottom:14}}>{t.blogs.title}</h2>
+              <p style={{color:"#7fbfa8",maxWidth:480,margin:"0 auto"}}>{t.blogs.subtitle}</p>
             </div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:20}}>
               {blogs.map(b=>(
@@ -670,9 +664,9 @@ export default function App() {
                 <div style={{fontSize:60,marginBottom:16,animation:"floatY 4s ease-in-out infinite"}}>🌾</div>
                 <Badge style={{background:"rgba(16,185,129,.12)",border:"1px solid rgba(16,185,129,.3)",color:"#10b981",marginBottom:24}}>🤝 Partner With Us</Badge>
                 <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(2rem,4vw,3rem)",fontWeight:900,color:"#fff",marginBottom:16}}>
-                  Join the <span style={{background:"linear-gradient(135deg,#10b981,#34d399,#22d3ee)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>Revolution</span>
+                  {t.contact.title}
                 </h2>
-                <p style={{color:"#7fbfa8",maxWidth:520,margin:"0 auto 40px",lineHeight:1.75}}>Partner with AgriVerify AI to bring transparent, fair, AI-powered crop verification to India's farmers. Seeking pilots, investors, and government partnerships.</p>
+                <p style={{color:"#7fbfa8",maxWidth:520,margin:"0 auto 40px",lineHeight:1.75}}>{t.contact.sub}</p>
                 <div style={{display:"flex",gap:14,justifyContent:"center",flexWrap:"wrap",marginBottom:36}}>
                   {[
                     {icon:"📞",label:"Aditya Singh",value:"+91 9674951947",href:"tel:+919674951947"},
@@ -689,7 +683,7 @@ export default function App() {
                   ))}
                 </div>
                 <button onClick={()=>goTo("demo")} style={{padding:"14px 38px",borderRadius:15,background:"linear-gradient(135deg,#10b981,#059669)",color:"#fff",border:"none",cursor:"pointer",fontSize:15,fontWeight:800,boxShadow:"0 0 45px #10b98155",transition:"all .3s"}} onMouseOver={e=>{e.target.style.transform="translateY(-3px)";e.target.style.boxShadow="0 0 65px #10b98175"}} onMouseOut={e=>{e.target.style.transform="none";e.target.style.boxShadow="0 0 45px #10b98155"}}>
-                  🚀 Start Free Trial
+                  {t.contact.btn}
                 </button>
               </div>
             </GCard>
@@ -708,7 +702,7 @@ export default function App() {
                 <button key={s} onClick={()=>goTo(s)} style={{background:"none",border:"none",color:"#4d9e88",fontSize:12,cursor:"pointer",textTransform:"capitalize",transition:"color .2s"}} onMouseOver={e=>e.target.style.color="#10b981"} onMouseOut={e=>e.target.style.color="#4d9e88"}>{t.nav[s]}</button>
               ))}
             </div>
-            <div style={{fontSize:12,color:"#2d5c5c"}}>© 2025 AgriVerify AI · Built on <span style={{color:"#a78bfa"}}>Polygon</span></div>
+            <div style={{fontSize:12,color:"#2d5c5c"}}>{t.footer.copy} <span style={{color:"#a78bfa"}}>Polygon</span></div>
           </div>
         </footer>
         
