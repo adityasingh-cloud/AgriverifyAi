@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "./lib/supabase";
+import { motion, AnimatePresence } from "framer-motion";
+import { Languages, Volume2, VolumeX, Check } from "lucide-react";
+import { useLanguage } from "./lib/LanguageContext";
+import { LANGUAGES } from "./lib/translations";
 
 const fallbackBlogs = [
   { id:1,icon:"💰",category:"Market Exploitation",color:"#f472b6",date:"Apr 12 2025",readTime:"8 min",title:"The Price They Never See: How Middlemen Steal from Indian Farmers",excerpt:"Every harvest season, millions of farmers walk away with a fraction of what their crops are worth. The system is broken by design.",content:`## The Invisible Chain of Exploitation\n\nEvery year, India produces over 300 million tonnes of food grains. Yet the people who grow this food remain among the country's poorest citizens. The reason is a systemic failure baked into the agricultural supply chain.\n\n## How the Mandi System Works\n\nThe APMC system was designed in the 1960s to protect farmers. In practice it became the mechanism of exploitation. Commission agents (arhatiyas) control weighing, grading, storage, and credit — creating debt-bondage cycles lasting generations.\n\n**The Grade Manipulation**: Without standardized grading, arhatiyas visually inspect produce and assign quality grades. The conflict of interest is enormous — agents profit when grades are lower.\n\n## Real Numbers, Real Pain\n\nA 2022 ICAR study found onion farmers in Maharashtra received ₹2–₹5/kg at the farm gate, while Delhi consumers paid ₹40–₹60 for the same onions. The 10x gap was absorbed entirely by intermediaries. NABARD found 52.5% of agricultural households are indebted, with average debt of ₹74,121 per family.\n\n## What AgriVerify AI Changes\n\nObjective AI-driven quality grades, real-time price data synced from e-NAM, and blockchain-certified quality passports are dismantling 60 years of institutionalized exploitation — one verified transaction at a time.`},
@@ -119,6 +123,47 @@ function Badge({children,style={}}) {
   );
 }
 
+function LanguageSelector() {
+  const { lang, setLang, voiceEnabled, setVoiceEnabled } = useLanguage();
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const handleClick = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  return (
+    <div ref={ref} style={{position:"relative", display:"flex", alignItems:"center", gap:12}}>
+      <button onClick={() => setVoiceEnabled(!voiceEnabled)} style={{background:"none",border:"none",color:voiceEnabled?"#10b981":"#7fbfa8",cursor:"pointer",display:"flex",alignItems:"center",transition:"all .2s"}} title="Voice Assistance">
+        {voiceEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
+      </button>
+      <button onClick={() => setOpen(!open)} style={{display:"flex",alignItems:"center",gap:6,background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.1)",padding:"6px 12px",borderRadius:99,color:"#fff",fontSize:13,cursor:"pointer",transition:"all .2s"}}>
+        <Languages size={14} />
+        {LANGUAGES.find(l => l.code === lang)?.native}
+      </button>
+      
+      <AnimatePresence>
+        {open && (
+          <motion.div initial={{opacity:0,y:10,scale:0.95}} animate={{opacity:1,y:0,scale:1}} exit={{opacity:0,y:10,scale:0.95}} transition={{duration:0.15}} style={{position:"absolute",top:"120%",right:0,width:180,background:"rgba(12,22,40,0.95)",backdropFilter:"blur(20px)",border:"1px solid rgba(16,185,129,0.2)",borderRadius:14,padding:8,boxShadow:"0 10px 40px rgba(0,0,0,0.5)",zIndex:200}}>
+            <div style={{fontSize:10,color:"#7fbfa8",textTransform:"uppercase",letterSpacing:"0.05em",padding:"4px 8px 8px",borderBottom:"1px solid rgba(255,255,255,0.05)",marginBottom:4}}>Select Language</div>
+            {LANGUAGES.map(l => (
+              <button key={l.code} onClick={() => { setLang(l.code); setOpen(false); }} style={{display:"flex",alignItems:"center",justifyContent:"space-between",width:"100%",padding:"8px 10px",background:lang===l.code?"rgba(16,185,129,0.1)":"none",border:"none",borderRadius:8,color:lang===l.code?"#10b981":"#e8f5f0",fontSize:13,cursor:"pointer",textAlign:"left",transition:"background .2s"}}>
+                <span style={{display:"flex",flexDirection:"column"}}>
+                  <span style={{fontWeight:600}}>{l.native}</span>
+                  <span style={{fontSize:10,color:"#7fbfa8"}}>{l.name}</span>
+                </span>
+                {lang === l.code && <Check size={14} />}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function App() {
   const [splash,setSplash]=useState(true);
   const [menuOpen,setMenuOpen]=useState(false);
@@ -128,6 +173,7 @@ export default function App() {
   const [scanPct,setScanPct]=useState(0);
   const [blogs, setBlogs] = useState(fallbackBlogs);
   const fileRef=useRef(null);
+  const { t, speakText, lang } = useLanguage();
 
   useEffect(() => {
     async function fetchBlogs() {
@@ -210,9 +256,10 @@ export default function App() {
             </div>
             <div className="nav-links" style={{display:"flex",alignItems:"center",gap:28}}>
               {["home","problem","features","demo","blogs","contact"].map(s=>(
-                <button key={s} onClick={()=>goTo(s)} style={{background:"none",border:"none",color:"#7fbfa8",fontSize:13,fontWeight:500,cursor:"pointer",textTransform:"capitalize",letterSpacing:"0.04em",transition:"color .2s"}} onMouseOver={e=>e.target.style.color="#10b981"} onMouseOut={e=>e.target.style.color="#7fbfa8"}>{s}</button>
+                <button key={s} onClick={()=>goTo(s)} style={{background:"none",border:"none",color:"#7fbfa8",fontSize:13,fontWeight:500,cursor:"pointer",textTransform:"capitalize",letterSpacing:"0.04em",transition:"color .2s"}} onMouseOver={e=>e.target.style.color="#10b981"} onMouseOut={e=>e.target.style.color="#7fbfa8"}>{t.nav[s]}</button>
               ))}
-              <button onClick={()=>goTo("demo")} style={{padding:"8px 22px",borderRadius:11,background:"linear-gradient(135deg,#10b981,#059669)",color:"#fff",border:"none",cursor:"pointer",fontSize:13,fontWeight:700,boxShadow:"0 0 20px #10b98145",transition:"all .25s"}} onMouseOver={e=>{e.target.style.transform="scale(1.05)";e.target.style.boxShadow="0 0 35px #10b98170"}} onMouseOut={e=>{e.target.style.transform="scale(1)";e.target.style.boxShadow="0 0 20px #10b98145"}}>Try Demo</button>
+              <LanguageSelector />
+              <button onClick={()=>goTo("demo")} style={{padding:"8px 22px",borderRadius:11,background:"linear-gradient(135deg,#10b981,#059669)",color:"#fff",border:"none",cursor:"pointer",fontSize:13,fontWeight:700,boxShadow:"0 0 20px #10b98145",transition:"all .25s"}} onMouseOver={e=>{e.target.style.transform="scale(1.05)";e.target.style.boxShadow="0 0 35px #10b98170"}} onMouseOut={e=>{e.target.style.transform="scale(1)";e.target.style.boxShadow="0 0 20px #10b98145"}}>{t.nav.tryDemo}</button>
             </div>
             <button onClick={()=>setMenuOpen(!menuOpen)} className="hamburger" style={{display:"none",background:"none",border:"none",color:"#e8f5f0",fontSize:26,cursor:"pointer",lineHeight:1}}>☰</button>
           </div>
@@ -238,39 +285,39 @@ export default function App() {
           <div style={{position:"absolute",bottom:"18%",left:"6%",width:160,height:160,borderRadius:"50%",background:"radial-gradient(circle,rgba(167,139,250,.22),transparent 70%)",filter:"blur(30px)",animation:"floatY 8s ease-in-out infinite reverse"}} />
           <div style={{position:"absolute",top:"55%",right:"3%",width:120,height:120,borderRadius:"50%",background:"radial-gradient(circle,rgba(34,211,238,.2),transparent 70%)",filter:"blur(25px)",animation:"floatY 7s ease-in-out infinite"}} />
 
-          <div style={{position:"relative",zIndex:5,textAlign:"center",maxWidth:920}}>
+          <motion.div key={lang} initial={{opacity:0,y:15}} animate={{opacity:1,y:0}} transition={{duration:0.6}} style={{position:"relative",zIndex:5,textAlign:"center",maxWidth:920}}>
             <Badge style={{background:"rgba(16,185,129,0.12)",border:"1px solid rgba(16,185,129,0.35)",color:"#10b981",marginBottom:30,animation:"fadeUp .8s ease .3s both"}}>
               <div style={{width:7,height:7,borderRadius:"50%",background:"#10b981",animation:"blink 1.5s infinite"}} />
-              Live on Polygon Mainnet · 12,847 Crops Verified
+              {t.hero.badge}
             </Badge>
 
-            <h1 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(3rem,7.5vw,6.5rem)",fontWeight:900,lineHeight:1.03,marginBottom:24,animation:"fadeUp .8s ease .5s both"}}>
-              <span style={{color:"#fff",display:"block"}}>Bringing Science</span>
-              <span style={{background:"linear-gradient(135deg,#10b981 0%,#34d399 25%,#f472b6 55%,#fb923c 80%,#fbbf24 100%)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundSize:"200%",animation:"gradShift 5s ease infinite",display:"block"}}>to the Mandi.</span>
+            <h1 onClick={()=>speakText(`${t.hero.title1} ${t.hero.title2}`)} style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(3rem,7.5vw,6.5rem)",fontWeight:900,lineHeight:1.03,marginBottom:24,animation:"fadeUp .8s ease .5s both",cursor:"pointer"}}>
+              <span style={{color:"#fff",display:"block"}}>{t.hero.title1}</span>
+              <span style={{background:"linear-gradient(135deg,#10b981 0%,#34d399 25%,#f472b6 55%,#fb923c 80%,#fbbf24 100%)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundSize:"200%",animation:"gradShift 5s ease infinite",display:"block"}}>{t.hero.title2}</span>
             </h1>
 
-            <p style={{fontSize:"clamp(1rem,2vw,1.2rem)",color:"#7fbfa8",maxWidth:580,margin:"0 auto 40px",lineHeight:1.75,animation:"fadeUp .8s ease .7s both"}}>
-              An AI-driven ecosystem for world-standard crop grading and fair price discovery. Built for India's 140 million farmers. Powered by blockchain transparency.
+            <p onClick={()=>speakText(t.hero.subtitle)} style={{fontSize:"clamp(1rem,2vw,1.2rem)",color:"#7fbfa8",maxWidth:580,margin:"0 auto 40px",lineHeight:1.75,animation:"fadeUp .8s ease .7s both",cursor:"pointer"}}>
+              {t.hero.subtitle}
             </p>
 
             <div style={{display:"flex",gap:16,justifyContent:"center",flexWrap:"wrap",marginBottom:68,animation:"fadeUp .8s ease .9s both"}}>
               <button onClick={()=>goTo("demo")} style={{padding:"15px 34px",borderRadius:15,background:"linear-gradient(135deg,#10b981,#059669)",color:"#fff",border:"none",cursor:"pointer",fontSize:15,fontWeight:800,boxShadow:"0 0 50px #10b98155,0 8px 32px rgba(0,0,0,.4)",transition:"all .3s",letterSpacing:".02em"}} onMouseOver={e=>{e.target.style.transform="translateY(-3px) scale(1.04)";e.target.style.boxShadow="0 0 70px #10b98175,0 14px 42px rgba(0,0,0,.5)"}} onMouseOut={e=>{e.target.style.transform="none";e.target.style.boxShadow="0 0 50px #10b98155,0 8px 32px rgba(0,0,0,.4)"}}>
-                🔬 Try Live Demo
+                {t.hero.btnDemo}
               </button>
               <button onClick={()=>goTo("features")} style={{padding:"15px 34px",borderRadius:15,background:"rgba(255,255,255,0.05)",color:"#d1fae5",border:"1px solid rgba(255,255,255,0.13)",cursor:"pointer",fontSize:15,fontWeight:600,backdropFilter:"blur(10px)",transition:"all .3s"}} onMouseOver={e=>{e.target.style.background="rgba(255,255,255,.1)";e.target.style.transform="translateY(-3px)"}} onMouseOut={e=>{e.target.style.background="rgba(255,255,255,.05)";e.target.style.transform="none"}}>
-                ⛓️ View Whitepaper
+                {t.hero.btnWhitepaper}
               </button>
             </div>
 
             <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:16,maxWidth:720,margin:"0 auto",animation:"fadeUp .8s ease 1.1s both"}} className="stats-grid">
-              {[["140M+","Farmers Targeted","#10b981"],["88%","Grade Accuracy","#f472b6"],["22","Languages","#fb923c"],["50%","Better Prices","#a78bfa"]].map(([n,l,c])=>(
+              {[["140M+",t.stats.farmers,"#10b981"],["88%",t.stats.accuracy,"#f472b6"],["22",t.stats.languages,"#fb923c"],["50%",t.stats.prices,"#a78bfa"]].map(([n,l,c])=>(
                 <GCard key={l} style={{padding:"20px 12px",textAlign:"center",borderColor:c+"25"}}>
                   <div style={{fontSize:"1.9rem",fontWeight:900,color:c,fontFamily:"'Playfair Display',serif",lineHeight:1}}>{n}</div>
                   <div style={{fontSize:11,color:"#4d9e88",marginTop:6,fontWeight:500}}>{l}</div>
                 </GCard>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           <div style={{position:"absolute",bottom:28,left:"50%",transform:"translateX(-50%)",display:"flex",flexDirection:"column",alignItems:"center",gap:6,opacity:.4}}>
             <span style={{fontSize:9,letterSpacing:".22em",textTransform:"uppercase",color:"#4d9e88"}}>Scroll</span>
@@ -658,12 +705,17 @@ export default function App() {
             </div>
             <div style={{display:"flex",gap:22,flexWrap:"wrap"}}>
               {["home","problem","features","demo","blogs","contact"].map(s=>(
-                <button key={s} onClick={()=>goTo(s)} style={{background:"none",border:"none",color:"#4d9e88",fontSize:12,cursor:"pointer",textTransform:"capitalize",transition:"color .2s"}} onMouseOver={e=>e.target.style.color="#10b981"} onMouseOut={e=>e.target.style.color="#4d9e88"}>{s}</button>
+                <button key={s} onClick={()=>goTo(s)} style={{background:"none",border:"none",color:"#4d9e88",fontSize:12,cursor:"pointer",textTransform:"capitalize",transition:"color .2s"}} onMouseOver={e=>e.target.style.color="#10b981"} onMouseOut={e=>e.target.style.color="#4d9e88"}>{t.nav[s]}</button>
               ))}
             </div>
             <div style={{fontSize:12,color:"#2d5c5c"}}>© 2025 AgriVerify AI · Built on <span style={{color:"#a78bfa"}}>Polygon</span></div>
           </div>
         </footer>
+        
+        {/* MOBILE FAB */}
+        <div className="mobile-fab" style={{position:"fixed",bottom:20,right:20,zIndex:150}}>
+           <LanguageSelector />
+        </div>
       </div>
     </>
   );
@@ -692,6 +744,7 @@ body{background:#071a14;}
 .card-hover{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease !important;}
 .card-hover:hover{transform:translateY(-7px) !important;box-shadow:0 28px 70px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08) !important;}
 .blog-card:hover{transform:translateY(-9px) scale(1.025) !important;}
+.mobile-fab{display:none;}
 @media(max-width:768px){
   .nav-links{display:none !important;}
   .hamburger{display:block !important;}
@@ -699,5 +752,6 @@ body{background:#071a14;}
   .result-grid{grid-template-columns:1fr !important;}
   .bc-grid{grid-template-columns:1fr !important;}
   .stats-grid{grid-template-columns:repeat(2,1fr) !important;}
+  .mobile-fab{display:block;}
 }
 `;
