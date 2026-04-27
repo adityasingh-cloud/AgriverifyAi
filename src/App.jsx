@@ -5,18 +5,8 @@ import { Languages, Volume2, VolumeX, Check } from "lucide-react";
 import { useLanguage } from "./lib/LanguageContext";
 import { LANGUAGES } from "./lib/translations";
 
-const fallbackBlogs = [
-  { id:1,icon:"💰",category:"Market Exploitation",color:"#f472b6",date:"Apr 12 2025",readTime:"8 min",title:"The Price They Never See: How Middlemen Steal from Indian Farmers",excerpt:"Every harvest season, millions of farmers walk away with a fraction of what their crops are worth. The system is broken by design.",content:`## The Invisible Chain of Exploitation\n\nEvery year, India produces over 300 million tonnes of food grains. Yet the people who grow this food remain among the country's poorest citizens. The reason is a systemic failure baked into the agricultural supply chain.\n\n## How the Mandi System Works\n\nThe APMC system was designed in the 1960s to protect farmers. In practice it became the mechanism of exploitation. Commission agents (arhatiyas) control weighing, grading, storage, and credit — creating debt-bondage cycles lasting generations.\n\n**The Grade Manipulation**: Without standardized grading, arhatiyas visually inspect produce and assign quality grades. The conflict of interest is enormous — agents profit when grades are lower.\n\n## Real Numbers, Real Pain\n\nA 2022 ICAR study found onion farmers in Maharashtra received ₹2–₹5/kg at the farm gate, while Delhi consumers paid ₹40–₹60 for the same onions. The 10x gap was absorbed entirely by intermediaries. NABARD found 52.5% of agricultural households are indebted, with average debt of ₹74,121 per family.\n\n## What AgriVerify AI Changes\n\nObjective AI-driven quality grades, real-time price data synced from e-NAM, and blockchain-certified quality passports are dismantling 60 years of institutionalized exploitation — one verified transaction at a time.`},
-  { id:2,icon:"🌡️",category:"Climate Crisis",color:"#fb923c",date:"Mar 28 2025",readTime:"10 min",title:"Death by a Thousand Droughts: Climate Change and the Indian Farmer",excerpt:"Monsoon patterns have shifted. Groundwater is depleting. Temperatures are rising. Farmers face a crisis they did nothing to create.",content:`## A Crisis Without a Voice\n\nThe IPCC warned: South Asia's agricultural systems face catastrophic disruption by 2050. For Indian farmers, this is not an abstract future — it is happening now, in their fields, this season.\n\n## The Monsoon Is Breaking\n\nThe 2023 Southwest Monsoon arrived 10 days late across peninsular India. States received extreme rainfall causing flash floods while Marathwada experienced prolonged dry spells within the same monsoon season.\n\n## Groundwater: The Silent Apocalypse\n\nIndia extracts 230 billion cubic meters of groundwater annually — more than the US and China combined. Punjab groundwater levels have dropped 33 cm per year since 2000. Wheat yields fall 4.5–6% per 1°C temperature increase during grain-filling.\n\n## The Farmer Suicide Connection\n\nA PNAS study found a 7.3% increase in farmer suicide rates per degree Celsius increase. Climate change was responsible for an estimated 59,300 farmer suicides between 1980 and 2013.\n\n## AgriVerify AI's Role\n\nOur blockchain quality passport creates a verifiable record of sustainable farming practices linkable to carbon markets, premium pricing, and international ESG supply chain requirements.`},
-  { id:3,icon:"📱",category:"Digital Inclusion",color:"#a78bfa",date:"Mar 15 2025",readTime:"7 min",title:"The Literacy Trap: Why Digital India Left 140 Million Farmers Behind",excerpt:"Every government app assumes the user can read. Most Indian farmers cannot. This is a design failure, not a farmer failure.",content:`## The App That Doesn't Work\n\nThe NSSO estimates only 38% of rural Indians above 15 are functionally literate. In states like Rajasthan, Bihar, and UP, rural female literacy hovers at 30–40%. Every single agricultural app requires the ability to read.\n\n## The Language Layering Problem\n\nIndia has 22 scheduled languages and 1,600+ dialects. 500 million Indians speak neither English nor Hindi as their first language. Technology designed to help farmers cannot even be accessed by them.\n\n## The Voice Revolution\n\nBhashini — India's National Language Translation Mission — was created to bridge this gap. With support for 22+ languages, it makes any digital service voice-accessible across India's linguistic diversity.\n\n**AgriVerify AI's zero-literacy interface**: Farmers speak in their mother tongue or dialect. The system processes, translates, and responds in the same language. Quality reports are read aloud. No reading ability required at any point.\n\n## The Gender Dimension\n\nWomen perform 60–80% of agricultural labor but own less than 13% of agricultural land. Voice-first, vernacular interfaces lower barriers specifically for female farmers who have never typed on a smartphone.`},
-  { id:4,icon:"🌱",category:"Soil Health",color:"#4ade80",date:"Feb 20 2025",readTime:"9 min",title:"Soil Under Siege: The Silent Degradation Destroying Indian Farmland",excerpt:"India's Green Revolution fed a billion people. It also quietly poisoned the soil that makes feeding them possible.",content:`## The Green Revolution's Hidden Cost\n\nFifty years of intensive monoculture farming and heavy chemical inputs have left 146.8 million hectares — 45% of India's total area — suffering soil degradation in some form.\n\n## The Chemistry of Destruction\n\nIndia uses 16.3 million tonnes of nitrogen fertilizers annually. Punjab's soil organic carbon has fallen to below 0.3% — critically below the 0.5% minimum for productive soil. Without adequate organic carbon, soils lose water retention capacity, microbial health, and structural integrity.\n\n60,000 tonnes of pesticides annually have decimated soil microbial communities in intensively farmed areas. Without robust microbial communities, plants cannot efficiently access nutrients — so farmers apply more fertilizer, making the problem worse.\n\n## AgriVerify AI's Soil Intelligence Vision\n\nWhen a farmer's crop consistently grades lower than regional benchmarks, the most likely culprit is soil health. Our roadmap includes spectral analysis of crop tissue to flag when quality degradation is soil-related.\n\nFarmers who demonstrate soil health practices — no-till, cover cropping, organic matter addition — can access premium markets that reward sustainable provenance through our blockchain passport.`},
-  { id:5,icon:"📋",category:"Policy Failure",color:"#f87171",date:"Feb 5 2025",readTime:"8 min",title:"Broken Promises: The Reality of Crop Insurance in India",excerpt:"PM Fasal Bima Yojana was launched with great fanfare in 2016. Nine years later, farmers are still fighting for their dues.",content:`## The Insurance That Doesn't Insure\n\nSince 2016, farmers have paid PMFBY premiums of approximately ₹25,000 crore annually. Claims pending as of March 2024 exceeded ₹15,000 crore. In Maharashtra, farmers who suffered 2022 kharif losses were still waiting for payment in 2024.\n\n## How the System Fails\n\n**Enrollment Barriers**: Requires Aadhaar-linked bank accounts, valid land records, and smartphone access — excluding the most vulnerable farmers.\n\n**The Crop Cutting Experiment Problem**: Claims require physical crop sampling by state officials — massively understaffed, delayed by politics, prone to manipulation. A 2023 Parliamentary Committee found CCE data from several states "unreliable and not scientifically conducted."\n\n**Insurance Company Exit**: In 2022–23, Bajaj Allianz and HDFC Ergo exited PMFBY contracts. Enrolled farmers were transferred to new insurers, creating enormous confusion and further delays.\n\n## AgriVerify AI's Solution\n\nBlockchain-recorded crop quality data at harvest creates an immutable pre-loss record. A farmer with blockchain-certified Grade A wheat before the hailstorm, and Grade C after, has irrefutable claim evidence.`},
-  { id:6,icon:"🥦",category:"Infrastructure",color:"#22d3ee",date:"Jan 18 2025",readTime:"7 min",title:"The Cold Chain Crisis: Why Half of India's Vegetables Rot Before You See Them",excerpt:"India wastes ₹92,651 crore worth of food annually due to cold chain failure. The farmer pays in collapsed prices.",content:`## From Farm to Waste\n\nIndia wastes approximately 40% of fruit and vegetable production — 67 million tonnes annually — due to catastrophically underdeveloped cold chain infrastructure. And it is always the farmer who pays.\n\n## The Economics of Rotting\n\nWhen a Himachal Pradesh tomato farmer has no cold storage, tomatoes must sell within 3–4 days or become worthless. In August 2023, tomato prices crashed to ₹2/kg in Karnataka — below packaging cost. Weeks later: ₹150/kg in Delhi. The crash was caused entirely by a supply glut with no cold storage buffer.\n\n## The Infrastructure Gap\n\nIndia's 37 million tonnes of cold storage capacity is 70% potato-specific and concentrated in UP, West Bengal, and Punjab. Tribal areas and dryland farming regions are almost entirely without cold chain.\n\n## AgriVerify AI's Contribution\n\nQuality verification at harvest helps farmers decide which produce is worth storing vs. selling immediately. Real-time e-NAM prices inform timing decisions. A blockchain quality passport unlocks direct relationships with retail chains and exporters who pay premium prices for certified quality.`},
-  { id:7,icon:"🏦",category:"Financial Inclusion",color:"#fbbf24",date:"Jan 3 2025",readTime:"8 min",title:"The Credit Desert: Why Small Farmers Can't Access Formal Finance",excerpt:"Over 80 million small farmers have no formal credit access. Moneylenders charge 24–60% annual interest.",content:`## The Moneylender's Grip\n\nIn rural India, the moneylender — sahukaar — remains one of the most powerful figures in any farming community. They are usually also the grain trader, the weighing scale owner, and the mandi commission agent. A farmer who borrows ₹50,000 for seeds must sell their entire harvest exclusively through the sahukaar at whatever price the sahukaar sets.\n\n## The Formal Credit Gap\n\nDespite NABARD, Regional Rural Banks, and Kisan Credit Cards, 40% of indebted agricultural households borrow from informal sources at 24–60% interest. In tribal and remote areas, this exceeds 70%.\n\n**Why formal credit fails**: Land records are unreliable and disputed. Women farmers rarely have land in their names. Tenant farmers — cultivating 40% of India's agricultural land — have no formal land rights. The documentation burden is impenetrable for low-literacy farmers.\n\n## AgriVerify AI's Finance Vision\n\nOur blockchain quality passport is a financial identity document: verified quality grades across multiple seasons, price realization records, production consistency, and quality compliance history. This is precisely the alternative credit scoring data lenders need to extend credit to unbanked farmers.`},
-  { id:8,icon:"🚜",category:"Rural Migration",color:"#c084fc",date:"Dec 15 2024",readTime:"9 min",title:"Generation Exit: Why Young Indians Are Abandoning Agriculture",excerpt:"The average Indian farmer is 50.1 years old. Their children are moving to cities. India faces an agricultural labor crisis within two decades.",content:`## The Aging Farm\n\nWalk through any Indian agricultural village and count young people. The 18–35 age group — who should be learning to farm and innovating — is absent. They are in Surat weaving textiles, in Chennai at construction sites, in Pune delivering food on Zomato.\n\nThe NSSO found the average age of a principal agricultural operator in India is 50.1 years. In some southern states it exceeds 52.\n\n## Why They Leave\n\nThe reasons are entirely rational. Average agricultural household annual income: ₹1,22,616 (about ₹10,000/month). A first-year IT support job in any Indian city pays ₹15,000–₹25,000/month. Farming carries extreme income volatility, physical drudgery, and low social status compared to urban employment.\n\n## What This Means for India\n\nIf the trend continues: structural labor shortages in harvest-intensive crops, collapse in technology adoption capacity, land fragmentation and abandonment as aging farmers die without successors, and slowing food production growth against a still-rising population.\n\n## AgriVerify AI's Answer\n\nWhen a 25-year-old farmer can pull up a blockchain quality certificate, see real-time prices across ten mandis, negotiate directly with a Mumbai retailer, and receive UPI payment within 24 hours — they are doing something fundamentally different from their grandfather's experience. That is the future we are building.`},
-];
-
 function Aurora() {
+
   const ref = useRef(null);
   useEffect(() => {
     const c = ref.current; if (!c) return;
@@ -183,21 +173,57 @@ export default function App() {
   const [demoCode,setDemoCode]=useState(null);
   const [showPassport,setShowPassport]=useState(false);
   const [authSearch,setAuthSearch]=useState("");
-  const [blogs, setBlogs] = useState(fallbackBlogs);
   const fileRef=useRef(null);
   const [activeUploadView, setActiveUploadView]=useState(null);
   const [isPending, startTransition] = useTransition();
   const { t, speakText, lang } = useLanguage();
+  const [voiceConfig, setVoiceConfig] = useState("Female");
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  const playResultAudio = useCallback(() => {
+    if (!("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    setIsSpeaking(true);
+
+    const script = t.demo.result.voiceScript || "Analysis complete.";
+    const text = script.replace("GRADE_NAME", "Class I / Grade A").replace("MOISTURE_PERCENT", "12").replace("PRICE", "₹6,450");
+    const utterance = new SpeechSynthesisUtterance(text);
+    
+    utterance.lang = lang === 'en' ? 'en-IN' : `${lang}-IN`;
+    
+    const voices = window.speechSynthesis.getVoices();
+    const langVoices = voices.filter(v => v.lang.includes(utterance.lang) || v.lang.includes(lang));
+    
+    if (langVoices.length > 0) {
+      if (voiceConfig === "Female") {
+         utterance.voice = langVoices.find(v => v.name.toLowerCase().includes('female')) || langVoices[0];
+         utterance.pitch = 1.2;
+         utterance.rate = 0.95;
+      } else {
+         utterance.voice = langVoices.find(v => v.name.toLowerCase().includes('male')) || langVoices[0];
+         utterance.pitch = 0.8;
+         utterance.rate = 1.0;
+      }
+    } else {
+      utterance.pitch = voiceConfig === "Female" ? 1.2 : 0.8;
+    }
+
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+
+    window.speechSynthesis.speak(utterance);
+  }, [t, lang, voiceConfig]);
 
   useEffect(() => {
-    async function fetchBlogs() {
-      const { data, error } = await supabase.from('blogs').select('*').order('id', { ascending: true });
-      if (data && data.length > 0) setBlogs(data);
+    if (demoState === "result") {
+      setTimeout(() => playResultAudio(), 300);
+    } else {
+      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+      setIsSpeaking(false);
     }
-    fetchBlogs();
-  }, []);
+  }, [demoState, playResultAudio]);
 
-  useEffect(()=>{const t=setTimeout(()=>setSplash(false),2700);return()=>clearTimeout(t);},[]);
+  useEffect(()=>{const tmr=setTimeout(()=>setSplash(false),2700);return()=>clearTimeout(tmr);},[]);
 
   const goTo=id=>{document.getElementById(id)?.scrollIntoView({behavior:"smooth"});setMenuOpen(false);};
 
@@ -276,7 +302,7 @@ export default function App() {
 
   // ── BLOG READER ──
   if(activeBlog) {
-    const b=blogs.find(x=>x.id===activeBlog);
+    const b=t.blogs.list.find(x=>x.id===activeBlog);
     const paras=b.content.split("\n\n").filter(Boolean);
     return (
       <div style={{minHeight:"100vh",background:"linear-gradient(145deg,#071a14 0%,#0c1628 55%,#160c28 100%)",color:"#e8f5f0",fontFamily:"'DM Sans',sans-serif"}}>
@@ -557,9 +583,22 @@ export default function App() {
                   <div id="pdf-export-area">
                     <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:24,flexWrap:"wrap",gap:12}}>
                       <h3 style={{fontSize:"1.2rem",fontWeight:800,color:"#fff"}}><span style={{color:"#10b981"}}>✓</span> {t.demo.result.title}</h3>
-                      <Badge style={{background:"rgba(16,185,129,.1)",border:"1px solid rgba(16,185,129,.3)",color:"#10b981"}}>
-                        <div style={{width:6,height:6,borderRadius:"50%",background:"#10b981",animation:"blink 1.5s infinite"}} />{demoCode} · Polygon
-                      </Badge>
+                      <div style={{display:"flex",alignItems:"center",gap:16}}>
+                        <div style={{display:"flex",alignItems:"center",gap:8,background:"rgba(16,185,129,.1)",border:"1px solid rgba(16,185,129,.3)",padding:"6px 12px",borderRadius:99}} className="no-print">
+                           {isSpeaking ? (
+                             <motion.div animate={{opacity:[0.5,1,0.5],scale:[0.9,1.1,0.9]}} transition={{repeat:Infinity,duration:1}} style={{color:"#10b981",display:"flex",alignItems:"center"}}>
+                               <Volume2 size={16} />
+                             </motion.div>
+                           ) : (
+                             <div style={{color:"#7fbfa8",display:"flex",alignItems:"center"}}><Volume2 size={16} /></div>
+                           )}
+                           <button onClick={()=>setVoiceConfig(v=>v==="Female"?"Male":"Female")} style={{background:"none",border:"none",color:"#fff",fontSize:11,cursor:"pointer",fontWeight:600}}>{voiceConfig === "Female" ? t.demo.result.voiceFemale : t.demo.result.voiceMale}</button>
+                           <button onClick={playResultAudio} style={{background:"none",border:"none",color:"#10b981",fontSize:11,cursor:"pointer",textDecoration:"underline",marginLeft:4}}>{t.demo.result.replayBtn}</button>
+                        </div>
+                        <Badge style={{background:"rgba(16,185,129,.1)",border:"1px solid rgba(16,185,129,.3)",color:"#10b981"}}>
+                          <div style={{width:6,height:6,borderRadius:"50%",background:"#10b981",animation:"blink 1.5s infinite"}} />{demoCode} · Polygon
+                        </Badge>
+                      </div>
                     </div>
                     
                     <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:14,marginBottom:22}} className="result-grid">
@@ -740,8 +779,8 @@ export default function App() {
               <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(2rem,4vw,3.2rem)",fontWeight:900,color:"#fff",marginBottom:14}}>{t.blogs.title}</h2>
               <p style={{color:"#7fbfa8",maxWidth:480,margin:"0 auto"}}>{t.blogs.subtitle}</p>
             </div>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:20}}>
-              {blogs.map(b=>(
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:24}}>
+              {t.blogs.list.map(b=>(
                 <GCard key={b.id} onClick={()=>setActiveBlog(b.id)} style={{padding:22,cursor:"pointer",borderColor:b.color+"18",transition:"all .35s"}} className="card-hover blog-card">
                   <div style={{fontSize:32,marginBottom:12}}>{b.icon}</div>
                   <Badge style={{background:b.color+"18",border:`1px solid ${b.color}38`,color:b.color,marginBottom:14,fontSize:10}}>{b.category}</Badge>
