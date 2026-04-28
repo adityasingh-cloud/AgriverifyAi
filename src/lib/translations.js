@@ -186,12 +186,7 @@ export const translations = {
           "Aflatoxin Risk"
         ],
         "qrBtn": "View AgriPassport",
-        "pdfBtn": "Download PDF",
-        "voiceTitle": "Voice Settings",
-        "voiceMale": "Male (Clear)",
-        "voiceFemale": "Female (Soft)",
-        "replayBtn": "Replay Audio",
-        "voiceScript": "Hello. Analysis complete. Your crop has been graded as GRADE_NAME. The moisture level is MOISTURE_PERCENT percent, and the recommended market price is PRICE. You can now download your global certificate."
+        "pdfBtn": "Download PDF"
       },
       "passport": {
         "title": "AgriPassport",
@@ -233,75 +228,7 @@ export const translations = {
     "blogs": {
       "badge": "📝 Research & Insights",
       "title": "The Indian Farmer's Crisis",
-      "subtitle": "In-depth research on the systemic challenges facing India's 140 million farming families.",
-      "list": [
-        {
-          "id": 1,
-          "icon": "💰",
-          "category": "Market Exploitation",
-          "color": "#f472b6",
-          "date": "Apr 12 2025",
-          "readTime": "8 min",
-          "title": "The Price They Never See: How Middlemen Steal from Indian Farmers",
-          "excerpt": "Every harvest season, millions of farmers walk away with a fraction of what their crops are worth. The system is broken by design.",
-          "content": "## The Invisible Chain of Exploitation\n\nEvery year, India produces over 300 million tonnes of food grains. Yet the people who grow this food remain among the country's poorest citizens. The reason is a systemic failure baked into the agricultural supply chain.\n\n## How the Mandi System Works\n\nThe APMC system was designed in the 1960s to protect farmers. In practice it became the mechanism of exploitation. Commission agents (arhatiyas) control weighing, grading, storage, and credit — creating debt-bondage cycles lasting generations.\n\n**The Grade Manipulation**: Without standardized grading, arhatiyas visually inspect produce and assign quality grades. The conflict of interest is enormous — agents profit when grades are lower.\n\n## Real Numbers, Real Pain\n\nA 2022 ICAR study found onion farmers in Maharashtra received ₹2–₹5/kg at the farm gate, while Delhi consumers paid ₹40–₹60 for the same onions. The 10x gap was absorbed entirely by intermediaries. NABARD found 52.5% of agricultural households are indebted, with average debt of ₹74,121 per family.\n\n## What AgriVerify AI Changes\n\nObjective AI-driven quality grades, real-time price data synced from e-NAM, and blockchain-certified quality passports are dismantling 60 years of institutionalized exploitation — one verified transaction at a time."
-        },
-        {
-          "id": 2,
-          "icon": "🌡️",
-          "category": "Climate Crisis",
-          "color": "#fb923c",
-          "date": "Mar 28 2025",
-          "readTime": "10 min",
-          "title": "Death by a Thousand Droughts: Climate Change and the Indian Farmer",
-          "excerpt": "Monsoon patterns have shifted. Groundwater is depleting. Temperatures are rising. Farmers face a crisis they did nothing to create.",
-          "content": "## A Crisis Without a Voice\n\nThe IPCC warned: South Asia's agricultural systems face catastrophic disruption by 2050. For Indian farmers, this is not an abstract future — it is happening now, in their fields, this season.\n\n## The Monsoon Is Breaking\n\nThe 2023 Southwest Monsoon arrived 10 days late across peninsular India. States received extreme rainfall causing flash floods while Marathwada experienced prolonged dry spells within the same monsoon season.\n\n## Groundwater: The Silent Apocalypse\n\nIndia extracts 230 billion cubic meters of groundwater annually — more than the US and China combined. Punjab groundwater levels have dropped 33 cm per year since 2000. Wheat yields fall 4.5–6% per 1°C temperature increase during grain-filling.\n\n## The Farmer Suicide Connection\n\nA PNAS study found a 7.3% increase in farmer suicide rates per degree Celsius increase. Climate change was responsible for an estimated 59,300 farmer suicides between 1980 and 2013.\n\n## AgriVerify AI's Role\n\nOur blockchain quality passport creates a verifiable record of sustainable farming practices linkable to carbon markets, premium pricing, and international ESG supply chain requirements."
-        },
-        {
-          "id": 3,
-          "icon": "📱",
-          "category": "Digital Inclusion",
-          "color": "#a78bfa",
-          "date": "Mar 15 2025",
-          "readTime": "7 min",
-          "title": "The Literacy Trap: Why Digital India Left 140 Million Farmers Behind",
-          "excerpt": "Every government app assumes the user can read. Most Indian farmers cannot. This is a design failure, not a farmer failure.",
-          "content": "## The App That Doesn't Work\n\nThe NSSO estimates only 38% of rural Indians above 15 are functionally literate. In states like Rajasthan, Bihar, and UP, rural female literacy hovers at 30–40%. Every single agricultural app requires the ability to read.\n\n## The Language Layering Problem\n\nIndia has 22 scheduled languages and 1,600+ dialects. 500 million Indians speak neither English nor Hindi as their first language. Technology designed to help farmers cannot even be accessed by them.\n\n## The Voice Revolution\n\nBhashini — India's National Language Translation Mission — was created to bridge this gap. With support for 22+ languages, it makes any digital service voice-accessible across India's linguistic diversity.\n\n**AgriVerify AI's zero-literacy interface**: Farmers speak in their mother tongue or dialect. The system processes, translates, and responds in the same language. Quality reports are read aloud. No reading ability required at any point.\n\n## The Gender Dimension\n\nWomen perform 60–80% of agricultural labor but own less than 13% of agricultural land. Voice-first, vernacular interfaces lower barriers specifically for female farmers who have never typed on a smartphone."
-        },
-        {
-          "id": 4,
-          "icon": "🌱",
-          "category": "Soil Health",
-          "color": "#4ade80",
-          "date": "Feb 20 2025",
-          "readTime": "9 min",
-          "title": "Soil Under Siege: The Silent Degradation Destroying Indian Farmland",
-          "excerpt": "India's Green Revolution fed a billion people. It also quietly poisoned the soil that makes feeding them possible.",
-          "content": "## The Green Revolution's Hidden Cost\n\nFifty years of intensive monoculture farming and heavy chemical inputs have left 146.8 million hectares — 45% of India's total area — suffering soil degradation in some form.\n\n## The Chemistry of Destruction\n\nIndia uses 16.3 million tonnes of nitrogen fertilizers annually. Punjab's soil organic carbon has fallen to below 0.3% — critically below the 0.5% minimum for productive soil. Without adequate organic carbon, soils lose water retention capacity, microbial health, and structural integrity.\n\n60,000 tonnes of pesticides annually have decimated soil microbial communities in intensively farmed areas. Without robust microbial communities, plants cannot efficiently access nutrients — so farmers apply more fertilizer, making the problem worse.\n\n## AgriVerify AI's Soil Intelligence Vision\n\nWhen a farmer's crop consistently grades lower than regional benchmarks, the most likely culprit is soil health. Our roadmap includes spectral analysis of crop tissue to flag when quality degradation is soil-related.\n\nFarmers who demonstrate soil health practices — no-till, cover cropping, organic matter addition — can access premium markets that reward sustainable provenance through our blockchain passport."
-        },
-        {
-          "id": 5,
-          "icon": "📋",
-          "category": "Policy Failure",
-          "color": "#f87171",
-          "date": "Feb 5 2025",
-          "readTime": "8 min",
-          "title": "Broken Promises: The Reality of Crop Insurance in India",
-          "excerpt": "PM Fasal Bima Yojana was launched with great fanfare in 2016. Nine years later, farmers are still fighting for their dues.",
-          "content": "## The Insurance That Doesn't Insure\n\nSince 2016, farmers have paid PMFBY premiums of approximately ₹25,000 crore annually. Claims pending as of March 2024 exceeded ₹15,000 crore. In Maharashtra, farmers who suffered 2022 kharif losses were still waiting for payment in 2024.\n\n## How the System Fails\n\n**Enrollment Barriers**: Requires Aadhaar-linked bank accounts, valid land records, and smartphone access — excluding the most vulnerable farmers.\n\n**The Crop Cutting Experiment Problem**: Claims require physical crop sampling by state officials — massively understaffed, delayed by politics, prone to manipulation. A 2023 Parliamentary Committee found CCE data from several states \"unreliable and not scientifically conducted.\"\n\n**Insurance Company Exit**: In 2022–23, Bajaj Allianz and HDFC Ergo exited PMFBY contracts. Enrolled farmers were transferred to new insurers, creating enormous confusion and further delays.\n\n## AgriVerify AI's Solution\n\nBlockchain-recorded crop quality data at harvest creates an immutable pre-loss record. A farmer with blockchain-certified Grade A wheat before the hailstorm, and Grade C after, has irrefutable claim evidence."
-        },
-        {
-          "id": 6,
-          "icon": "🥦",
-          "category": "Infrastructure",
-          "color": "#22d3ee",
-          "date": "Jan 18 2025",
-          "readTime": "7 min",
-          "title": "The Cold Chain Crisis: Why Half of India's Vegetables Rot Before You See Them",
-          "excerpt": "India wastes ₹92,651 crore worth of food annually due to cold chain failure. The farmer pays in collapsed prices.",
-          "content": "## From Farm to Waste\n\nIndia wastes approximately 40% of fruit and vegetable production — 67 million tonnes annually — due to catastrophically underdeveloped cold chain infrastructure. And it is always the farmer who pays.\n\n## The Economics of Rotting\n\nWhen a Himachal Pradesh tomato farmer has no cold storage, tomatoes must sell within 3–4 days or become worthless. In August 2023, tomato prices crashed to ₹2/kg in Karnataka — below packaging cost. Weeks later: ₹150/kg in Delhi. The crash was caused entirely by a supply glut with no cold storage buffer.\n\n## The Infrastructure Gap\n\nIndia's 37 million tonnes of cold storage capacity is 70% potato-specific and concentrated in UP, West Bengal, and Punjab. Tribal areas and dryland farming regions are almost entirely without cold chain.\n\n## AgriVerify AI's Contribution\n\nQuality verification at harvest helps farmers decide which produce is worth storing vs. selling immediately. Real-time e-NAM prices inform timing decisions. A blockchain quality passport unlocks direct relationships with retail chains and exporters who pay premium prices for certified quality."
-        }
-      ]
+      "subtitle": "In-depth research on the systemic challenges facing India's 140 million farming families."
     },
     "team": {
       "badge": "👥 The Team",
@@ -494,12 +421,7 @@ export const translations = {
           "एफ्लाटॉक्सिन जोखिम"
         ],
         "qrBtn": "एग्रीपासपोर्ट देखें",
-        "pdfBtn": "पीडीएफ डाउनलोड करें",
-        "voiceTitle": "वॉयस सेटिंग्स",
-        "voiceMale": "पुरुष",
-        "voiceFemale": "महिला",
-        "replayBtn": "ऑडियो फिर से चलाएं",
-        "voiceScript": "नमस्ते। विश्लेषण पूरा हुआ। आपकी फसल को GRADE_NAME ग्रेड दिया गया है। नमी का स्तर MOISTURE_PERCENT प्रतिशत है, और अनुशंसित बाजार मूल्य PRICE है। अब आप अपना वैश्विक प्रमाणपत्र डाउनलोड कर सकते हैं।"
+        "pdfBtn": "पीडीएफ डाउनलोड करें"
       },
       "passport": {
         "title": "एग्रीपासपोर्ट",
@@ -541,75 +463,7 @@ export const translations = {
     "blogs": {
       "badge": "📝 शोध और अंतर्दृष्टि",
       "title": "भारतीय किसान का संकट",
-      "subtitle": "भारत के 14 करोड़ किसान परिवारों के सामने आने वाली प्रणालीगत चुनौतियों पर गहन शोध।",
-      "list": [
-        {
-          "id": 1,
-          "icon": "💰",
-          "category": "Market Exploitation",
-          "color": "#f472b6",
-          "date": "Apr 12 2025",
-          "readTime": "8 min",
-          "title": "[हिंदी] The Price They Never See: How Middlemen Steal from Indian Farmers",
-          "excerpt": "[हिंदी] Every harvest season, millions of farmers walk away with a fraction of what their crops are worth. The system is broken by design.",
-          "content": "[हिंदी] ## The Invisible Chain of Exploitation\n\nEvery year, India produces over 300 million tonnes of food grains. Yet the people who grow this food remain among the country's poorest citizens. The reason is a systemic failure baked into the agricultural supply chain.\n\n## How the Mandi System Works\n\nThe APMC system was designed in the 1960s to protect farmers. In practice it became the mechanism of exploitation. Commission agents (arhatiyas) control weighing, grading, storage, and credit — creating debt-bondage cycles lasting generations.\n\n**The Grade Manipulation**: Without standardized grading, arhatiyas visually inspect produce and assign quality grades. The conflict of interest is enormous — agents profit when grades are lower.\n\n## Real Numbers, Real Pain\n\nA 2022 ICAR study found onion farmers in Maharashtra received ₹2–₹5/kg at the farm gate, while Delhi consumers paid ₹40–₹60 for the same onions. The 10x gap was absorbed entirely by intermediaries. NABARD found 52.5% of agricultural households are indebted, with average debt of ₹74,121 per family.\n\n## What AgriVerify AI Changes\n\nObjective AI-driven quality grades, real-time price data synced from e-NAM, and blockchain-certified quality passports are dismantling 60 years of institutionalized exploitation — one verified transaction at a time."
-        },
-        {
-          "id": 2,
-          "icon": "🌡️",
-          "category": "Climate Crisis",
-          "color": "#fb923c",
-          "date": "Mar 28 2025",
-          "readTime": "10 min",
-          "title": "[हिंदी] Death by a Thousand Droughts: Climate Change and the Indian Farmer",
-          "excerpt": "[हिंदी] Monsoon patterns have shifted. Groundwater is depleting. Temperatures are rising. Farmers face a crisis they did nothing to create.",
-          "content": "[हिंदी] ## A Crisis Without a Voice\n\nThe IPCC warned: South Asia's agricultural systems face catastrophic disruption by 2050. For Indian farmers, this is not an abstract future — it is happening now, in their fields, this season.\n\n## The Monsoon Is Breaking\n\nThe 2023 Southwest Monsoon arrived 10 days late across peninsular India. States received extreme rainfall causing flash floods while Marathwada experienced prolonged dry spells within the same monsoon season.\n\n## Groundwater: The Silent Apocalypse\n\nIndia extracts 230 billion cubic meters of groundwater annually — more than the US and China combined. Punjab groundwater levels have dropped 33 cm per year since 2000. Wheat yields fall 4.5–6% per 1°C temperature increase during grain-filling.\n\n## The Farmer Suicide Connection\n\nA PNAS study found a 7.3% increase in farmer suicide rates per degree Celsius increase. Climate change was responsible for an estimated 59,300 farmer suicides between 1980 and 2013.\n\n## AgriVerify AI's Role\n\nOur blockchain quality passport creates a verifiable record of sustainable farming practices linkable to carbon markets, premium pricing, and international ESG supply chain requirements."
-        },
-        {
-          "id": 3,
-          "icon": "📱",
-          "category": "Digital Inclusion",
-          "color": "#a78bfa",
-          "date": "Mar 15 2025",
-          "readTime": "7 min",
-          "title": "[हिंदी] The Literacy Trap: Why Digital India Left 140 Million Farmers Behind",
-          "excerpt": "[हिंदी] Every government app assumes the user can read. Most Indian farmers cannot. This is a design failure, not a farmer failure.",
-          "content": "[हिंदी] ## The App That Doesn't Work\n\nThe NSSO estimates only 38% of rural Indians above 15 are functionally literate. In states like Rajasthan, Bihar, and UP, rural female literacy hovers at 30–40%. Every single agricultural app requires the ability to read.\n\n## The Language Layering Problem\n\nIndia has 22 scheduled languages and 1,600+ dialects. 500 million Indians speak neither English nor Hindi as their first language. Technology designed to help farmers cannot even be accessed by them.\n\n## The Voice Revolution\n\nBhashini — India's National Language Translation Mission — was created to bridge this gap. With support for 22+ languages, it makes any digital service voice-accessible across India's linguistic diversity.\n\n**AgriVerify AI's zero-literacy interface**: Farmers speak in their mother tongue or dialect. The system processes, translates, and responds in the same language. Quality reports are read aloud. No reading ability required at any point.\n\n## The Gender Dimension\n\nWomen perform 60–80% of agricultural labor but own less than 13% of agricultural land. Voice-first, vernacular interfaces lower barriers specifically for female farmers who have never typed on a smartphone."
-        },
-        {
-          "id": 4,
-          "icon": "🌱",
-          "category": "Soil Health",
-          "color": "#4ade80",
-          "date": "Feb 20 2025",
-          "readTime": "9 min",
-          "title": "[हिंदी] Soil Under Siege: The Silent Degradation Destroying Indian Farmland",
-          "excerpt": "[हिंदी] India's Green Revolution fed a billion people. It also quietly poisoned the soil that makes feeding them possible.",
-          "content": "[हिंदी] ## The Green Revolution's Hidden Cost\n\nFifty years of intensive monoculture farming and heavy chemical inputs have left 146.8 million hectares — 45% of India's total area — suffering soil degradation in some form.\n\n## The Chemistry of Destruction\n\nIndia uses 16.3 million tonnes of nitrogen fertilizers annually. Punjab's soil organic carbon has fallen to below 0.3% — critically below the 0.5% minimum for productive soil. Without adequate organic carbon, soils lose water retention capacity, microbial health, and structural integrity.\n\n60,000 tonnes of pesticides annually have decimated soil microbial communities in intensively farmed areas. Without robust microbial communities, plants cannot efficiently access nutrients — so farmers apply more fertilizer, making the problem worse.\n\n## AgriVerify AI's Soil Intelligence Vision\n\nWhen a farmer's crop consistently grades lower than regional benchmarks, the most likely culprit is soil health. Our roadmap includes spectral analysis of crop tissue to flag when quality degradation is soil-related.\n\nFarmers who demonstrate soil health practices — no-till, cover cropping, organic matter addition — can access premium markets that reward sustainable provenance through our blockchain passport."
-        },
-        {
-          "id": 5,
-          "icon": "📋",
-          "category": "Policy Failure",
-          "color": "#f87171",
-          "date": "Feb 5 2025",
-          "readTime": "8 min",
-          "title": "[हिंदी] Broken Promises: The Reality of Crop Insurance in India",
-          "excerpt": "[हिंदी] PM Fasal Bima Yojana was launched with great fanfare in 2016. Nine years later, farmers are still fighting for their dues.",
-          "content": "[हिंदी] ## The Insurance That Doesn't Insure\n\nSince 2016, farmers have paid PMFBY premiums of approximately ₹25,000 crore annually. Claims pending as of March 2024 exceeded ₹15,000 crore. In Maharashtra, farmers who suffered 2022 kharif losses were still waiting for payment in 2024.\n\n## How the System Fails\n\n**Enrollment Barriers**: Requires Aadhaar-linked bank accounts, valid land records, and smartphone access — excluding the most vulnerable farmers.\n\n**The Crop Cutting Experiment Problem**: Claims require physical crop sampling by state officials — massively understaffed, delayed by politics, prone to manipulation. A 2023 Parliamentary Committee found CCE data from several states \"unreliable and not scientifically conducted.\"\n\n**Insurance Company Exit**: In 2022–23, Bajaj Allianz and HDFC Ergo exited PMFBY contracts. Enrolled farmers were transferred to new insurers, creating enormous confusion and further delays.\n\n## AgriVerify AI's Solution\n\nBlockchain-recorded crop quality data at harvest creates an immutable pre-loss record. A farmer with blockchain-certified Grade A wheat before the hailstorm, and Grade C after, has irrefutable claim evidence."
-        },
-        {
-          "id": 6,
-          "icon": "🥦",
-          "category": "Infrastructure",
-          "color": "#22d3ee",
-          "date": "Jan 18 2025",
-          "readTime": "7 min",
-          "title": "[हिंदी] The Cold Chain Crisis: Why Half of India's Vegetables Rot Before You See Them",
-          "excerpt": "[हिंदी] India wastes ₹92,651 crore worth of food annually due to cold chain failure. The farmer pays in collapsed prices.",
-          "content": "[हिंदी] ## From Farm to Waste\n\nIndia wastes approximately 40% of fruit and vegetable production — 67 million tonnes annually — due to catastrophically underdeveloped cold chain infrastructure. And it is always the farmer who pays.\n\n## The Economics of Rotting\n\nWhen a Himachal Pradesh tomato farmer has no cold storage, tomatoes must sell within 3–4 days or become worthless. In August 2023, tomato prices crashed to ₹2/kg in Karnataka — below packaging cost. Weeks later: ₹150/kg in Delhi. The crash was caused entirely by a supply glut with no cold storage buffer.\n\n## The Infrastructure Gap\n\nIndia's 37 million tonnes of cold storage capacity is 70% potato-specific and concentrated in UP, West Bengal, and Punjab. Tribal areas and dryland farming regions are almost entirely without cold chain.\n\n## AgriVerify AI's Contribution\n\nQuality verification at harvest helps farmers decide which produce is worth storing vs. selling immediately. Real-time e-NAM prices inform timing decisions. A blockchain quality passport unlocks direct relationships with retail chains and exporters who pay premium prices for certified quality."
-        }
-      ]
+      "subtitle": "भारत के 14 करोड़ किसान परिवारों के सामने आने वाली प्रणालीगत चुनौतियों पर गहन शोध।"
     },
     "team": {
       "badge": "👥 टीम",
@@ -802,12 +656,7 @@ export const translations = {
           "एफ्लाटॉक्सिन जोखिम"
         ],
         "qrBtn": "एग्रीपासपोर्ट देखें",
-        "pdfBtn": "पीडीएफ डाउनलोड करें",
-        "voiceTitle": "ভয়েস সেটিংস",
-        "voiceMale": "পুরুষ",
-        "voiceFemale": "মহিলা",
-        "replayBtn": "অডিও পুনরায় চালান",
-        "voiceScript": "নমস্কার। বিশ্লেষণ সম্পন্ন হয়েছে। আপনার ফসলকে GRADE_NAME গ্রেড দেওয়া হয়েছে। আর্দ্রতার মাত্রা MOISTURE_PERCENT শতাংশ, এবং প্রস্তাবিত বাজার মূল্য PRICE। আপনি এখন আপনার গ্লোবাল শংসাপত্র ডাউনলোড করতে পারেন।"
+        "pdfBtn": "पीडीएफ डाउनलोड करें"
       },
       "passport": {
         "title": "एग्रीपासपोर्ट",
@@ -849,75 +698,7 @@ export const translations = {
     "blogs": {
       "badge": "📝 গবেষণা",
       "title": "ভারতীয় কৃষকের সংকট",
-      "subtitle": "ভারতের ১৪ কোটি কৃষক পরিবারের গভীর গবেষণা।",
-      "list": [
-        {
-          "id": 1,
-          "icon": "💰",
-          "category": "Market Exploitation",
-          "color": "#f472b6",
-          "date": "Apr 12 2025",
-          "readTime": "8 min",
-          "title": "[বাংলা] The Price They Never See: How Middlemen Steal from Indian Farmers",
-          "excerpt": "[বাংলা] Every harvest season, millions of farmers walk away with a fraction of what their crops are worth. The system is broken by design.",
-          "content": "[বাংলা] ## The Invisible Chain of Exploitation\n\nEvery year, India produces over 300 million tonnes of food grains. Yet the people who grow this food remain among the country's poorest citizens. The reason is a systemic failure baked into the agricultural supply chain.\n\n## How the Mandi System Works\n\nThe APMC system was designed in the 1960s to protect farmers. In practice it became the mechanism of exploitation. Commission agents (arhatiyas) control weighing, grading, storage, and credit — creating debt-bondage cycles lasting generations.\n\n**The Grade Manipulation**: Without standardized grading, arhatiyas visually inspect produce and assign quality grades. The conflict of interest is enormous — agents profit when grades are lower.\n\n## Real Numbers, Real Pain\n\nA 2022 ICAR study found onion farmers in Maharashtra received ₹2–₹5/kg at the farm gate, while Delhi consumers paid ₹40–₹60 for the same onions. The 10x gap was absorbed entirely by intermediaries. NABARD found 52.5% of agricultural households are indebted, with average debt of ₹74,121 per family.\n\n## What AgriVerify AI Changes\n\nObjective AI-driven quality grades, real-time price data synced from e-NAM, and blockchain-certified quality passports are dismantling 60 years of institutionalized exploitation — one verified transaction at a time."
-        },
-        {
-          "id": 2,
-          "icon": "🌡️",
-          "category": "Climate Crisis",
-          "color": "#fb923c",
-          "date": "Mar 28 2025",
-          "readTime": "10 min",
-          "title": "[বাংলা] Death by a Thousand Droughts: Climate Change and the Indian Farmer",
-          "excerpt": "[বাংলা] Monsoon patterns have shifted. Groundwater is depleting. Temperatures are rising. Farmers face a crisis they did nothing to create.",
-          "content": "[বাংলা] ## A Crisis Without a Voice\n\nThe IPCC warned: South Asia's agricultural systems face catastrophic disruption by 2050. For Indian farmers, this is not an abstract future — it is happening now, in their fields, this season.\n\n## The Monsoon Is Breaking\n\nThe 2023 Southwest Monsoon arrived 10 days late across peninsular India. States received extreme rainfall causing flash floods while Marathwada experienced prolonged dry spells within the same monsoon season.\n\n## Groundwater: The Silent Apocalypse\n\nIndia extracts 230 billion cubic meters of groundwater annually — more than the US and China combined. Punjab groundwater levels have dropped 33 cm per year since 2000. Wheat yields fall 4.5–6% per 1°C temperature increase during grain-filling.\n\n## The Farmer Suicide Connection\n\nA PNAS study found a 7.3% increase in farmer suicide rates per degree Celsius increase. Climate change was responsible for an estimated 59,300 farmer suicides between 1980 and 2013.\n\n## AgriVerify AI's Role\n\nOur blockchain quality passport creates a verifiable record of sustainable farming practices linkable to carbon markets, premium pricing, and international ESG supply chain requirements."
-        },
-        {
-          "id": 3,
-          "icon": "📱",
-          "category": "Digital Inclusion",
-          "color": "#a78bfa",
-          "date": "Mar 15 2025",
-          "readTime": "7 min",
-          "title": "[বাংলা] The Literacy Trap: Why Digital India Left 140 Million Farmers Behind",
-          "excerpt": "[বাংলা] Every government app assumes the user can read. Most Indian farmers cannot. This is a design failure, not a farmer failure.",
-          "content": "[বাংলা] ## The App That Doesn't Work\n\nThe NSSO estimates only 38% of rural Indians above 15 are functionally literate. In states like Rajasthan, Bihar, and UP, rural female literacy hovers at 30–40%. Every single agricultural app requires the ability to read.\n\n## The Language Layering Problem\n\nIndia has 22 scheduled languages and 1,600+ dialects. 500 million Indians speak neither English nor Hindi as their first language. Technology designed to help farmers cannot even be accessed by them.\n\n## The Voice Revolution\n\nBhashini — India's National Language Translation Mission — was created to bridge this gap. With support for 22+ languages, it makes any digital service voice-accessible across India's linguistic diversity.\n\n**AgriVerify AI's zero-literacy interface**: Farmers speak in their mother tongue or dialect. The system processes, translates, and responds in the same language. Quality reports are read aloud. No reading ability required at any point.\n\n## The Gender Dimension\n\nWomen perform 60–80% of agricultural labor but own less than 13% of agricultural land. Voice-first, vernacular interfaces lower barriers specifically for female farmers who have never typed on a smartphone."
-        },
-        {
-          "id": 4,
-          "icon": "🌱",
-          "category": "Soil Health",
-          "color": "#4ade80",
-          "date": "Feb 20 2025",
-          "readTime": "9 min",
-          "title": "[বাংলা] Soil Under Siege: The Silent Degradation Destroying Indian Farmland",
-          "excerpt": "[বাংলা] India's Green Revolution fed a billion people. It also quietly poisoned the soil that makes feeding them possible.",
-          "content": "[বাংলা] ## The Green Revolution's Hidden Cost\n\nFifty years of intensive monoculture farming and heavy chemical inputs have left 146.8 million hectares — 45% of India's total area — suffering soil degradation in some form.\n\n## The Chemistry of Destruction\n\nIndia uses 16.3 million tonnes of nitrogen fertilizers annually. Punjab's soil organic carbon has fallen to below 0.3% — critically below the 0.5% minimum for productive soil. Without adequate organic carbon, soils lose water retention capacity, microbial health, and structural integrity.\n\n60,000 tonnes of pesticides annually have decimated soil microbial communities in intensively farmed areas. Without robust microbial communities, plants cannot efficiently access nutrients — so farmers apply more fertilizer, making the problem worse.\n\n## AgriVerify AI's Soil Intelligence Vision\n\nWhen a farmer's crop consistently grades lower than regional benchmarks, the most likely culprit is soil health. Our roadmap includes spectral analysis of crop tissue to flag when quality degradation is soil-related.\n\nFarmers who demonstrate soil health practices — no-till, cover cropping, organic matter addition — can access premium markets that reward sustainable provenance through our blockchain passport."
-        },
-        {
-          "id": 5,
-          "icon": "📋",
-          "category": "Policy Failure",
-          "color": "#f87171",
-          "date": "Feb 5 2025",
-          "readTime": "8 min",
-          "title": "[বাংলা] Broken Promises: The Reality of Crop Insurance in India",
-          "excerpt": "[বাংলা] PM Fasal Bima Yojana was launched with great fanfare in 2016. Nine years later, farmers are still fighting for their dues.",
-          "content": "[বাংলা] ## The Insurance That Doesn't Insure\n\nSince 2016, farmers have paid PMFBY premiums of approximately ₹25,000 crore annually. Claims pending as of March 2024 exceeded ₹15,000 crore. In Maharashtra, farmers who suffered 2022 kharif losses were still waiting for payment in 2024.\n\n## How the System Fails\n\n**Enrollment Barriers**: Requires Aadhaar-linked bank accounts, valid land records, and smartphone access — excluding the most vulnerable farmers.\n\n**The Crop Cutting Experiment Problem**: Claims require physical crop sampling by state officials — massively understaffed, delayed by politics, prone to manipulation. A 2023 Parliamentary Committee found CCE data from several states \"unreliable and not scientifically conducted.\"\n\n**Insurance Company Exit**: In 2022–23, Bajaj Allianz and HDFC Ergo exited PMFBY contracts. Enrolled farmers were transferred to new insurers, creating enormous confusion and further delays.\n\n## AgriVerify AI's Solution\n\nBlockchain-recorded crop quality data at harvest creates an immutable pre-loss record. A farmer with blockchain-certified Grade A wheat before the hailstorm, and Grade C after, has irrefutable claim evidence."
-        },
-        {
-          "id": 6,
-          "icon": "🥦",
-          "category": "Infrastructure",
-          "color": "#22d3ee",
-          "date": "Jan 18 2025",
-          "readTime": "7 min",
-          "title": "[বাংলা] The Cold Chain Crisis: Why Half of India's Vegetables Rot Before You See Them",
-          "excerpt": "[বাংলা] India wastes ₹92,651 crore worth of food annually due to cold chain failure. The farmer pays in collapsed prices.",
-          "content": "[বাংলা] ## From Farm to Waste\n\nIndia wastes approximately 40% of fruit and vegetable production — 67 million tonnes annually — due to catastrophically underdeveloped cold chain infrastructure. And it is always the farmer who pays.\n\n## The Economics of Rotting\n\nWhen a Himachal Pradesh tomato farmer has no cold storage, tomatoes must sell within 3–4 days or become worthless. In August 2023, tomato prices crashed to ₹2/kg in Karnataka — below packaging cost. Weeks later: ₹150/kg in Delhi. The crash was caused entirely by a supply glut with no cold storage buffer.\n\n## The Infrastructure Gap\n\nIndia's 37 million tonnes of cold storage capacity is 70% potato-specific and concentrated in UP, West Bengal, and Punjab. Tribal areas and dryland farming regions are almost entirely without cold chain.\n\n## AgriVerify AI's Contribution\n\nQuality verification at harvest helps farmers decide which produce is worth storing vs. selling immediately. Real-time e-NAM prices inform timing decisions. A blockchain quality passport unlocks direct relationships with retail chains and exporters who pay premium prices for certified quality."
-        }
-      ]
+      "subtitle": "ভারতের ১৪ কোটি কৃষক পরিবারের গভীর গবেষণা।"
     },
     "team": {
       "badge": "👥 टीम",
@@ -1110,12 +891,7 @@ export const translations = {
           "एफ्लाटॉक्सिन जोखिम"
         ],
         "qrBtn": "एग्रीपासपोर्ट देखें",
-        "pdfBtn": "पीडीएफ डाउनलोड करें",
-        "voiceTitle": "व्हॉइस सेटिंग्ज",
-        "voiceMale": "पुरुष",
-        "voiceFemale": "स्त्री",
-        "replayBtn": "ऑडिओ पुन्हा चालवा",
-        "voiceScript": "नमस्कार. विश्लेषण पूर्ण झाले आहे. तुमच्या पिकाला GRADE_NAME ग्रेड दिला गेला आहे. आर्द्रता पातळी MOISTURE_PERCENT टक्के आहे, आणि शिफारस केलेली बाजार किंमत PRICE आहे. तुम्ही आता तुमचे जागतिक प्रमाणपत्र डाउनलोड करू शकता."
+        "pdfBtn": "पीडीएफ डाउनलोड करें"
       },
       "passport": {
         "title": "एग्रीपासपोर्ट",
@@ -1157,75 +933,7 @@ export const translations = {
     "blogs": {
       "badge": "📝 संशोधन",
       "title": "भारतीय शेतकऱ्यांचे संकट",
-      "subtitle": "भारतातील १४ कोटी शेतकरी कुटुंबांवरील सखोल संशोधन.",
-      "list": [
-        {
-          "id": 1,
-          "icon": "💰",
-          "category": "Market Exploitation",
-          "color": "#f472b6",
-          "date": "Apr 12 2025",
-          "readTime": "8 min",
-          "title": "[मराठी] The Price They Never See: How Middlemen Steal from Indian Farmers",
-          "excerpt": "[मराठी] Every harvest season, millions of farmers walk away with a fraction of what their crops are worth. The system is broken by design.",
-          "content": "[मराठी] ## The Invisible Chain of Exploitation\n\nEvery year, India produces over 300 million tonnes of food grains. Yet the people who grow this food remain among the country's poorest citizens. The reason is a systemic failure baked into the agricultural supply chain.\n\n## How the Mandi System Works\n\nThe APMC system was designed in the 1960s to protect farmers. In practice it became the mechanism of exploitation. Commission agents (arhatiyas) control weighing, grading, storage, and credit — creating debt-bondage cycles lasting generations.\n\n**The Grade Manipulation**: Without standardized grading, arhatiyas visually inspect produce and assign quality grades. The conflict of interest is enormous — agents profit when grades are lower.\n\n## Real Numbers, Real Pain\n\nA 2022 ICAR study found onion farmers in Maharashtra received ₹2–₹5/kg at the farm gate, while Delhi consumers paid ₹40–₹60 for the same onions. The 10x gap was absorbed entirely by intermediaries. NABARD found 52.5% of agricultural households are indebted, with average debt of ₹74,121 per family.\n\n## What AgriVerify AI Changes\n\nObjective AI-driven quality grades, real-time price data synced from e-NAM, and blockchain-certified quality passports are dismantling 60 years of institutionalized exploitation — one verified transaction at a time."
-        },
-        {
-          "id": 2,
-          "icon": "🌡️",
-          "category": "Climate Crisis",
-          "color": "#fb923c",
-          "date": "Mar 28 2025",
-          "readTime": "10 min",
-          "title": "[मराठी] Death by a Thousand Droughts: Climate Change and the Indian Farmer",
-          "excerpt": "[मराठी] Monsoon patterns have shifted. Groundwater is depleting. Temperatures are rising. Farmers face a crisis they did nothing to create.",
-          "content": "[मराठी] ## A Crisis Without a Voice\n\nThe IPCC warned: South Asia's agricultural systems face catastrophic disruption by 2050. For Indian farmers, this is not an abstract future — it is happening now, in their fields, this season.\n\n## The Monsoon Is Breaking\n\nThe 2023 Southwest Monsoon arrived 10 days late across peninsular India. States received extreme rainfall causing flash floods while Marathwada experienced prolonged dry spells within the same monsoon season.\n\n## Groundwater: The Silent Apocalypse\n\nIndia extracts 230 billion cubic meters of groundwater annually — more than the US and China combined. Punjab groundwater levels have dropped 33 cm per year since 2000. Wheat yields fall 4.5–6% per 1°C temperature increase during grain-filling.\n\n## The Farmer Suicide Connection\n\nA PNAS study found a 7.3% increase in farmer suicide rates per degree Celsius increase. Climate change was responsible for an estimated 59,300 farmer suicides between 1980 and 2013.\n\n## AgriVerify AI's Role\n\nOur blockchain quality passport creates a verifiable record of sustainable farming practices linkable to carbon markets, premium pricing, and international ESG supply chain requirements."
-        },
-        {
-          "id": 3,
-          "icon": "📱",
-          "category": "Digital Inclusion",
-          "color": "#a78bfa",
-          "date": "Mar 15 2025",
-          "readTime": "7 min",
-          "title": "[मराठी] The Literacy Trap: Why Digital India Left 140 Million Farmers Behind",
-          "excerpt": "[मराठी] Every government app assumes the user can read. Most Indian farmers cannot. This is a design failure, not a farmer failure.",
-          "content": "[मराठी] ## The App That Doesn't Work\n\nThe NSSO estimates only 38% of rural Indians above 15 are functionally literate. In states like Rajasthan, Bihar, and UP, rural female literacy hovers at 30–40%. Every single agricultural app requires the ability to read.\n\n## The Language Layering Problem\n\nIndia has 22 scheduled languages and 1,600+ dialects. 500 million Indians speak neither English nor Hindi as their first language. Technology designed to help farmers cannot even be accessed by them.\n\n## The Voice Revolution\n\nBhashini — India's National Language Translation Mission — was created to bridge this gap. With support for 22+ languages, it makes any digital service voice-accessible across India's linguistic diversity.\n\n**AgriVerify AI's zero-literacy interface**: Farmers speak in their mother tongue or dialect. The system processes, translates, and responds in the same language. Quality reports are read aloud. No reading ability required at any point.\n\n## The Gender Dimension\n\nWomen perform 60–80% of agricultural labor but own less than 13% of agricultural land. Voice-first, vernacular interfaces lower barriers specifically for female farmers who have never typed on a smartphone."
-        },
-        {
-          "id": 4,
-          "icon": "🌱",
-          "category": "Soil Health",
-          "color": "#4ade80",
-          "date": "Feb 20 2025",
-          "readTime": "9 min",
-          "title": "[मराठी] Soil Under Siege: The Silent Degradation Destroying Indian Farmland",
-          "excerpt": "[मराठी] India's Green Revolution fed a billion people. It also quietly poisoned the soil that makes feeding them possible.",
-          "content": "[मराठी] ## The Green Revolution's Hidden Cost\n\nFifty years of intensive monoculture farming and heavy chemical inputs have left 146.8 million hectares — 45% of India's total area — suffering soil degradation in some form.\n\n## The Chemistry of Destruction\n\nIndia uses 16.3 million tonnes of nitrogen fertilizers annually. Punjab's soil organic carbon has fallen to below 0.3% — critically below the 0.5% minimum for productive soil. Without adequate organic carbon, soils lose water retention capacity, microbial health, and structural integrity.\n\n60,000 tonnes of pesticides annually have decimated soil microbial communities in intensively farmed areas. Without robust microbial communities, plants cannot efficiently access nutrients — so farmers apply more fertilizer, making the problem worse.\n\n## AgriVerify AI's Soil Intelligence Vision\n\nWhen a farmer's crop consistently grades lower than regional benchmarks, the most likely culprit is soil health. Our roadmap includes spectral analysis of crop tissue to flag when quality degradation is soil-related.\n\nFarmers who demonstrate soil health practices — no-till, cover cropping, organic matter addition — can access premium markets that reward sustainable provenance through our blockchain passport."
-        },
-        {
-          "id": 5,
-          "icon": "📋",
-          "category": "Policy Failure",
-          "color": "#f87171",
-          "date": "Feb 5 2025",
-          "readTime": "8 min",
-          "title": "[मराठी] Broken Promises: The Reality of Crop Insurance in India",
-          "excerpt": "[मराठी] PM Fasal Bima Yojana was launched with great fanfare in 2016. Nine years later, farmers are still fighting for their dues.",
-          "content": "[मराठी] ## The Insurance That Doesn't Insure\n\nSince 2016, farmers have paid PMFBY premiums of approximately ₹25,000 crore annually. Claims pending as of March 2024 exceeded ₹15,000 crore. In Maharashtra, farmers who suffered 2022 kharif losses were still waiting for payment in 2024.\n\n## How the System Fails\n\n**Enrollment Barriers**: Requires Aadhaar-linked bank accounts, valid land records, and smartphone access — excluding the most vulnerable farmers.\n\n**The Crop Cutting Experiment Problem**: Claims require physical crop sampling by state officials — massively understaffed, delayed by politics, prone to manipulation. A 2023 Parliamentary Committee found CCE data from several states \"unreliable and not scientifically conducted.\"\n\n**Insurance Company Exit**: In 2022–23, Bajaj Allianz and HDFC Ergo exited PMFBY contracts. Enrolled farmers were transferred to new insurers, creating enormous confusion and further delays.\n\n## AgriVerify AI's Solution\n\nBlockchain-recorded crop quality data at harvest creates an immutable pre-loss record. A farmer with blockchain-certified Grade A wheat before the hailstorm, and Grade C after, has irrefutable claim evidence."
-        },
-        {
-          "id": 6,
-          "icon": "🥦",
-          "category": "Infrastructure",
-          "color": "#22d3ee",
-          "date": "Jan 18 2025",
-          "readTime": "7 min",
-          "title": "[मराठी] The Cold Chain Crisis: Why Half of India's Vegetables Rot Before You See Them",
-          "excerpt": "[मराठी] India wastes ₹92,651 crore worth of food annually due to cold chain failure. The farmer pays in collapsed prices.",
-          "content": "[मराठी] ## From Farm to Waste\n\nIndia wastes approximately 40% of fruit and vegetable production — 67 million tonnes annually — due to catastrophically underdeveloped cold chain infrastructure. And it is always the farmer who pays.\n\n## The Economics of Rotting\n\nWhen a Himachal Pradesh tomato farmer has no cold storage, tomatoes must sell within 3–4 days or become worthless. In August 2023, tomato prices crashed to ₹2/kg in Karnataka — below packaging cost. Weeks later: ₹150/kg in Delhi. The crash was caused entirely by a supply glut with no cold storage buffer.\n\n## The Infrastructure Gap\n\nIndia's 37 million tonnes of cold storage capacity is 70% potato-specific and concentrated in UP, West Bengal, and Punjab. Tribal areas and dryland farming regions are almost entirely without cold chain.\n\n## AgriVerify AI's Contribution\n\nQuality verification at harvest helps farmers decide which produce is worth storing vs. selling immediately. Real-time e-NAM prices inform timing decisions. A blockchain quality passport unlocks direct relationships with retail chains and exporters who pay premium prices for certified quality."
-        }
-      ]
+      "subtitle": "भारतातील १४ कोटी शेतकरी कुटुंबांवरील सखोल संशोधन."
     },
     "team": {
       "badge": "👥 टीम",
@@ -1418,12 +1126,7 @@ export const translations = {
           "एफ्लाटॉक्सिन जोखिम"
         ],
         "qrBtn": "एग्रीपासपोर्ट देखें",
-        "pdfBtn": "पीडीएफ डाउनलोड करें",
-        "voiceTitle": "వాయిస్ సెట్టింగులు",
-        "voiceMale": "పురుషుడు",
-        "voiceFemale": "స్త్రీ",
-        "replayBtn": "ఆడియోను మళ్లీ ప్లే చేయండి",
-        "voiceScript": "నమస్కారం. విశ్లేషణ పూర్తయింది. మీ పంటకు GRADE_NAME గ్రేడ్ ఇవ్వబడింది. తేమ స్థాయి MOISTURE_PERCENT శాతం, మరియు సిఫార్సు చేయబడిన మార్కెట్ ధర PRICE. మీరు ఇప్పుడు మీ గ్లోబల్ సర్టిఫికేట్‌ను డౌన్‌లోడ్ చేసుకోవచ్చు."
+        "pdfBtn": "पीडीएफ डाउनलोड करें"
       },
       "passport": {
         "title": "एग्रीपासपोर्ट",
@@ -1465,75 +1168,7 @@ export const translations = {
     "blogs": {
       "badge": "📝 పరిశోధన",
       "title": "భారతీయ రైతుల సంక్షోభం",
-      "subtitle": "14 కోట్ల రైతు కుటుంబాలపై లోతైన పరిశోధన.",
-      "list": [
-        {
-          "id": 1,
-          "icon": "💰",
-          "category": "Market Exploitation",
-          "color": "#f472b6",
-          "date": "Apr 12 2025",
-          "readTime": "8 min",
-          "title": "[తెలుగు] The Price They Never See: How Middlemen Steal from Indian Farmers",
-          "excerpt": "[తెలుగు] Every harvest season, millions of farmers walk away with a fraction of what their crops are worth. The system is broken by design.",
-          "content": "[తెలుగు] ## The Invisible Chain of Exploitation\n\nEvery year, India produces over 300 million tonnes of food grains. Yet the people who grow this food remain among the country's poorest citizens. The reason is a systemic failure baked into the agricultural supply chain.\n\n## How the Mandi System Works\n\nThe APMC system was designed in the 1960s to protect farmers. In practice it became the mechanism of exploitation. Commission agents (arhatiyas) control weighing, grading, storage, and credit — creating debt-bondage cycles lasting generations.\n\n**The Grade Manipulation**: Without standardized grading, arhatiyas visually inspect produce and assign quality grades. The conflict of interest is enormous — agents profit when grades are lower.\n\n## Real Numbers, Real Pain\n\nA 2022 ICAR study found onion farmers in Maharashtra received ₹2–₹5/kg at the farm gate, while Delhi consumers paid ₹40–₹60 for the same onions. The 10x gap was absorbed entirely by intermediaries. NABARD found 52.5% of agricultural households are indebted, with average debt of ₹74,121 per family.\n\n## What AgriVerify AI Changes\n\nObjective AI-driven quality grades, real-time price data synced from e-NAM, and blockchain-certified quality passports are dismantling 60 years of institutionalized exploitation — one verified transaction at a time."
-        },
-        {
-          "id": 2,
-          "icon": "🌡️",
-          "category": "Climate Crisis",
-          "color": "#fb923c",
-          "date": "Mar 28 2025",
-          "readTime": "10 min",
-          "title": "[తెలుగు] Death by a Thousand Droughts: Climate Change and the Indian Farmer",
-          "excerpt": "[తెలుగు] Monsoon patterns have shifted. Groundwater is depleting. Temperatures are rising. Farmers face a crisis they did nothing to create.",
-          "content": "[తెలుగు] ## A Crisis Without a Voice\n\nThe IPCC warned: South Asia's agricultural systems face catastrophic disruption by 2050. For Indian farmers, this is not an abstract future — it is happening now, in their fields, this season.\n\n## The Monsoon Is Breaking\n\nThe 2023 Southwest Monsoon arrived 10 days late across peninsular India. States received extreme rainfall causing flash floods while Marathwada experienced prolonged dry spells within the same monsoon season.\n\n## Groundwater: The Silent Apocalypse\n\nIndia extracts 230 billion cubic meters of groundwater annually — more than the US and China combined. Punjab groundwater levels have dropped 33 cm per year since 2000. Wheat yields fall 4.5–6% per 1°C temperature increase during grain-filling.\n\n## The Farmer Suicide Connection\n\nA PNAS study found a 7.3% increase in farmer suicide rates per degree Celsius increase. Climate change was responsible for an estimated 59,300 farmer suicides between 1980 and 2013.\n\n## AgriVerify AI's Role\n\nOur blockchain quality passport creates a verifiable record of sustainable farming practices linkable to carbon markets, premium pricing, and international ESG supply chain requirements."
-        },
-        {
-          "id": 3,
-          "icon": "📱",
-          "category": "Digital Inclusion",
-          "color": "#a78bfa",
-          "date": "Mar 15 2025",
-          "readTime": "7 min",
-          "title": "[తెలుగు] The Literacy Trap: Why Digital India Left 140 Million Farmers Behind",
-          "excerpt": "[తెలుగు] Every government app assumes the user can read. Most Indian farmers cannot. This is a design failure, not a farmer failure.",
-          "content": "[తెలుగు] ## The App That Doesn't Work\n\nThe NSSO estimates only 38% of rural Indians above 15 are functionally literate. In states like Rajasthan, Bihar, and UP, rural female literacy hovers at 30–40%. Every single agricultural app requires the ability to read.\n\n## The Language Layering Problem\n\nIndia has 22 scheduled languages and 1,600+ dialects. 500 million Indians speak neither English nor Hindi as their first language. Technology designed to help farmers cannot even be accessed by them.\n\n## The Voice Revolution\n\nBhashini — India's National Language Translation Mission — was created to bridge this gap. With support for 22+ languages, it makes any digital service voice-accessible across India's linguistic diversity.\n\n**AgriVerify AI's zero-literacy interface**: Farmers speak in their mother tongue or dialect. The system processes, translates, and responds in the same language. Quality reports are read aloud. No reading ability required at any point.\n\n## The Gender Dimension\n\nWomen perform 60–80% of agricultural labor but own less than 13% of agricultural land. Voice-first, vernacular interfaces lower barriers specifically for female farmers who have never typed on a smartphone."
-        },
-        {
-          "id": 4,
-          "icon": "🌱",
-          "category": "Soil Health",
-          "color": "#4ade80",
-          "date": "Feb 20 2025",
-          "readTime": "9 min",
-          "title": "[తెలుగు] Soil Under Siege: The Silent Degradation Destroying Indian Farmland",
-          "excerpt": "[తెలుగు] India's Green Revolution fed a billion people. It also quietly poisoned the soil that makes feeding them possible.",
-          "content": "[తెలుగు] ## The Green Revolution's Hidden Cost\n\nFifty years of intensive monoculture farming and heavy chemical inputs have left 146.8 million hectares — 45% of India's total area — suffering soil degradation in some form.\n\n## The Chemistry of Destruction\n\nIndia uses 16.3 million tonnes of nitrogen fertilizers annually. Punjab's soil organic carbon has fallen to below 0.3% — critically below the 0.5% minimum for productive soil. Without adequate organic carbon, soils lose water retention capacity, microbial health, and structural integrity.\n\n60,000 tonnes of pesticides annually have decimated soil microbial communities in intensively farmed areas. Without robust microbial communities, plants cannot efficiently access nutrients — so farmers apply more fertilizer, making the problem worse.\n\n## AgriVerify AI's Soil Intelligence Vision\n\nWhen a farmer's crop consistently grades lower than regional benchmarks, the most likely culprit is soil health. Our roadmap includes spectral analysis of crop tissue to flag when quality degradation is soil-related.\n\nFarmers who demonstrate soil health practices — no-till, cover cropping, organic matter addition — can access premium markets that reward sustainable provenance through our blockchain passport."
-        },
-        {
-          "id": 5,
-          "icon": "📋",
-          "category": "Policy Failure",
-          "color": "#f87171",
-          "date": "Feb 5 2025",
-          "readTime": "8 min",
-          "title": "[తెలుగు] Broken Promises: The Reality of Crop Insurance in India",
-          "excerpt": "[తెలుగు] PM Fasal Bima Yojana was launched with great fanfare in 2016. Nine years later, farmers are still fighting for their dues.",
-          "content": "[తెలుగు] ## The Insurance That Doesn't Insure\n\nSince 2016, farmers have paid PMFBY premiums of approximately ₹25,000 crore annually. Claims pending as of March 2024 exceeded ₹15,000 crore. In Maharashtra, farmers who suffered 2022 kharif losses were still waiting for payment in 2024.\n\n## How the System Fails\n\n**Enrollment Barriers**: Requires Aadhaar-linked bank accounts, valid land records, and smartphone access — excluding the most vulnerable farmers.\n\n**The Crop Cutting Experiment Problem**: Claims require physical crop sampling by state officials — massively understaffed, delayed by politics, prone to manipulation. A 2023 Parliamentary Committee found CCE data from several states \"unreliable and not scientifically conducted.\"\n\n**Insurance Company Exit**: In 2022–23, Bajaj Allianz and HDFC Ergo exited PMFBY contracts. Enrolled farmers were transferred to new insurers, creating enormous confusion and further delays.\n\n## AgriVerify AI's Solution\n\nBlockchain-recorded crop quality data at harvest creates an immutable pre-loss record. A farmer with blockchain-certified Grade A wheat before the hailstorm, and Grade C after, has irrefutable claim evidence."
-        },
-        {
-          "id": 6,
-          "icon": "🥦",
-          "category": "Infrastructure",
-          "color": "#22d3ee",
-          "date": "Jan 18 2025",
-          "readTime": "7 min",
-          "title": "[తెలుగు] The Cold Chain Crisis: Why Half of India's Vegetables Rot Before You See Them",
-          "excerpt": "[తెలుగు] India wastes ₹92,651 crore worth of food annually due to cold chain failure. The farmer pays in collapsed prices.",
-          "content": "[తెలుగు] ## From Farm to Waste\n\nIndia wastes approximately 40% of fruit and vegetable production — 67 million tonnes annually — due to catastrophically underdeveloped cold chain infrastructure. And it is always the farmer who pays.\n\n## The Economics of Rotting\n\nWhen a Himachal Pradesh tomato farmer has no cold storage, tomatoes must sell within 3–4 days or become worthless. In August 2023, tomato prices crashed to ₹2/kg in Karnataka — below packaging cost. Weeks later: ₹150/kg in Delhi. The crash was caused entirely by a supply glut with no cold storage buffer.\n\n## The Infrastructure Gap\n\nIndia's 37 million tonnes of cold storage capacity is 70% potato-specific and concentrated in UP, West Bengal, and Punjab. Tribal areas and dryland farming regions are almost entirely without cold chain.\n\n## AgriVerify AI's Contribution\n\nQuality verification at harvest helps farmers decide which produce is worth storing vs. selling immediately. Real-time e-NAM prices inform timing decisions. A blockchain quality passport unlocks direct relationships with retail chains and exporters who pay premium prices for certified quality."
-        }
-      ]
+      "subtitle": "14 కోట్ల రైతు కుటుంబాలపై లోతైన పరిశోధన."
     },
     "team": {
       "badge": "👥 टीम",
@@ -1726,12 +1361,7 @@ export const translations = {
           "एफ्लाटॉक्सिन जोखिम"
         ],
         "qrBtn": "एग्रीपासपोर्ट देखें",
-        "pdfBtn": "पीडीएफ डाउनलोड करें",
-        "voiceTitle": "குரல் அமைப்புகள்",
-        "voiceMale": "ஆண்",
-        "voiceFemale": "பெண்",
-        "replayBtn": "ஆடியோவை மீண்டும் இயக்கவும்",
-        "voiceScript": "வணக்கம். பகுப்பாய்வு முடிந்தது. உங்கள் பயிருக்கு GRADE_NAME தரம் வழங்கப்பட்டுள்ளது. ஈரப்பதம் அளவு MOISTURE_PERCENT சதவீதம், மற்றும் பரிந்துரைக்கப்பட்ட சந்தை விலை PRICE ஆகும். இப்போது உங்கள் உலகளாவிய சான்றிதழை பதிவிறக்கம் செய்யலாம்."
+        "pdfBtn": "पीडीएफ डाउनलोड करें"
       },
       "passport": {
         "title": "एग्रीपासपोर्ट",
@@ -1773,75 +1403,7 @@ export const translations = {
     "blogs": {
       "badge": "📝 ஆராய்ச்சி",
       "title": "விவசாயிகளின் நெருக்கடி",
-      "subtitle": "14 கோடி விவசாய குடும்பங்கள் பற்றிய ஆழமான ஆராய்ச்சி.",
-      "list": [
-        {
-          "id": 1,
-          "icon": "💰",
-          "category": "Market Exploitation",
-          "color": "#f472b6",
-          "date": "Apr 12 2025",
-          "readTime": "8 min",
-          "title": "[தமிழ்] The Price They Never See: How Middlemen Steal from Indian Farmers",
-          "excerpt": "[தமிழ்] Every harvest season, millions of farmers walk away with a fraction of what their crops are worth. The system is broken by design.",
-          "content": "[தமிழ்] ## The Invisible Chain of Exploitation\n\nEvery year, India produces over 300 million tonnes of food grains. Yet the people who grow this food remain among the country's poorest citizens. The reason is a systemic failure baked into the agricultural supply chain.\n\n## How the Mandi System Works\n\nThe APMC system was designed in the 1960s to protect farmers. In practice it became the mechanism of exploitation. Commission agents (arhatiyas) control weighing, grading, storage, and credit — creating debt-bondage cycles lasting generations.\n\n**The Grade Manipulation**: Without standardized grading, arhatiyas visually inspect produce and assign quality grades. The conflict of interest is enormous — agents profit when grades are lower.\n\n## Real Numbers, Real Pain\n\nA 2022 ICAR study found onion farmers in Maharashtra received ₹2–₹5/kg at the farm gate, while Delhi consumers paid ₹40–₹60 for the same onions. The 10x gap was absorbed entirely by intermediaries. NABARD found 52.5% of agricultural households are indebted, with average debt of ₹74,121 per family.\n\n## What AgriVerify AI Changes\n\nObjective AI-driven quality grades, real-time price data synced from e-NAM, and blockchain-certified quality passports are dismantling 60 years of institutionalized exploitation — one verified transaction at a time."
-        },
-        {
-          "id": 2,
-          "icon": "🌡️",
-          "category": "Climate Crisis",
-          "color": "#fb923c",
-          "date": "Mar 28 2025",
-          "readTime": "10 min",
-          "title": "[தமிழ்] Death by a Thousand Droughts: Climate Change and the Indian Farmer",
-          "excerpt": "[தமிழ்] Monsoon patterns have shifted. Groundwater is depleting. Temperatures are rising. Farmers face a crisis they did nothing to create.",
-          "content": "[தமிழ்] ## A Crisis Without a Voice\n\nThe IPCC warned: South Asia's agricultural systems face catastrophic disruption by 2050. For Indian farmers, this is not an abstract future — it is happening now, in their fields, this season.\n\n## The Monsoon Is Breaking\n\nThe 2023 Southwest Monsoon arrived 10 days late across peninsular India. States received extreme rainfall causing flash floods while Marathwada experienced prolonged dry spells within the same monsoon season.\n\n## Groundwater: The Silent Apocalypse\n\nIndia extracts 230 billion cubic meters of groundwater annually — more than the US and China combined. Punjab groundwater levels have dropped 33 cm per year since 2000. Wheat yields fall 4.5–6% per 1°C temperature increase during grain-filling.\n\n## The Farmer Suicide Connection\n\nA PNAS study found a 7.3% increase in farmer suicide rates per degree Celsius increase. Climate change was responsible for an estimated 59,300 farmer suicides between 1980 and 2013.\n\n## AgriVerify AI's Role\n\nOur blockchain quality passport creates a verifiable record of sustainable farming practices linkable to carbon markets, premium pricing, and international ESG supply chain requirements."
-        },
-        {
-          "id": 3,
-          "icon": "📱",
-          "category": "Digital Inclusion",
-          "color": "#a78bfa",
-          "date": "Mar 15 2025",
-          "readTime": "7 min",
-          "title": "[தமிழ்] The Literacy Trap: Why Digital India Left 140 Million Farmers Behind",
-          "excerpt": "[தமிழ்] Every government app assumes the user can read. Most Indian farmers cannot. This is a design failure, not a farmer failure.",
-          "content": "[தமிழ்] ## The App That Doesn't Work\n\nThe NSSO estimates only 38% of rural Indians above 15 are functionally literate. In states like Rajasthan, Bihar, and UP, rural female literacy hovers at 30–40%. Every single agricultural app requires the ability to read.\n\n## The Language Layering Problem\n\nIndia has 22 scheduled languages and 1,600+ dialects. 500 million Indians speak neither English nor Hindi as their first language. Technology designed to help farmers cannot even be accessed by them.\n\n## The Voice Revolution\n\nBhashini — India's National Language Translation Mission — was created to bridge this gap. With support for 22+ languages, it makes any digital service voice-accessible across India's linguistic diversity.\n\n**AgriVerify AI's zero-literacy interface**: Farmers speak in their mother tongue or dialect. The system processes, translates, and responds in the same language. Quality reports are read aloud. No reading ability required at any point.\n\n## The Gender Dimension\n\nWomen perform 60–80% of agricultural labor but own less than 13% of agricultural land. Voice-first, vernacular interfaces lower barriers specifically for female farmers who have never typed on a smartphone."
-        },
-        {
-          "id": 4,
-          "icon": "🌱",
-          "category": "Soil Health",
-          "color": "#4ade80",
-          "date": "Feb 20 2025",
-          "readTime": "9 min",
-          "title": "[தமிழ்] Soil Under Siege: The Silent Degradation Destroying Indian Farmland",
-          "excerpt": "[தமிழ்] India's Green Revolution fed a billion people. It also quietly poisoned the soil that makes feeding them possible.",
-          "content": "[தமிழ்] ## The Green Revolution's Hidden Cost\n\nFifty years of intensive monoculture farming and heavy chemical inputs have left 146.8 million hectares — 45% of India's total area — suffering soil degradation in some form.\n\n## The Chemistry of Destruction\n\nIndia uses 16.3 million tonnes of nitrogen fertilizers annually. Punjab's soil organic carbon has fallen to below 0.3% — critically below the 0.5% minimum for productive soil. Without adequate organic carbon, soils lose water retention capacity, microbial health, and structural integrity.\n\n60,000 tonnes of pesticides annually have decimated soil microbial communities in intensively farmed areas. Without robust microbial communities, plants cannot efficiently access nutrients — so farmers apply more fertilizer, making the problem worse.\n\n## AgriVerify AI's Soil Intelligence Vision\n\nWhen a farmer's crop consistently grades lower than regional benchmarks, the most likely culprit is soil health. Our roadmap includes spectral analysis of crop tissue to flag when quality degradation is soil-related.\n\nFarmers who demonstrate soil health practices — no-till, cover cropping, organic matter addition — can access premium markets that reward sustainable provenance through our blockchain passport."
-        },
-        {
-          "id": 5,
-          "icon": "📋",
-          "category": "Policy Failure",
-          "color": "#f87171",
-          "date": "Feb 5 2025",
-          "readTime": "8 min",
-          "title": "[தமிழ்] Broken Promises: The Reality of Crop Insurance in India",
-          "excerpt": "[தமிழ்] PM Fasal Bima Yojana was launched with great fanfare in 2016. Nine years later, farmers are still fighting for their dues.",
-          "content": "[தமிழ்] ## The Insurance That Doesn't Insure\n\nSince 2016, farmers have paid PMFBY premiums of approximately ₹25,000 crore annually. Claims pending as of March 2024 exceeded ₹15,000 crore. In Maharashtra, farmers who suffered 2022 kharif losses were still waiting for payment in 2024.\n\n## How the System Fails\n\n**Enrollment Barriers**: Requires Aadhaar-linked bank accounts, valid land records, and smartphone access — excluding the most vulnerable farmers.\n\n**The Crop Cutting Experiment Problem**: Claims require physical crop sampling by state officials — massively understaffed, delayed by politics, prone to manipulation. A 2023 Parliamentary Committee found CCE data from several states \"unreliable and not scientifically conducted.\"\n\n**Insurance Company Exit**: In 2022–23, Bajaj Allianz and HDFC Ergo exited PMFBY contracts. Enrolled farmers were transferred to new insurers, creating enormous confusion and further delays.\n\n## AgriVerify AI's Solution\n\nBlockchain-recorded crop quality data at harvest creates an immutable pre-loss record. A farmer with blockchain-certified Grade A wheat before the hailstorm, and Grade C after, has irrefutable claim evidence."
-        },
-        {
-          "id": 6,
-          "icon": "🥦",
-          "category": "Infrastructure",
-          "color": "#22d3ee",
-          "date": "Jan 18 2025",
-          "readTime": "7 min",
-          "title": "[தமிழ்] The Cold Chain Crisis: Why Half of India's Vegetables Rot Before You See Them",
-          "excerpt": "[தமிழ்] India wastes ₹92,651 crore worth of food annually due to cold chain failure. The farmer pays in collapsed prices.",
-          "content": "[தமிழ்] ## From Farm to Waste\n\nIndia wastes approximately 40% of fruit and vegetable production — 67 million tonnes annually — due to catastrophically underdeveloped cold chain infrastructure. And it is always the farmer who pays.\n\n## The Economics of Rotting\n\nWhen a Himachal Pradesh tomato farmer has no cold storage, tomatoes must sell within 3–4 days or become worthless. In August 2023, tomato prices crashed to ₹2/kg in Karnataka — below packaging cost. Weeks later: ₹150/kg in Delhi. The crash was caused entirely by a supply glut with no cold storage buffer.\n\n## The Infrastructure Gap\n\nIndia's 37 million tonnes of cold storage capacity is 70% potato-specific and concentrated in UP, West Bengal, and Punjab. Tribal areas and dryland farming regions are almost entirely without cold chain.\n\n## AgriVerify AI's Contribution\n\nQuality verification at harvest helps farmers decide which produce is worth storing vs. selling immediately. Real-time e-NAM prices inform timing decisions. A blockchain quality passport unlocks direct relationships with retail chains and exporters who pay premium prices for certified quality."
-        }
-      ]
+      "subtitle": "14 கோடி விவசாய குடும்பங்கள் பற்றிய ஆழமான ஆராய்ச்சி."
     },
     "team": {
       "badge": "👥 टीम",
@@ -2034,12 +1596,7 @@ export const translations = {
           "एफ्लाटॉक्सिन जोखिम"
         ],
         "qrBtn": "एग्रीपासपोर्ट देखें",
-        "pdfBtn": "पीडीएफ डाउनलोड करें",
-        "voiceTitle": "ಧ್ವನಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
-        "voiceMale": "ಪುರುಷ",
-        "voiceFemale": "ಮಹಿಳೆ",
-        "replayBtn": "ಆಡಿಯೊವನ್ನು ಮರು ಪ್ಲೇ ಮಾಡಿ",
-        "voiceScript": "ನಮಸ್ಕಾರ. ವಿಶ್ಲೇಷಣೆ ಪೂರ್ಣಗೊಂಡಿದೆ. ನಿಮ್ಮ ಬೆಳೆಗೆ GRADE_NAME ಗ್ರೇಡ್ ನೀಡಲಾಗಿದೆ. ತೇವಾಂಶ ಮಟ್ಟವು MOISTURE_PERCENT ಶೇಕಡಾ, ಮತ್ತು ಶಿಫಾರಸು ಮಾಡಲಾದ ಮಾರುಕಟ್ಟೆ ಬೆಲೆ PRICE ಆಗಿದೆ. ನೀವು ಈಗ ನಿಮ್ಮ ಜಾಗತಿಕ ಪ್ರಮಾಣಪತ್ರವನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಬಹುದು."
+        "pdfBtn": "पीडीएफ डाउनलोड करें"
       },
       "passport": {
         "title": "एग्रीपासपोर्ट",
@@ -2081,75 +1638,7 @@ export const translations = {
     "blogs": {
       "badge": "📝 ಸಂಶೋಧನೆ",
       "title": "ರೈತರ ಬಿಕ್ಕಟ್ಟು",
-      "subtitle": "14 ಕೋಟಿ ರೈತ ಕುಟುಂಬಗಳ ಬಗ್ಗೆ ಆಳವಾದ ಸಂಶೋಧನೆ.",
-      "list": [
-        {
-          "id": 1,
-          "icon": "💰",
-          "category": "Market Exploitation",
-          "color": "#f472b6",
-          "date": "Apr 12 2025",
-          "readTime": "8 min",
-          "title": "[ಕನ್ನಡ] The Price They Never See: How Middlemen Steal from Indian Farmers",
-          "excerpt": "[ಕನ್ನಡ] Every harvest season, millions of farmers walk away with a fraction of what their crops are worth. The system is broken by design.",
-          "content": "[ಕನ್ನಡ] ## The Invisible Chain of Exploitation\n\nEvery year, India produces over 300 million tonnes of food grains. Yet the people who grow this food remain among the country's poorest citizens. The reason is a systemic failure baked into the agricultural supply chain.\n\n## How the Mandi System Works\n\nThe APMC system was designed in the 1960s to protect farmers. In practice it became the mechanism of exploitation. Commission agents (arhatiyas) control weighing, grading, storage, and credit — creating debt-bondage cycles lasting generations.\n\n**The Grade Manipulation**: Without standardized grading, arhatiyas visually inspect produce and assign quality grades. The conflict of interest is enormous — agents profit when grades are lower.\n\n## Real Numbers, Real Pain\n\nA 2022 ICAR study found onion farmers in Maharashtra received ₹2–₹5/kg at the farm gate, while Delhi consumers paid ₹40–₹60 for the same onions. The 10x gap was absorbed entirely by intermediaries. NABARD found 52.5% of agricultural households are indebted, with average debt of ₹74,121 per family.\n\n## What AgriVerify AI Changes\n\nObjective AI-driven quality grades, real-time price data synced from e-NAM, and blockchain-certified quality passports are dismantling 60 years of institutionalized exploitation — one verified transaction at a time."
-        },
-        {
-          "id": 2,
-          "icon": "🌡️",
-          "category": "Climate Crisis",
-          "color": "#fb923c",
-          "date": "Mar 28 2025",
-          "readTime": "10 min",
-          "title": "[ಕನ್ನಡ] Death by a Thousand Droughts: Climate Change and the Indian Farmer",
-          "excerpt": "[ಕನ್ನಡ] Monsoon patterns have shifted. Groundwater is depleting. Temperatures are rising. Farmers face a crisis they did nothing to create.",
-          "content": "[ಕನ್ನಡ] ## A Crisis Without a Voice\n\nThe IPCC warned: South Asia's agricultural systems face catastrophic disruption by 2050. For Indian farmers, this is not an abstract future — it is happening now, in their fields, this season.\n\n## The Monsoon Is Breaking\n\nThe 2023 Southwest Monsoon arrived 10 days late across peninsular India. States received extreme rainfall causing flash floods while Marathwada experienced prolonged dry spells within the same monsoon season.\n\n## Groundwater: The Silent Apocalypse\n\nIndia extracts 230 billion cubic meters of groundwater annually — more than the US and China combined. Punjab groundwater levels have dropped 33 cm per year since 2000. Wheat yields fall 4.5–6% per 1°C temperature increase during grain-filling.\n\n## The Farmer Suicide Connection\n\nA PNAS study found a 7.3% increase in farmer suicide rates per degree Celsius increase. Climate change was responsible for an estimated 59,300 farmer suicides between 1980 and 2013.\n\n## AgriVerify AI's Role\n\nOur blockchain quality passport creates a verifiable record of sustainable farming practices linkable to carbon markets, premium pricing, and international ESG supply chain requirements."
-        },
-        {
-          "id": 3,
-          "icon": "📱",
-          "category": "Digital Inclusion",
-          "color": "#a78bfa",
-          "date": "Mar 15 2025",
-          "readTime": "7 min",
-          "title": "[ಕನ್ನಡ] The Literacy Trap: Why Digital India Left 140 Million Farmers Behind",
-          "excerpt": "[ಕನ್ನಡ] Every government app assumes the user can read. Most Indian farmers cannot. This is a design failure, not a farmer failure.",
-          "content": "[ಕನ್ನಡ] ## The App That Doesn't Work\n\nThe NSSO estimates only 38% of rural Indians above 15 are functionally literate. In states like Rajasthan, Bihar, and UP, rural female literacy hovers at 30–40%. Every single agricultural app requires the ability to read.\n\n## The Language Layering Problem\n\nIndia has 22 scheduled languages and 1,600+ dialects. 500 million Indians speak neither English nor Hindi as their first language. Technology designed to help farmers cannot even be accessed by them.\n\n## The Voice Revolution\n\nBhashini — India's National Language Translation Mission — was created to bridge this gap. With support for 22+ languages, it makes any digital service voice-accessible across India's linguistic diversity.\n\n**AgriVerify AI's zero-literacy interface**: Farmers speak in their mother tongue or dialect. The system processes, translates, and responds in the same language. Quality reports are read aloud. No reading ability required at any point.\n\n## The Gender Dimension\n\nWomen perform 60–80% of agricultural labor but own less than 13% of agricultural land. Voice-first, vernacular interfaces lower barriers specifically for female farmers who have never typed on a smartphone."
-        },
-        {
-          "id": 4,
-          "icon": "🌱",
-          "category": "Soil Health",
-          "color": "#4ade80",
-          "date": "Feb 20 2025",
-          "readTime": "9 min",
-          "title": "[ಕನ್ನಡ] Soil Under Siege: The Silent Degradation Destroying Indian Farmland",
-          "excerpt": "[ಕನ್ನಡ] India's Green Revolution fed a billion people. It also quietly poisoned the soil that makes feeding them possible.",
-          "content": "[ಕನ್ನಡ] ## The Green Revolution's Hidden Cost\n\nFifty years of intensive monoculture farming and heavy chemical inputs have left 146.8 million hectares — 45% of India's total area — suffering soil degradation in some form.\n\n## The Chemistry of Destruction\n\nIndia uses 16.3 million tonnes of nitrogen fertilizers annually. Punjab's soil organic carbon has fallen to below 0.3% — critically below the 0.5% minimum for productive soil. Without adequate organic carbon, soils lose water retention capacity, microbial health, and structural integrity.\n\n60,000 tonnes of pesticides annually have decimated soil microbial communities in intensively farmed areas. Without robust microbial communities, plants cannot efficiently access nutrients — so farmers apply more fertilizer, making the problem worse.\n\n## AgriVerify AI's Soil Intelligence Vision\n\nWhen a farmer's crop consistently grades lower than regional benchmarks, the most likely culprit is soil health. Our roadmap includes spectral analysis of crop tissue to flag when quality degradation is soil-related.\n\nFarmers who demonstrate soil health practices — no-till, cover cropping, organic matter addition — can access premium markets that reward sustainable provenance through our blockchain passport."
-        },
-        {
-          "id": 5,
-          "icon": "📋",
-          "category": "Policy Failure",
-          "color": "#f87171",
-          "date": "Feb 5 2025",
-          "readTime": "8 min",
-          "title": "[ಕನ್ನಡ] Broken Promises: The Reality of Crop Insurance in India",
-          "excerpt": "[ಕನ್ನಡ] PM Fasal Bima Yojana was launched with great fanfare in 2016. Nine years later, farmers are still fighting for their dues.",
-          "content": "[ಕನ್ನಡ] ## The Insurance That Doesn't Insure\n\nSince 2016, farmers have paid PMFBY premiums of approximately ₹25,000 crore annually. Claims pending as of March 2024 exceeded ₹15,000 crore. In Maharashtra, farmers who suffered 2022 kharif losses were still waiting for payment in 2024.\n\n## How the System Fails\n\n**Enrollment Barriers**: Requires Aadhaar-linked bank accounts, valid land records, and smartphone access — excluding the most vulnerable farmers.\n\n**The Crop Cutting Experiment Problem**: Claims require physical crop sampling by state officials — massively understaffed, delayed by politics, prone to manipulation. A 2023 Parliamentary Committee found CCE data from several states \"unreliable and not scientifically conducted.\"\n\n**Insurance Company Exit**: In 2022–23, Bajaj Allianz and HDFC Ergo exited PMFBY contracts. Enrolled farmers were transferred to new insurers, creating enormous confusion and further delays.\n\n## AgriVerify AI's Solution\n\nBlockchain-recorded crop quality data at harvest creates an immutable pre-loss record. A farmer with blockchain-certified Grade A wheat before the hailstorm, and Grade C after, has irrefutable claim evidence."
-        },
-        {
-          "id": 6,
-          "icon": "🥦",
-          "category": "Infrastructure",
-          "color": "#22d3ee",
-          "date": "Jan 18 2025",
-          "readTime": "7 min",
-          "title": "[ಕನ್ನಡ] The Cold Chain Crisis: Why Half of India's Vegetables Rot Before You See Them",
-          "excerpt": "[ಕನ್ನಡ] India wastes ₹92,651 crore worth of food annually due to cold chain failure. The farmer pays in collapsed prices.",
-          "content": "[ಕನ್ನಡ] ## From Farm to Waste\n\nIndia wastes approximately 40% of fruit and vegetable production — 67 million tonnes annually — due to catastrophically underdeveloped cold chain infrastructure. And it is always the farmer who pays.\n\n## The Economics of Rotting\n\nWhen a Himachal Pradesh tomato farmer has no cold storage, tomatoes must sell within 3–4 days or become worthless. In August 2023, tomato prices crashed to ₹2/kg in Karnataka — below packaging cost. Weeks later: ₹150/kg in Delhi. The crash was caused entirely by a supply glut with no cold storage buffer.\n\n## The Infrastructure Gap\n\nIndia's 37 million tonnes of cold storage capacity is 70% potato-specific and concentrated in UP, West Bengal, and Punjab. Tribal areas and dryland farming regions are almost entirely without cold chain.\n\n## AgriVerify AI's Contribution\n\nQuality verification at harvest helps farmers decide which produce is worth storing vs. selling immediately. Real-time e-NAM prices inform timing decisions. A blockchain quality passport unlocks direct relationships with retail chains and exporters who pay premium prices for certified quality."
-        }
-      ]
+      "subtitle": "14 ಕೋಟಿ ರೈತ ಕುಟುಂಬಗಳ ಬಗ್ಗೆ ಆಳವಾದ ಸಂಶೋಧನೆ."
     },
     "team": {
       "badge": "👥 टीम",
