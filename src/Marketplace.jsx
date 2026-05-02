@@ -66,7 +66,12 @@ export default function Marketplace({ onBack, onAuth, user }) {
   useEffect(() => {
     const fetchAuctions = async () => {
       const { data, error } = await supabase.from('auctions').select('*').order('created_at', { ascending: false });
-      if (data && data.length > 0) {
+      if (error) {
+        console.error("Error fetching auctions:", error);
+        showToast('❌', 'Connection Error', 'Check your Supabase URL and Key', true);
+        return;
+      }
+      if (data) {
         setAuctions(data.map(item => ({
           ...item,
           endsAt: new Date(item.ends_at).getTime()
