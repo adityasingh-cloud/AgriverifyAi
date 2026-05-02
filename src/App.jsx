@@ -380,6 +380,7 @@ export default function App() {
 
 
         {/* HERO */}
+        {/* HERO */}
         <section id="home" style={{position:"relative",minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden",padding:"60px 1.5rem 60px"}}>
           {/* Background Image */}
           <div style={{
@@ -391,22 +392,13 @@ export default function App() {
             backgroundRepeat: "no-repeat",
             zIndex: 0
           }} />
-          {/* Dark Overlay for Readability */}
+          {/* Subtle Dark Overlay for Readability */}
           <div style={{
             position: "absolute",
             inset: 0,
-            background: "linear-gradient(180deg, rgba(7, 26, 20, 0.85) 0%, rgba(10, 21, 32, 0.7) 100%)",
+            background: "rgba(0, 0, 0, 0.4)",
             zIndex: 1
           }} />
-          <Aurora />
-          {/* Decorative rings */}
-          {[600,850,380].map((s,i)=>(
-            <div key={i} style={{position:"absolute",width:s,height:s,borderRadius:"50%",border:`1px solid rgba(${i===0?"16,185,129":i===1?"244,114,182":"251,146,60"},${i===0?.09:i===1?.06:.07})`,top:"50%",left:"50%",transform:"translate(-50%,-50%)",animation:`spin ${20+i*15}s linear infinite ${i%2===0?"":"reverse"}`}} />
-          ))}
-          {/* Glow blobs */}
-          <div style={{position:"absolute",top:"12%",right:"10%",width:200,height:200,borderRadius:"50%",background:"radial-gradient(circle,rgba(244,114,182,.25),transparent 70%)",filter:"blur(35px)",animation:"floatY 6s ease-in-out infinite"}} />
-          <div style={{position:"absolute",bottom:"18%",left:"6%",width:160,height:160,borderRadius:"50%",background:"radial-gradient(circle,rgba(167,139,250,.22),transparent 70%)",filter:"blur(30px)",animation:"floatY 8s ease-in-out infinite reverse"}} />
-          <div style={{position:"absolute",top:"55%",right:"3%",width:120,height:120,borderRadius:"50%",background:"radial-gradient(circle,rgba(34,211,238,.2),transparent 70%)",filter:"blur(25px)",animation:"floatY 7s ease-in-out infinite"}} />
 
           <motion.div key={lang} initial={{opacity:0,y:15}} animate={{opacity:1,y:0}} transition={{duration:0.6}} style={{position:"relative",zIndex:5,textAlign:"center",maxWidth:920}}>
             <Badge style={{background:"rgba(16,185,129,0.12)",border:"1px solid rgba(16,185,129,0.35)",color:"#10b981",marginBottom:30,animation:"fadeUp .8s ease .3s both"}}>
@@ -464,24 +456,16 @@ export default function App() {
 
         {/* PROBLEM */}
         <section id="problem" style={{padding:"100px 1.5rem",position:"relative",overflow:"hidden"}}>
-          {/* Video Background */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{
-              position:"absolute",
-              inset:0,
-              width:"100%",
-              height:"100%",
-              objectFit:"cover",
-              zIndex:0,
-              pointerEvents:"none",
-            }}
-          >
-            <source src="/problem-bg.mp4" type="video/mp4" />
-          </video>
+          {/* Background Image instead of video */}
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "url('/farmer.webp')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            zIndex: 0
+          }} />
           {/* Dark overlay for readability */}
           <div style={{position:"absolute",inset:0,background:"linear-gradient(135deg,rgba(7,26,20,0.82) 0%,rgba(12,22,40,0.80) 60%,rgba(22,12,40,0.78) 100%)",zIndex:1,pointerEvents:"none"}} />
           <div style={{position:"absolute",top:"15%",right:0,width:320,height:320,background:"radial-gradient(circle,rgba(251,146,60,.12),transparent 70%)",filter:"blur(70px)",pointerEvents:"none",zIndex:1}} />
