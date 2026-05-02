@@ -8,12 +8,11 @@ const initialAuctions = [
   { id: 1, crop: 'Rice', farmer: farmers[0], grade: 'Gold', qty: '50 Quintals', basePrice: 2600, currentBid: 2840, bids: 18, endsAt: Date.now() + 180000, location: 'West Bengal', cert: '0x7f3a91bc', category: 'grains' },
   { id: 2, crop: 'Wheat', farmer: farmers[1], grade: 'Silver', qty: '80 Quintals', basePrice: 2100, currentBid: 2240, bids: 11, endsAt: Date.now() + 420000, location: 'Gujarat', cert: '0x3d8a24fc', category: 'grains' },
   { id: 3, crop: 'Cotton', farmer: farmers[2], grade: 'Gold', qty: '30 Quintals', basePrice: 6000, currentBid: 6480, bids: 24, endsAt: Date.now() + 60000, location: 'Uttar Pradesh', cert: '0xb1e92d4a', category: 'pulses' },
-  { id: 4, crop: 'Maize', farmer: farmers[3], grade: 'Bronze', qty: '100 Quintals', basePrice: 1800, currentBid: 1920, bids: 7, endsAt: Date.now() + 840000, location: 'Haryana', cert: '0xca7f1e83', category: 'grains' },
-  { id: 5, crop: 'Soybean', farmer: farmers[4], grade: 'Gold', qty: '40 Quintals', basePrice: 4800, currentBid: 5120, bids: 15, endsAt: Date.now() + 300000, location: 'Punjab', cert: '0x9e2b4d71', category: 'pulses' },
-  { id: 6, crop: 'Potato', farmer: farmers[5], grade: 'Silver', qty: '200 Quintals', basePrice: 900, currentBid: 980, bids: 9, endsAt: Date.now() + 1200000, location: 'Maharashtra', cert: '0x4a8c3f92', category: 'pulses' },
 ];
 
-export default function Marketplace({ onBack }) {
+import { supabase } from './lib/supabase';
+
+export default function Marketplace({ onBack, onAuth, user }) {
   const [auctions, setAuctions] = useState(initialAuctions);
   const [myBids, setMyBids] = useState({});
   const [currentFilter, setCurrentFilter] = useState('all');
@@ -61,6 +60,33 @@ export default function Marketplace({ onBack }) {
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(id);
+    };
+  }, []);
+
+  useEffect(() => {
+    const fetchAuctions = async () => {
+      const { data, error } = await supabase.from('auctions').select('*').order('created_at', { ascending: false });
+      if (data && data.length > 0) {
+        setAuctions(data.map(item => ({
+          ...item,
+          endsAt: new Date(item.ends_at).getTime()
+        })));
+      }
+    };
+    fetchAuctions();
+
+    const sub = supabase.channel('auctions_realtime')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'auctions' }, (payload) => {
+        if (payload.eventType === 'INSERT') {
+          setAuctions(prev => [{ ...payload.new, endsAt: new Date(payload.new.ends_at).getTime() }, ...prev]);
+        } else if (payload.eventType === 'UPDATE') {
+          setAuctions(prev => prev.map(a => a.id === payload.new.id ? { ...payload.new, endsAt: new Date(payload.new.ends_at).getTime() } : a));
+        }
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(sub);
     };
   }, []);
 
@@ -164,13 +190,25 @@ export default function Marketplace({ onBack }) {
           <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'linear-gradient(135deg, #00ff87, #00d4aa)', display: 'flex', alignItems: 'center', justifyCenter: 'center', fontSize: '17px', boxShadow: '0 0 20px rgba(0, 255, 135, 0.25)', display: 'flex', justifyContent: 'center' }}>🌿</div>
           <div>
             <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '15px', fontWeight: 700, background: 'linear-gradient(90deg, #00ff87, #f4c542)', WebkitBackgroundClip: 'text', color: 'transparent' }}>AgriVerify AI</div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: '#5a8a6a', letterSpacing: '.1em' }}>LEARVON · CITADEL 1.0</div>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: '#5a8a6a', letterSpacing: '.1em' }}>LEARVON · 2025</div>
           </div>
         </div>
         <nav style={{ flex: 1, padding: '8px 0' }}>
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', letterSpacing: '.18em', color: '#5a8a6a', padding: '18px 22px 8px', opacity: 0.5 }}>MARKETPLACE</div>
           <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '11px 22px', fontSize: '13px', fontWeight: 600, color: '#00ff87', background: 'rgba(0, 255, 135, 0.06)', textDecoration: 'none', borderLeft: '2px solid #00ff87' }}>Live Auctions</a>
-          <a onClick={onBack} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '11px 22px', fontSize: '13px', fontWeight: 600, color: '#5a8a6a', textDecoration: 'none', cursor: 'none' }}>← Back to Home</a>
+          <a onClick={onBack} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '11px 22px', fontSize: '13px', fontWeight: 600, color: '#5a8a6a', textDecoration: 'none', cursor: 'pointer' }}>← Back to Home</a>
+          
+          <div style={{ marginTop: 'auto', padding: '12px 22px' }}>
+            {user ? (
+              <div style={{ background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.2)', borderRadius: '12px', padding: '12px' }}>
+                <div style={{ fontSize: '10px', color: '#4d9e88', textTransform: 'uppercase', marginBottom: '4px' }}>Logged in as</div>
+                <div style={{ fontSize: '13px', fontWeight: 700, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{user.email}</div>
+                <button onClick={() => supabase.auth.signOut()} style={{ background: 'none', border: 'none', color: '#ff6b81', fontSize: '11px', padding: 0, marginTop: '8px', cursor: 'pointer' }}>Sign Out</button>
+              </div>
+            ) : (
+              <button onClick={onAuth} style={{ width: '100%', padding: '12px', background: 'rgba(0, 255, 135, 0.1)', border: '1px solid rgba(0, 255, 135, 0.2)', color: '#00ff87', borderRadius: '12px', fontSize: '13px', fontWeight: 700, cursor: 'pointer' }}>Login / Signup</button>
+            )}
+          </div>
         </nav>
         <div style={{ padding: '18px 22px', borderTop: '1px solid rgba(0, 255, 135, 0.08)' }}>
            <div style={{ background: 'rgba(0, 255, 135, 0.06)', border: '1px solid rgba(0, 255, 135, 0.1)', borderRadius: '8px', padding: '9px 12px', fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: '#00ff87', display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -203,9 +241,13 @@ export default function Marketplace({ onBack }) {
                 const remaining = a.endsAt - Date.now();
                 return (
                   <div key={a.id} style={{ background: 'rgba(10, 20, 14, 0.7)', border: '1px solid rgba(0, 255, 135, 0.08)', borderRadius: '18px', overflow: 'hidden', position: 'relative' }}>
-                    <div style={{ height: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '72px', background: 'radial-gradient(circle at 50% 60%, rgba(0, 255, 135, 0.06), #070e09)' }}>
-                      {cropEmojis[a.crop]}
-                      <div style={{ position: 'absolute', bottom: '12px', left: '14px', fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', padding: '4px 12px', borderRadius: '100px', background: 'rgba(244, 197, 66, 0.12)', color: '#f4c542', border: '1px solid rgba(244, 197, 66, 0.25)' }}>🏅 {a.grade} Grade</div>
+                    <div style={{ height: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '72px', background: 'radial-gradient(circle at 50% 60%, rgba(0, 255, 135, 0.06), #070e09)', position: 'relative', overflow: 'hidden' }}>
+                      {a.photo_url ? (
+                        <img src={a.photo_url} alt={a.crop} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      ) : (
+                        cropEmojis[a.crop]
+                      )}
+                      <div style={{ position: 'absolute', bottom: '12px', left: '14px', fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', padding: '4px 12px', borderRadius: '100px', background: 'rgba(244, 197, 66, 0.12)', color: '#f4c542', border: '1px solid rgba(244, 197, 66, 0.25)', zIndex: 2 }}>🏅 {a.grade} Grade</div>
                     </div>
                     <div style={{ padding: '20px' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
@@ -227,7 +269,7 @@ export default function Marketplace({ onBack }) {
                           <div style={{ fontSize: '10px', color: '#5a8a6a' }}>BIDS</div>
                         </div>
                       </div>
-                      <button onClick={() => setActiveAuction(a)} style={{ width: '100%', padding: '12px', background: 'linear-gradient(135deg, #00d4aa, #00ff87)', color: '#000', fontWeight: 800, border: 'none', borderRadius: '10px', cursor: 'none' }}>⚡ Place Bid</button>
+                      <button onClick={() => user ? setActiveAuction(a) : onAuth()} style={{ width: '100%', padding: '12px', background: 'linear-gradient(135deg, #00d4aa, #00ff87)', color: '#000', fontWeight: 800, border: 'none', borderRadius: '10px', cursor: 'pointer' }}>⚡ Place Bid</button>
                     </div>
                   </div>
                 );
