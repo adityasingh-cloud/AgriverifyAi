@@ -381,6 +381,23 @@ export default function App() {
 
         {/* HERO */}
         <section id="home" style={{position:"relative",minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden",padding:"60px 1.5rem 60px"}}>
+          {/* Background Image */}
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "url('/farmer.webp')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            zIndex: 0
+          }} />
+          {/* Dark Overlay for Readability */}
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(180deg, rgba(7, 26, 20, 0.85) 0%, rgba(10, 21, 32, 0.7) 100%)",
+            zIndex: 1
+          }} />
           <Aurora />
           {/* Decorative rings */}
           {[600,850,380].map((s,i)=>(
@@ -446,9 +463,29 @@ export default function App() {
         </div>
 
         {/* PROBLEM */}
-        <section id="problem" style={{padding:"100px 1.5rem",position:"relative"}}>
-          <div style={{position:"absolute",top:"15%",right:0,width:320,height:320,background:"radial-gradient(circle,rgba(251,146,60,.12),transparent 70%)",filter:"blur(70px)",pointerEvents:"none"}} />
-          <div style={{maxWidth:1280,margin:"0 auto"}}>
+        <section id="problem" style={{padding:"100px 1.5rem",position:"relative",overflow:"hidden"}}>
+          {/* Video Background */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{
+              position:"absolute",
+              inset:0,
+              width:"100%",
+              height:"100%",
+              objectFit:"cover",
+              zIndex:0,
+              pointerEvents:"none",
+            }}
+          >
+            <source src="/problem-bg.mp4" type="video/mp4" />
+          </video>
+          {/* Dark overlay for readability */}
+          <div style={{position:"absolute",inset:0,background:"linear-gradient(135deg,rgba(7,26,20,0.82) 0%,rgba(12,22,40,0.80) 60%,rgba(22,12,40,0.78) 100%)",zIndex:1,pointerEvents:"none"}} />
+          <div style={{position:"absolute",top:"15%",right:0,width:320,height:320,background:"radial-gradient(circle,rgba(251,146,60,.12),transparent 70%)",filter:"blur(70px)",pointerEvents:"none",zIndex:1}} />
+          <div style={{maxWidth:1280,margin:"0 auto",position:"relative",zIndex:2}}>
             <div style={{textAlign:"center",marginBottom:64}}>
               <Badge style={{background:"rgba(248,113,113,.12)",border:"1px solid rgba(248,113,113,.3)",color:"#f87171",marginBottom:20}}>{t.problem.badge}</Badge>
               <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(2rem,4vw,3.2rem)",fontWeight:900,color:"#fff",marginBottom:14}}>{t.problem.title}</h2>
