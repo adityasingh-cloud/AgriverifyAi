@@ -826,9 +826,10 @@ export default function App() {
                   {[
                     {icon:"📞",label:"Aditya Singh",value:"+91 9674951947",href:"tel:+919674951947"},
                     {icon:"📧",label:"Email",value:"adityasinghvoid0009@gmail.com",href:"mailto:adityasinghvoid0009@gmail.com"},
+                    {icon:"📱",label:"Farmer App",value:"agriverify-app.vercel.app",href:"https://agriverify-app.vercel.app/"},
                     {icon:"📞",label:"Team",value:"+91 9748124930",href:"tel:+919748124930"},
                   ].map((c,i)=>(
-                    <a key={i} href={c.href} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 20px",borderRadius:14,background:"rgba(255,255,255,.04)",border:"1px solid rgba(255,255,255,.09)",textDecoration:"none",transition:"all .3s"}} onMouseOver={e=>{e.currentTarget.style.background="rgba(255,255,255,.08)";e.currentTarget.style.transform="translateY(-3px)"}} onMouseOut={e=>{e.currentTarget.style.background="rgba(255,255,255,.04)";e.currentTarget.style.transform="none"}}>
+                    <a key={i} href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 20px",borderRadius:14,background:"rgba(255,255,255,.04)",border:"1px solid rgba(255,255,255,.09)",textDecoration:"none",transition:"all .3s"}} onMouseOver={e=>{e.currentTarget.style.background="rgba(255,255,255,.08)";e.currentTarget.style.transform="translateY(-3px)"}} onMouseOut={e=>{e.currentTarget.style.background="rgba(255,255,255,.04)";e.currentTarget.style.transform="none"}}>
                       <span style={{fontSize:22}}>{c.icon}</span>
                       <div style={{textAlign:"left"}}>
                         <div style={{fontSize:10,color:"#4d9e88",textTransform:"uppercase",letterSpacing:".07em"}}>{c.label}</div>
