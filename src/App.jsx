@@ -5,6 +5,7 @@ import { Languages, Volume2, VolumeX, Check } from "lucide-react";
 import { useLanguage } from "./lib/LanguageContext";
 import { LANGUAGES } from "./lib/translations";
 import VoiceAssistant from "./components/VoiceAssistant";
+import Marketplace from "./Marketplace";
 
 const fallbackBlogs = [
   { id:1,icon:"💰",category:"Market Exploitation",color:"#f472b6",date:"Apr 12 2025",readTime:"8 min",title:"The Price They Never See: How Middlemen Steal from Indian Farmers",excerpt:"Every harvest season, millions of farmers walk away with a fraction of what their crops are worth. The system is broken by design.",content:`## The Invisible Chain of Exploitation\n\nEvery year, India produces over 300 million tonnes of food grains. Yet the people who grow this food remain among the country's poorest citizens. The reason is a systemic failure baked into the agricultural supply chain.\n\n## How the Mandi System Works\n\nThe APMC system was designed in the 1960s to protect farmers. In practice it became the mechanism of exploitation. Commission agents (arhatiyas) control weighing, grading, storage, and credit — creating debt-bondage cycles lasting generations.\n\n**The Grade Manipulation**: Without standardized grading, arhatiyas visually inspect produce and assign quality grades. The conflict of interest is enormous — agents profit when grades are lower.\n\n## Real Numbers, Real Pain\n\nA 2022 ICAR study found onion farmers in Maharashtra received ₹2–₹5/kg at the farm gate, while Delhi consumers paid ₹40–₹60 for the same onions. The 10x gap was absorbed entirely by intermediaries. NABARD found 52.5% of agricultural households are indebted, with average debt of ₹74,121 per family.\n\n## What AgriVerify AI Changes\n\nObjective AI-driven quality grades, real-time price data synced from e-NAM, and blockchain-certified quality passports are dismantling 60 years of institutionalized exploitation — one verified transaction at a time.`},
@@ -178,6 +179,7 @@ export default function App() {
   const [splash,setSplash]=useState(true);
   const [menuOpen,setMenuOpen]=useState(false);
   const [activeBlog,setActiveBlog]=useState(null);
+  const [view, setView] = useState("landing"); // "landing" or "marketplace"
   const [demoState,setDemoState]=useState("idle");
   const [demoImgs,setDemoImgs]=useState({top:null,side:null,bottom:null});
   const [scanPct,setScanPct]=useState(0);
@@ -304,6 +306,10 @@ export default function App() {
     );
   }
 
+  if(view === "marketplace") {
+    return <Marketplace onBack={() => setView("landing")} />;
+  }
+
   return (
     <>
       <style>{CSS}</style>
@@ -347,6 +353,12 @@ export default function App() {
                 {s.charAt(0).toUpperCase() + s.slice(1)}
               </a>
             ))}
+
+            <div style={{fontFamily:"'Space Mono', monospace",fontSize:9,letterSpacing:".15em",color:"#10b981",padding:"20px 20px 8px",opacity:.9,textTransform:"uppercase",fontWeight:700}}>Markets</div>
+            <a onClick={()=>setView("marketplace")} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 20px",fontSize:13,fontWeight:500,color:"#4d9e88",textDecoration:"none",borderLeft:"2px solid transparent",transition:"all .2s",cursor:"pointer"}} onMouseOver={e=>{e.currentTarget.style.color="#10b981";e.currentTarget.style.background="rgba(15,196,167,.05)"}} onMouseOut={e=>{e.currentTarget.style.color="#4d9e88";e.currentTarget.style.background="none"}}>
+              <span style={{width:7,height:7,borderRadius:"50%",border:"1.5px solid currentColor",flexShrink:0}} />
+              Live Auctions ⚡
+            </a>
 
             <div style={{fontFamily:"'Space Mono', monospace",fontSize:9,letterSpacing:".15em",color:"#4d9e88",padding:"20px 20px 8px",opacity:.6,textTransform:"uppercase",fontWeight:700}}>Explore</div>
             {["blockchain","risk","blogs"].map((s)=>(
