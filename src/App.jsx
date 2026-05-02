@@ -759,12 +759,18 @@ export default function App() {
             </div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:24}}>
               {[
-                {name:"Aditya Singh",role:"Founder & Strategy",emoji:"🚀",color:"#10b981",desc:"Visionary behind AgriVerify AI. Leads product strategy and business development. Passionate about Web3 fairness for Indian agriculture.",tags:["Strategy","Product","BD"]},
+                {name:"Aditya Singh",role:"Founder & Strategy",img:"/aditya.jpg",emoji:"🚀",color:"#10b981",desc:"Visionary behind AgriVerify AI. Leads product strategy and business development. Passionate about Web3 fairness for Indian agriculture.",tags:["Strategy","Product","BD"]},
                 {name:"Reyansh Dalui",role:"Technology Lead",emoji:"⚡",color:"#f472b6",desc:"Architects the AI grading pipeline and blockchain infrastructure. Expert in ML model optimization for edge deployment on low-cost devices.",tags:["AI/ML","Blockchain","Edge Computing"]},
                 {name:"Ankan Shah",role:"Technology",emoji:"🔬",color:"#a78bfa",desc:"Builds the Bhashini voice integration and real-time data pipelines. Expert in regional language NLP and distributed agricultural systems.",tags:["NLP","Voice AI","Systems"]},
               ].map((m,i)=>(
                 <GCard key={i} style={{padding:28,textAlign:"center",borderColor:m.color+"28"}} className="card-hover">
-                  <div style={{width:72,height:72,borderRadius:20,background:m.color+"18",border:`1px solid ${m.color}35`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:34,margin:"0 auto 16px",boxShadow:`0 0 35px ${m.color}35`}}>{m.emoji}</div>
+                  <div style={{width:72,height:72,borderRadius:20,background:m.color+"18",border:`1px solid ${m.color}35`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:34,margin:"0 auto 16px",boxShadow:`0 0 35px ${m.color}35`,overflow:"hidden"}}>
+                    {m.img ? (
+                      <img src={m.img} alt={m.name} style={{width:"100%",height:"100%",objectFit:"cover"}} />
+                    ) : (
+                      m.emoji
+                    )}
+                  </div>
                   <h3 style={{fontSize:"1.1rem",fontWeight:800,color:"#fff",marginBottom:4}}>{m.name}</h3>
                   <p style={{fontSize:12,color:m.color,fontWeight:700,marginBottom:14}}>{m.role}</p>
                   <p style={{fontSize:12,color:"#7fbfa8",lineHeight:1.75,marginBottom:16}}>{m.desc}</p>
